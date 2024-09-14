@@ -6,7 +6,7 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
 
-type Likes = {
+type Like = {
   userId: number
   articleId: number
 }
@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const like: Likes = {
+  const like: Like = {
     userId: body.userId,
     articleId: article.id,
   }
@@ -136,7 +136,7 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const like: Likes = {
+  const like: Like = {
     userId: body.userId,
     articleId: article.id,
   }
