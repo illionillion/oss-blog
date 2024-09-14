@@ -15,28 +15,42 @@ export const Footer = () => {
   ]
 
   return (
-    <Flex w="full" gap="md" flexDir={{ base: "row", md: "column" }}>
-      <Box>
-        <Box>© 2020</Box>
+    <Box w="full" backgroundColor="primary.300">
+      <Box maxW="6xl" m="0 auto">
+        <Flex w="full" gap="md" flexDir={{ base: "row", md: "column" }}>
+          <Box>
+            <Heading size="md" py="md">
+              OSSBlog
+            </Heading>
+            <Text>オープンソースの力で、より良い技術ブログを</Text>
+          </Box>
+          <Spacer />
+          <Box>
+            <Heading size="md" py="md">
+              リンク
+            </Heading>
+            {links.map((link) => (
+              <Link href={link.href} key={link.href}>
+                <Text>{link.label}</Text>
+              </Link>
+            ))}
+          </Box>
+          <Spacer />
+          <Box>
+            <Heading size="md" py="md">
+              コミュニティ
+            </Heading>
+            {community.map((link) => (
+              <Link href={link.href} key={link.href}>
+                <Text>{link.label}</Text>
+              </Link>
+            ))}
+          </Box>
+        </Flex>
+        <Text m="0 auto" py="md" textAlign="center">
+          © 2021 OSSBlog. All rights reserved.
+        </Text>
       </Box>
-      <Spacer />
-      <Box>
-        <Heading size="md">リンク</Heading>
-        {links.map((link) => (
-          <Link href={link.href} key={link.href}>
-            <Text>{link.label}</Text>
-          </Link>
-        ))}
-      </Box>
-      <Spacer />
-      <Box>
-        <Heading size="md">コミュニティ</Heading>
-        {community.map((link) => (
-          <Link href={link.href} key={link.href}>
-            <Text>{link.label}</Text>
-          </Link>
-        ))}
-      </Box>
-    </Flex>
+    </Box>
   )
 }
