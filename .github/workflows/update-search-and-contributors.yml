@@ -40,6 +40,12 @@ jobs:
           node --version
           pnpm install
 
+      - name: Checkout article-stage
+        run: |
+          git fetch origin article-stage
+          git checkout article-stage
+          git pull origin article-stage
+
       - name: Run update script
         run: |
           pnpm gen:search
