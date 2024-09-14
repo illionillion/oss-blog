@@ -29,4 +29,18 @@ export async function searchZenn(query: string): Promise<Article[]> {
         console.error('Error fetching from Zenn:', error);
         return [];
     }
- }  
+}  
+
+export async function searchHatena(query: string): Promise<Article[]> {
+    try {
+        const response = await axius.get(`${config.searchEndpoints.hatena}?query=${query}`);
+        return response.data.map((item: any) => ({
+            title: item.title,
+            url: item.url,
+            platofrom: 'Hatena'
+          }));
+    } catch (error) {
+        console.error('Error fetching from Hatena:', error);
+        return [];
+    }
+}
