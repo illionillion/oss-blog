@@ -11,3 +11,8 @@ export async function search(query: string): Promise<Article[]> {
             url: item.url,
             platofrom: 'Qiita'
     }));
+    } catch (error) {
+        console.error('Error fetching from Qiita:', error);
+        return [];
+    }
+}    
