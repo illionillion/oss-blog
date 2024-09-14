@@ -94,11 +94,37 @@ export async function PUT(
   )
 }
 
-export function DELETE() {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { url: string } },
+) {
+  const url: string = params.url
+
+  const article = await prisma.article.findFirst({
+    where: {
+      url: url,
+    },
+    select: {
+      id: true,
+    },
+  })
+
+  if (!article) {
+    return NextResponse.json(
+      { message: responseMessage.error.notFound },
+      { status: 404 },
+    )
+  }
+
+  await prisma.article.delete({
+    where: {
+      id: article.id,
+    },
+  })
+
   return NextResponse.json(
     {
       message: responseMessage.success.delete,
-      data: {},
     },
     { status: 200 },
   )
