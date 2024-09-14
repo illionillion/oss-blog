@@ -12,6 +12,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check --cache .",
     "format:write": "prettier --write --cache .",
+    "gen:article": "plop article",
     "gen:contributors": "tsx scripts/contributors",
     "gen:search": "tsx scripts/search"
   },

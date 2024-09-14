@@ -1,3 +1,4 @@
+"use client"
 import { isArray, isNull, isObject, isString } from "@yamada-ui/react"
 import type { ReactNode } from "react"
 

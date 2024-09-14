@@ -10,14 +10,14 @@ contributors:
     login: illionillion
     avatar_url: 'https://avatars.githubusercontent.com/u/60034520?v=4'
     html_url: 'https://github.com/illionillion'
-  - id: 109452865
-    login: taku10101
-    avatar_url: 'https://avatars.githubusercontent.com/u/109452865?v=4'
-    html_url: 'https://github.com/taku10101'
-latest_date: '2024-09-14T08:30:54Z'
+latest_date: '2024-09-14T08:23:26Z'
 ---
 
 # Reactの`useRef`フックについて
+
+`useRef`は、ReactでDOM要素やミュータブルな値を保持するためのフックです。このフックを使用することで、再レンダリングを発生させずにデータを参照・更新することが可能になります。例えば、DOMに直接アクセスしたり、以前の状態を保持する場合に便利です。
+
+# Reactの`useRef`フックについて2
 
 `useRef`は、ReactでDOM要素やミュータブルな値を保持するためのフックです。このフックを使用することで、再レンダリングを発生させずにデータを参照・更新することが可能になります。例えば、DOMに直接アクセスしたり、以前の状態を保持する場合に便利です。
 
