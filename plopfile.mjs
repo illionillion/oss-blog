@@ -1,3 +1,21 @@
+const getDirectories = (source) =>
+  readdirSync(source, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
+
+const validateDashCase = (i) => !/[A-Z]/.test(i) && !/_/.test(i)
+
+const checkAvailableName = (basePath, name, isFolder) => {
+  const newPath = path.join(basePath, name)
+  console.log(newPath)
+  if (existsSync(newPath)) {
+    console.log("Already exists")
+    return false
+  }
+  console.log("Available")
+  return true
+}
+
 const folderPrompt = (_, basePath, isTopLevel) => {
   console.log(basePath)
   console.log(isTopLevel)
