@@ -1,6 +1,5 @@
 import { Center, Heading, Text, VStack } from "@yamada-ui/react"
 import React from "react"
-import { AvatarWithHover } from "@/components/data-display/avatars-with-hover-motion"
 import { Layout } from "@/components/layouts"
 import { CustomMarkdown } from "@/components/md/custom-markdown"
 import {
@@ -33,7 +32,6 @@ const Page = async ({ params }: Props) => {
       <Center as={VStack}>
         <Heading>{metadata?.title}</Heading>
         <Text>{metadata?.description}</Text>
-        <AvatarWithHover contributors={metadata?.contributors || []} />
         <CustomMarkdown content={content} />
       </Center>
     </Layout>
