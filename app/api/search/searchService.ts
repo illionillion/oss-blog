@@ -17,4 +17,16 @@ export async function searchQiita(query: string): Promise<Article[]> {
     }
 }    
 
-export
+export async function searchZenn(query: string): Promise<Article[]> {
+    try {
+        const response= await axius.get(`${config.searchEndpoints.zenn}?query=${query}`);
+        return response.data.map((item: any) => ({
+            title: item.title,
+            url: item.url,
+            platofrom: 'Zenn'
+          }));
+    } catch (error) {
+        console.error('Error fetching from Zenn:', error);
+        return [];
+    }
+ }  
