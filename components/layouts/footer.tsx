@@ -48,7 +48,7 @@ export const Footer = () => {
           </Box>
         </Flex>
         <Text m="0 auto" py="md" textAlign="center">
-          © 2021 OSSBlog. All rights reserved.
+          © 2024 OSSBlog. All rights reserved.
         </Text>
       </Box>
     </Box>
