@@ -1,7 +1,7 @@
-import { Markdown } from "@yamada-ui/markdown"
 import { Center, Heading, Text, VStack } from "@yamada-ui/react"
 import React from "react"
 import { Layout } from "@/components/layouts"
+import { CustomMarkdown } from "@/components/md/custom-markdown"
 import {
   generateArticleMetadata,
   generateStaticArticleParams,
@@ -32,7 +32,7 @@ const Page = async ({ params }: Props) => {
       <Center as={VStack}>
         <Heading>{metadata?.title}</Heading>
         <Text>{metadata?.description}</Text>
-        <Markdown>{content}</Markdown>
+        <CustomMarkdown content={content} />
       </Center>
     </Layout>
   )
