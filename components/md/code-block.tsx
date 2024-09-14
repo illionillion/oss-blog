@@ -1,9 +1,10 @@
 "use client"
-import { Box, Text } from "@yamada-ui/react"
+import { Box, Center, Loading, Text } from "@yamada-ui/react"
+import mermaid from "mermaid"
 import { Highlight as ReactHighlight } from "prism-react-renderer"
 import type { HighlightProps as ReactHighlightProps } from "prism-react-renderer"
 import type { DetailedHTMLProps, FC, HTMLAttributes } from "react"
-import React, { isValidElement } from "react"
+import React, { isValidElement, useLayoutEffect, useState } from "react"
 import { extractTextFromChildren } from "./md-utils"
 import { CopyButton } from "@/components/forms/copy-button"
 
@@ -29,17 +30,38 @@ export interface CodeBlockProps {
 }
 
 export const CodeBlock: FC<CodeBlockProps> = ({ code, language }) => {
+  const [isClient, setIsClient] = useState(false)
+
+  useLayoutEffect(() => {
+    setIsClient(true)
+    if (typeof window !== "undefined") {
+      mermaid.initialize({ startOnLoad: true })
+      mermaid.contentLoaded() // MermaidがDOMを処理できるように通知
+    }
+  }, [isClient])
   return (
     <Box position="relative" my="6">
-      <Box
-        h="full"
-        rounded="md"
-        bg={["neutral.800", "neutral.900"]}
-        sx={{ "& > div": { py: "6" } }}
-        overflow="hidden"
-      >
-        <Highlight {...{ code, language }} />
-      </Box>
+      {language === "mermaid" ? (
+        isClient ? (
+          <Center w="full" className="mermaid">
+            {code}
+          </Center>
+        ) : (
+          <Center w="full" h="sm">
+            <Loading fontSize="6xl" />
+          </Center>
+        )
+      ) : (
+        <Box
+          h="full"
+          rounded="md"
+          bg={["neutral.800", "neutral.900"]}
+          sx={{ "& > div": { py: "6" } }}
+          overflow="hidden"
+        >
+          <Highlight {...{ code, language }} />
+        </Box>
+      )}
 
       <CopyButton
         value={code}
