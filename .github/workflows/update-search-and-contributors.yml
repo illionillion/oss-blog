@@ -42,7 +42,7 @@ jobs:
       - name: Run update script
         run: |
           pnpm gen:search
-          # pnpm gen:contributors
+          pnpm gen:contributors
           cat i18n/content.json
       - name: Create PR
         uses: peter-evans/create-pull-request@v6
