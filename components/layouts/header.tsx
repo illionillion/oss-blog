@@ -34,6 +34,7 @@ import {
 import Link from "next/link"
 import type { FC } from "react"
 import { useRef, useState, memo } from "react"
+import { Search, SearchButton } from "../forms/search"
 
 export type HeaderProps = CenterProps
 
@@ -86,7 +87,18 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
         </HStack>
         <NavMenu />
         <Spacer />
+        <Search
+          display={{ base: "flex", md: "none" }}
+          borderColor={isScroll ? "transparent" : "border"}
+          bg={
+            isScroll ? ["whiteAlpha.600", "blackAlpha.500"] : ["white", "black"]
+          }
+          backdropFilter="auto"
+          backdropSaturate="180%"
+          backdropBlur="10px"
+        />
         <HStack>
+          <SearchButton display={{ base: "none", md: "inline-flex" }} />
           <ThemeSchemeButton />
           <ColorModeButton />
         </HStack>
@@ -108,7 +120,7 @@ const NavMenu: FC = () => {
     { href: "/", label: "About" },
   ]
   return (
-    <Flex display={{ base: "flex", md: "none" }} mx={6} gap="md">
+    <Flex display={{ base: "flex", lg: "none" }} gap="md">
       {linkList.map((link) => (
         <Link key={link.label} href={link.href}>
           {link.label}
