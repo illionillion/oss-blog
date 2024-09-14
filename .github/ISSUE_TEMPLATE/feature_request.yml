@@ -1,0 +1,39 @@
+name: "🚀 新しい機能リクエスト"
+description: "プロジェクトに追加したい新機能を提案してください。"
+title: "✨ [新機能] - "
+labels: ["enhancement", "feature request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 新機能についての詳細を教えてください
+
+  - type: input
+    id: summary
+    attributes:
+      label: "新機能の概要"
+      description: "追加したい機能の概要を簡潔に記述してください。"
+      placeholder: "例: ユーザープロフィールページにソーシャルメディアリンクを追加する"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "詳細な説明"
+      description: "新機能の具体的な内容や動作を記載してください。"
+      placeholder: "機能の背景、利点、ユーザーにとっての価値などを記述してください。"
+
+  - type: input
+    id: related_issues
+    attributes:
+      label: "関連するイシュー"
+      description: "関連する既存のイシューがあれば、そのリンクを記載してください。"
+      placeholder: "例: #123"
+
+  - type: checkboxes
+    id: additional_context
+    attributes:
+      label: "追加情報"
+      options:
+        - label: "UI/UXの変更が必要"
+        - label: "ドキュメントの更新が必要"
+        - label: "テストが必要"

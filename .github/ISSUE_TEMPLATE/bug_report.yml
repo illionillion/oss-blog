@@ -1,0 +1,58 @@
+name: "🐞 バグ報告"
+description: "発生したバグを報告してください。"
+title: "🐛 [バグ] - "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## バグの詳細を記述してください
+
+  - type: input
+    id: summary
+    attributes:
+      label: "バグの概要"
+      description: "発生したバグの概要を簡潔に記述してください。"
+      placeholder: "例: ログイン画面で正しいパスワードを入力してもエラーが表示される"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "詳細な説明"
+      description: "バグの具体的な状況、再現方法、予期された結果などを記述してください。"
+      placeholder: "バグの発生状況、スクリーンショット、再現手順などを記載してください。"
+
+  - type: input
+    id: environment
+    attributes:
+      label: "環境"
+      description: "バグが発生した環境（ブラウザ、OS、デバイスなど）を記述してください。"
+      placeholder: "例: Windows 10 / Chrome 91"
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: "再現手順"
+      description: "バグを再現する手順を記述してください。"
+      placeholder: "1. ログインページを開く\n2. 正しいメールアドレスとパスワードを入力する\n3. エラーメッセージが表示される"
+
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: "期待される結果"
+      description: "本来得られるべき正しい結果を記述してください。"
+      placeholder: "例: ログインに成功し、ホーム画面にリダイレクトされるべき"
+
+  - type: textarea
+    id: actual_result
+    attributes:
+      label: "実際の結果"
+      description: "実際に発生した結果を記述してください。"
+      placeholder: "例: ログインが失敗し、エラーメッセージが表示される"
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "追加情報"
+      description: "その他、問題解決に役立つ情報があれば記載してください。"
+      placeholder: "例: スクリーンショット、関連するログ、エラーメッセージなど"
