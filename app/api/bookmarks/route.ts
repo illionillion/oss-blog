@@ -6,7 +6,7 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
 
-type Like = {
+type Bookmark = {
   userId: number
   articleId: number
 }
@@ -49,15 +49,15 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const like: Like = {
+  const bookmark: Bookmark = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
   const isExist =
-    (await prisma.like.findFirst({
-      where: like,
+    (await prisma.bookmark.findFirst({
+      where: bookmark,
       select: {
         id: true,
       },
@@ -70,8 +70,8 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const createdData = await prisma.like.create({
-    data: like,
+  const createdData = await prisma.bookmark.create({
+    data: bookmark,
     include: {
       article: {
         select: {
@@ -136,29 +136,29 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const like: Like = {
+  const bookmark: Bookmark = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const likeData = await prisma.like.findFirst({
-    where: like,
+  const bookmarkData = await prisma.bookmark.findFirst({
+    where: bookmark,
     select: {
       id: true,
     },
   })
 
-  if (!likeData) {
+  if (!bookmarkData) {
     return NextResponse.json(
       { message: responseMessage.error.notFound },
       { status: 404 },
     )
   }
 
-  await prisma.like.delete({
+  await prisma.bookmark.delete({
     where: {
-      id: likeData.id,
+      id: bookmarkData.id,
     },
   })
 
