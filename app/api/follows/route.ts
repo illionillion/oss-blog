@@ -88,6 +88,12 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
+  await prisma.follow.delete({
+    where: {
+      id: targetData.id,
+    },
+  })
+
   return NextResponse.json(
     {
       message: responseMessage.success.delete,
