@@ -10,12 +10,14 @@ type Article = {
   url: string
 }
 
-export function GET() {
+export async function GET() {
+  const articleList = await prisma.article.findMany()
+
   return NextResponse.json(
     {
       message: responseMessage.success.get,
       data: {
-        articleList: [],
+        articleList: articleList,
       },
     },
     { status: 200 },
