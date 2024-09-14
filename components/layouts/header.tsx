@@ -93,7 +93,6 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
           />
         </Box>
         <Spacer />
-
         <HStack>
           <ThemeSchemeButton />
           <ColorModeButton />
