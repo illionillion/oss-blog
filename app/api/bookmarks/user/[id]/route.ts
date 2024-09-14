@@ -12,7 +12,7 @@ export async function GET(
 ) {
   const id: number = Number(params.id)
 
-  const articleList = await prisma.like.findMany({
+  const articleList = await prisma.bookmark.findMany({
     where: {
       userId: id,
     },
@@ -25,7 +25,7 @@ export async function GET(
     },
   })
 
-  const articleUrlList = articleList.map((like) => like.article.url)
+  const articleUrlList = articleList.map((bookmark) => bookmark.article.url)
 
   return NextResponse.json(
     {
