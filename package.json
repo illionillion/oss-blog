@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --max-warnings=0 --config eslint.config.mjs",
+    "lint:inspect": "pnpm dlx @eslint/config-inspector",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check --cache .",
+    "format:write": "prettier --write --cache ."
   },
   "dependencies": {
     "@newrelic/next": "^0.10.0",
