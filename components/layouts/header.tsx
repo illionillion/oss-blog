@@ -29,6 +29,7 @@ import {
   useScroll,
   useMotionValueEvent,
   Image,
+  Flex,
 } from "@yamada-ui/react"
 import Link from "next/link"
 import type { FC } from "react"
@@ -92,6 +93,7 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
             _light={{ display: "none" }}
           />
         </Box>
+        <NavMenu />
         <Spacer />
         <HStack>
           <ThemeSchemeButton />
@@ -106,6 +108,24 @@ type ColorModeButtonProps = IconButtonProps & {
   menuProps?: MenuProps
 }
 
+const NavMenu = () => {
+  // TODO: ページに応じてリンクを変更
+  const linkList = [
+    { href: "/", label: "記事一覧" },
+    { href: "/", label: "タグ" },
+    { href: "/", label: "コントリビュータ" },
+    { href: "/", label: "About" },
+  ]
+  return (
+    <Flex mx={6}>
+      {linkList.map((link) => (
+        <Box p="md" key={link.href}>
+          <Link href={link.href}>{link.label}</Link>
+        </Box>
+      ))}
+    </Flex>
+  )
+}
 const ColorModeButton: FC<ColorModeButtonProps> = memo(
   ({ menuProps, ...rest }) => {
     const { colorMode, internalColorMode, changeColorMode } = useColorMode()
