@@ -8,6 +8,11 @@ on:
     branches:
       - main
 
+permissions:
+  actions: write
+  checks: write
+  contents: write
+
 jobs:
   update:
     name: Update
@@ -39,7 +44,6 @@ jobs:
           pnpm gen:search
           # pnpm gen:contributors
           cat i18n/content.json
-      # # Privateだとできない？
       - name: Create PR
         uses: peter-evans/create-pull-request@v6
         with:
