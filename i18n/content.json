@@ -258,12 +258,6 @@
     "hierarchy": { "lv1": "Mermaid埋め込み" }
   },
   {
-    "title": "マーメイド対応した",
-    "type": "fragment",
-    "slug": "/frontend/react/mermaid#マーメイド対応した",
-    "hierarchy": { "lv1": "Mermaid埋め込み", "lv2": "マーメイド対応した" }
-  },
-  {
     "title": "Yamada UIのMarkdownの見出しタグをカスタムしたい",
     "type": "page",
     "description": "Yamada UIのMarkdownの見出しタグをQiitaやZennなどのリンク付きの見出しにカスタムする方法解説",
