@@ -3,7 +3,7 @@ import { Article } from '../../models/article';
 import { config } from '../../config';
 
 
-export async function search(query: string): Promise<Article[]> {
+export async function searchQiita(query: string): Promise<Article[]> {
     try {
         const response = await axius.get(`${config.searchEndpoints.zenn}?query=${query}`);
         return response.data.map((item: any) => ({
@@ -16,3 +16,5 @@ export async function search(query: string): Promise<Article[]> {
         return [];
     }
 }    
+
+export
