@@ -2,6 +2,6 @@
 export interface Article {
     title: string;
     url: string;    
-    suummary: string;
+    summary: string;
     platform: 'Qiita' | 'Zenn' | 'Hatena';
 }
