@@ -5,6 +5,12 @@ keyword:
   - React
   - useState
   - TypeScript
+contributors:
+  - id: 60034520
+    login: illionillion
+    avatar_url: 'https://avatars.githubusercontent.com/u/60034520?v=4'
+    html_url: 'https://github.com/illionillion'
+latest_date: '2024-09-14T08:21:30Z'
 ---
 
 # Reactの`useState`フックについて
