@@ -49,7 +49,45 @@ export async function POST(request: NextRequest) {
   )
 }
 
-export function DELETE() {
+export async function DELETE(request: NextRequest) {
+  let body
+
+  try {
+    body = await request.json()
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json(
+      { message: responseMessage.error.invalidRequest },
+      { status: 400 },
+    )
+  }
+
+  if (!body.fromUserId || !body.toUserId) {
+    return NextResponse.json(
+      { message: responseMessage.error.invalidRequest },
+      { status: 400 },
+    )
+  }
+
+  const follow: Follow = {
+    fromUserId: body.fromUserId,
+    toUserId: body.toUserId,
+  }
+
+  const targetData = await prisma.follow.findFirst({
+    where: follow,
+    select: {
+      id: true,
+    },
+  })
+
+  if (!targetData) {
+    return NextResponse.json(
+      { message: responseMessage.error.notFound },
+      { status: 404 },
+    )
+  }
+
   return NextResponse.json(
     {
       message: responseMessage.success.delete,
