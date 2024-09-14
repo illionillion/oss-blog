@@ -1,7 +1,7 @@
 // 各プラットフォーム（Qiita, Zenn, Hatena）の記事を検索するための関数を定義するファイル
 import axius from "axios"
-import type { Article } from "../../models/article"
 import { config } from "../config"
+import type { Article } from "../types/article"
 
 export async function searchQiita(query: string): Promise<Article[]> {
   try {
