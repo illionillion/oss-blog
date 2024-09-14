@@ -1,11 +1,49 @@
+import { PrismaClient } from "@prisma/client"
+import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
 import { responseMessage } from "@/app/api/types/responseMessage"
 
-export async function POST() {
+const prisma = new PrismaClient()
+
+type Follow = {
+  fromUserId: number
+  toUserId: number
+}
+
+export async function POST(request: NextRequest) {
+  let body
+
+  try {
+    body = await request.json()
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json(
+      { message: responseMessage.error.invalidRequest },
+      { status: 400 },
+    )
+  }
+
+  if (!body.fromUserId || !body.toUserId) {
+    return NextResponse.json(
+      { message: responseMessage.error.invalidRequest },
+      { status: 400 },
+    )
+  }
+
+  const follow: Follow = {
+    fromUserId: body.fromUserId,
+    toUserId: body.toUserId,
+  }
+
+  const responseData = await prisma.follow.create({
+    data: follow,
+  })
+
   return NextResponse.json(
     {
       message: responseMessage.success.post,
+      data: responseData,
     },
     { status: 201 },
   )
