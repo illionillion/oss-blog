@@ -1,3 +1,4 @@
+// Perplexity APIとの通信ロジック 
 import axios from 'axios';
 import { config } from '../../config';
 
@@ -19,4 +20,3 @@ export async function fetchFromPerplexity(query: string): Promise<any> {
     console.error('Error fetching from Perplexity:', error);
     throw error;
   }
-}
