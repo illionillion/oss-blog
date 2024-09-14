@@ -10,8 +10,11 @@ contributors:
     login: illionillion
     avatar_url: 'https://avatars.githubusercontent.com/u/60034520?v=4'
     html_url: 'https://github.com/illionillion'
-
-latest_date: '2024-09-14T08:21:30Z'
+  - id: 109452865
+    login: taku10101
+    avatar_url: 'https://avatars.githubusercontent.com/u/109452865?v=4'
+    html_url: 'https://github.com/taku10101'
+latest_date: '2024-09-14T08:30:54Z'
 ---
 
 # Reactの`useState`フックについて
