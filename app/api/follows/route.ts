@@ -17,6 +17,7 @@ export async function POST(request: NextRequest) {
   try {
     body = await request.json()
   } catch (error) {
+    // リクエストボディが存在しない場合にエラーを返す
     console.log(error)
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
@@ -34,6 +35,22 @@ export async function POST(request: NextRequest) {
   const follow: Follow = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
+  }
+
+  // 重複したデータが存在するか確認
+  const isExist =
+    (await prisma.follow.findFirst({
+      where: follow,
+      select: {
+        id: true,
+      },
+    })) !== null
+
+  if (isExist) {
+    return NextResponse.json(
+      { message: responseMessage.error.conflict },
+      { status: 409 },
+    )
   }
 
   const responseData = await prisma.follow.create({
@@ -55,6 +72,7 @@ export async function DELETE(request: NextRequest) {
   try {
     body = await request.json()
   } catch (error) {
+    // リクエストボディが存在しない場合にエラーを返す
     console.log(error)
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
