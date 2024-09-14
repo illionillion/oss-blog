@@ -32,6 +32,13 @@ export async function POST(request: NextRequest) {
     )
   }
 
+  if (body.fromUserId === body.toUserId) {
+    return NextResponse.json(
+      { message: responseMessage.error.invalidRequest },
+      { status: 400 },
+    )
+  }
+
   const follow: Follow = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
