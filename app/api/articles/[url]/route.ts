@@ -1,12 +1,27 @@
+import { PrismaClient } from "@prisma/client"
+import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
 import { responseMessage } from "@/app/api/types/responseMessage"
 
-export function GET() {
+const prisma = new PrismaClient()
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { url: string } },
+) {
+  const url: string = params.url
+
+  const article = await prisma.article.findFirst({
+    where: {
+      url: url,
+    },
+  })
+
   return NextResponse.json(
     {
       message: responseMessage.success.get,
-      data: {},
+      data: article,
     },
     { status: 200 },
   )
