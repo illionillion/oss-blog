@@ -18,14 +18,14 @@ export const Footer = () => {
     <Box w="full" backgroundColor="primary.300">
       <Box maxW="6xl" m="0 auto">
         <Flex w="full" gap="md" flexDir={{ base: "row", md: "column" }}>
-          <Box>
+          <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
             <Heading size="md" py="md">
               OSSBlog
             </Heading>
             <Text>オープンソースの力で、より良い技術ブログを</Text>
           </Box>
           <Spacer />
-          <Box>
+          <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
             <Heading size="md" py="md">
               リンク
             </Heading>
@@ -36,7 +36,7 @@ export const Footer = () => {
             ))}
           </Box>
           <Spacer />
-          <Box>
+          <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
             <Heading size="md" py="md">
               コミュニティ
             </Heading>
