@@ -8,9 +8,9 @@ keyword:
 contributors:
   - id: 60034520
     login: illionillion
-    avatar_url: "https://avatars.githubusercontent.com/u/60034520?v=4"
-    html_url: "https://github.com/illionillion"
-latest_date: "2024-09-14T04:01:28Z"
+    avatar_url: 'https://avatars.githubusercontent.com/u/60034520?v=4'
+    html_url: 'https://github.com/illionillion'
+latest_date: '2024-09-14T06:54:16Z'
 ---
 
 # Reactの`useState`フックについて
