@@ -14,7 +14,7 @@ contributors:
     login: taku10101
     avatar_url: 'https://avatars.githubusercontent.com/u/109452865?v=4'
     html_url: 'https://github.com/taku10101'
-latest_date: '2024-09-14T23:33:12Z'
+latest_date: '2024-09-14T23:47:43Z'
 ---
 
 # Yamada UIの`Markdown`コンポーネント
