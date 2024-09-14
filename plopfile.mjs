@@ -1,9 +1,10 @@
+import { existsSync, readdirSync } from "fs"
+import path from "path"
+
 const getDirectories = (source) =>
   readdirSync(source, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name)
-
-const validateDashCase = (i) => !/[A-Z]/.test(i) && !/_/.test(i)
 
 const checkAvailableName = (basePath, name) => {
   const newPath = path.join(basePath, name)
@@ -15,6 +16,10 @@ const checkAvailableName = (basePath, name) => {
   console.log("Available")
   return true
 }
+
+const validateDashCase = (i) => !/[A-Z]/.test(i) && !/_/.test(i)
+const contentsPath = path.resolve(process.cwd(), "contents")
+const appPath = path.resolve(process.cwd(), "app")
 
 const folderPrompt = (_, basePath, isTopLevel) => {
   console.log(basePath)
@@ -74,13 +79,74 @@ export default function plop(plop) {
   plop.setGenerator("article", {
     description: "Generate article folder and markdown file",
     prompts: async (inquirer) => {
-      const answers = await inquirer.prompt(folderPrompt)
-      console.log(answers)
-      return answers
+      let basePath = contentsPath
+      let continueLoop = true
+      let isTopLevel = true
+      let lastAnswers = {}
+
+      while (continueLoop) {
+        const answers = await inquirer.prompt(
+          folderPrompt(plop, basePath, isTopLevel),
+        )
+
+        // If a folder is selected or created, update basePath
+        if (answers.folderAction !== "Create new markdown file") {
+          const folderName = answers.newFolder || answers.folderAction
+          basePath = path.join(basePath, folderName)
+
+          if (isTopLevel && answers.newFolder) {
+            lastAnswers = {
+              ...answers,
+              newFolderName: folderName,
+            }
+          }
+
+          isTopLevel = false
+        } else {
+          lastAnswers = {
+            ...lastAnswers,
+            ...answers,
+            basePath,
+          }
+          continueLoop = false
+        }
+      }
+
+      return lastAnswers
     },
     actions: (answers) => {
-      console.log(answers)
-      return []
+      console.log("actions!!")
+      console.log(answers.basePath)
+      const actions = []
+      const folderName = answers.basePath
+
+      console.log("folderName: ", folderName)
+
+      const filePath = path.join(folderName, `${answers.fileName}.md`)
+      actions.push({
+        type: "add",
+        path: filePath,
+        templateFile: "plop/article/index.md.hbs",
+      })
+
+      if (answers.newFolderName) {
+        const appFilePath = path.join(
+          appPath,
+          answers.newFolderName,
+          "[[...slug]]",
+          "page.tsx",
+        )
+        actions.push({
+          type: "add",
+          path: appFilePath,
+          templateFile: "plop/page/page.tsx.hbs",
+          data: {
+            newCategoryGroupName: answers.newFolderName,
+          },
+        })
+      }
+
+      return actions
     },
   })
 }
