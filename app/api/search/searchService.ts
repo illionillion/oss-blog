@@ -1,3 +1,4 @@
+// 各プラットフォーム（Qiita, Zenn, Hatena）の記事を検索するための関数を定義するファイル
 import axius from 'axios';
 import { Article } from '../../models/article';
 import { config } from '../../config';
