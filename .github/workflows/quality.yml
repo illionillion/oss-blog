@@ -2,10 +2,10 @@ name: Quality
 
 on:
   push:
-    branches: ["main", "develop", "dev"]
+    branches: ["main", "develop", "dev", "backend"]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: ["main", "develop", "dev"]
+    branches: ["main", "develop", "dev", "backend"]
 
 jobs:
   eslint:
