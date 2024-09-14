@@ -1,0 +1,40 @@
+name: "Auto-sync non-Markdown changes to article-stage"
+
+on:
+  push:
+    paths-ignore:
+      - "contents/**/*.md"
+    branches:
+      - main
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sync:
+    name: Auto Sync with article-stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Checkout article-stage
+        run: |
+          git fetch origin article-stage
+          git checkout article-stage
+
+      - name: Attempt merge
+        run: |
+          git merge main || echo "Merge conflict detected" > conflict.txt
+
+      - name: Push changes or detect conflict
+        run: |
+          if [ -f conflict.txt ]; then
+            echo "Merge conflict, manual intervention required"
+            exit 1  # Merge conflictの場合、ジョブを失敗させる
+          else
+            git push origin article-stage
+          fi

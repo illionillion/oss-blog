@@ -3,10 +3,10 @@ name: "Update search and contributors"
 on:
   push:
     paths:
-      - "contents/**"
+      - "contents/**/*.md"
       - ".github/workflows/update-search-and-contributors.yml"
     branches:
-      - main
+      - article-stage
 
 permissions:
   contents: write
