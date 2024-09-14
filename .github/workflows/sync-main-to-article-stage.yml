@@ -20,6 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
       - name: Set up Git identity
         run: |
@@ -30,10 +31,11 @@ jobs:
         run: |
           git fetch origin article-stage
           git checkout article-stage
+          git pull origin article-stage
 
       - name: Attempt merge
         run: |
-          git merge main --allow-unrelated-histories || echo "Merge conflict detected" > conflict.txt
+          git merge main || echo "Merge conflict detected" > conflict.txt
 
       - name: Push changes or detect conflict
         run: |
