@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check --cache .",
-    "format:write": "prettier --write --cache ."
+    "format:write": "prettier --write --cache .",
+    "gen:article": "plop article"
   },
   "dependencies": {
     "@newrelic/next": "^0.10.0",
