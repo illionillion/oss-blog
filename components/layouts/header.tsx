@@ -1,6 +1,6 @@
 "use client"
 
-import { Moon, Palette, Sun } from "@yamada-ui/lucide"
+import { GitForkIcon, Moon, Palette, Sun } from "@yamada-ui/lucide"
 import type {
   ColorMode,
   IconButtonProps,
@@ -28,12 +28,13 @@ import {
   Center,
   useScroll,
   useMotionValueEvent,
-  Image,
   Flex,
+  Heading,
 } from "@yamada-ui/react"
 import Link from "next/link"
 import type { FC } from "react"
 import { useRef, useState, memo } from "react"
+import { Search, SearchButton } from "../forms/search"
 
 export type HeaderProps = CenterProps
 
@@ -67,8 +68,9 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
       {...rest}
     >
       <HStack w="full" maxW="9xl" py="3" px={{ base: "lg", md: "md" }}>
-        <Box
+        <HStack
           as={Link}
+          gap="sm"
           href="/"
           aria-label="OSS Blog"
           _hover={{ opacity: 0.7 }}
@@ -78,24 +80,25 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
           _focusVisible={{ boxShadow: "outline" }}
           rounded="md"
         >
-          <Image
-            src="/logo-black.png"
-            alt="OSS Blog"
-            w="auto"
-            h={{ base: "10", sm: "8" }}
-            _dark={{ display: "none" }}
-          />
-          <Image
-            src="/logo-white.png"
-            alt="OSS Blog"
-            w="auto"
-            h={{ base: "10", sm: "8" }}
-            _light={{ display: "none" }}
-          />
-        </Box>
+          <GitForkIcon color="primary" fontSize="4xl" />
+          <Heading as="h1" size="md">
+            OSS Blog
+          </Heading>
+        </HStack>
         <NavMenu />
         <Spacer />
+        <Search
+          display={{ base: "flex", md: "none" }}
+          borderColor={isScroll ? "transparent" : "border"}
+          bg={
+            isScroll ? ["whiteAlpha.600", "blackAlpha.500"] : ["white", "black"]
+          }
+          backdropFilter="auto"
+          backdropSaturate="180%"
+          backdropBlur="10px"
+        />
         <HStack>
+          <SearchButton display={{ base: "none", md: "inline-flex" }} />
           <ThemeSchemeButton />
           <ColorModeButton />
         </HStack>
@@ -108,7 +111,7 @@ type ColorModeButtonProps = IconButtonProps & {
   menuProps?: MenuProps
 }
 
-const NavMenu = () => {
+const NavMenu: FC = () => {
   // TODO: ページに応じてリンクを変更
   const linkList = [
     { href: "/", label: "記事一覧" },
@@ -117,11 +120,11 @@ const NavMenu = () => {
     { href: "/", label: "About" },
   ]
   return (
-    <Flex mx={6}>
+    <Flex display={{ base: "flex", lg: "none" }} gap="md">
       {linkList.map((link) => (
-        <Box p="md" key={link.href}>
-          <Link href={link.href}>{link.label}</Link>
-        </Box>
+        <Link key={link.label} href={link.href}>
+          {link.label}
+        </Link>
       ))}
     </Flex>
   )

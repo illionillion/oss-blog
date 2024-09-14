@@ -7,6 +7,7 @@ import {
   UIProvider,
 } from "@yamada-ui/react"
 import type { FC, ReactNode } from "react"
+import { I18nProvider } from "@/contexts"
 import { theme, config } from "@/theme"
 
 export const ConfigProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -28,7 +29,7 @@ export const ConfigProvider: FC<{ children: ReactNode }> = ({ children }) => {
         colorModeManager={colorModeManager.cookieStorage}
         themeSchemeManager={themeSchemeManager.cookieStorage}
       >
-        {children}
+        <I18nProvider>{children}</I18nProvider>
       </UIProvider>
     </>
   )
