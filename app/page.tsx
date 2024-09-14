@@ -11,26 +11,34 @@ import {
   Text,
   Container,
   Card,
-  CardHeader,
-  CardFooter,
   SimpleGrid,
   GridItem,
   Accordion,
   AccordionItem,
   VStack,
   Icon,
+  CardBody,
+  HStack,
 } from "@yamada-ui/react"
+import Link from "next/link"
 import { Layout } from "@/components/layouts"
 
 export default function Home() {
   return (
-    <Layout>
-      <Container textAlign="center" w="80%" margin="0 auto">
-        <Heading as="h1">OSSBlogへようこそ</Heading>
+    <Layout maxW="6xl">
+      <Container
+        textAlign="center"
+        w="full"
+        m="auto"
+        bgGradient="linear(to-r, #59a9e1, #f37bdf)"
+      >
+        <Heading as="h1" fontSize={{ base: "6xl", md: "xl" }}>
+          OSSBlogへようこそ
+        </Heading>
         <Text>
           オープンソースの力で、より良い技術ブログを一緒に作り上げましょう
         </Text>
-        <Button minW={40} maxW={80} margin="0 auto">
+        <Button m="auto" as={Link} href="#">
           今すぐ始める
         </Button>
       </Container>
@@ -72,26 +80,21 @@ const FeatureCard = () => {
   ]
   return (
     <>
-      <Heading as="h2" margin="0 auto">
+      <Heading as="h2" fontSize={{ base: "5xl", md: "lg" }} m="auto">
         OSSBlogの特徴
       </Heading>
       <SimpleGrid w="full" columns={{ base: 2, md: 1 }} gap="md">
         {features.map((feature) => (
-          <GridItem key={feature.title} w="full" h={200} rounded="md">
-            <Card h="100%" w="100%">
-              <CardHeader
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
+          <GridItem key={feature.title} w="full" rounded="md" as={Card}>
+            <CardBody>
+              <HStack>
                 <Icon as={feature.icon} fontSize="4xl" />
-                <Heading as="h3">{feature.title}</Heading>
-              </CardHeader>
-
-              <CardFooter pt="lg" display="flex">
-                <Text>{feature.description}</Text>
-              </CardFooter>
-            </Card>
+                <Heading as="h3" fontSize={{ base: "lg", md: "md" }}>
+                  {feature.title}
+                </Heading>
+              </HStack>
+              <Text>{feature.description}</Text>
+            </CardBody>
           </GridItem>
         ))}
       </SimpleGrid>
@@ -123,7 +126,7 @@ const HowToJoin = () => {
   ]
   return (
     <Container>
-      <Heading as="h3" m="0 auto">
+      <Heading as="h3" fontSize={{ base: "5xl", md: "lg" }} m="auto">
         参加方法
       </Heading>
       <Card p="md">
@@ -166,12 +169,14 @@ const QuestionAccordion = () => {
 }
 const CommunityIntroduction = () => {
   return (
-    <Container textAlign="center" w="80%" margin="0 auto">
-      <Heading as="h1">OSSBlogコミュニティに参加しよう</Heading>
+    <Container textAlign="center" w="full" margin="auto">
+      <Heading as="h1" fontSize={{ base: "6xl", md: "xl" }}>
+        OSSBlogコミュニティに参加しよう
+      </Heading>
       <Text>
         あなたの知識と経験を共有し、他の開発者から学び、一緒に成長しましょう
       </Text>
-      <Button minW={40} maxW={80} margin="0 auto">
+      <Button m="auto" as={Link} href="#">
         Githubリポジトリ
       </Button>
     </Container>
