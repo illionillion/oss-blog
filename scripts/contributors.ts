@@ -46,7 +46,7 @@ const updateMetadata = async (
       avatar_url,
       html_url,
     }
-  })
+  }) as ArticleMetadata["contributors"]
 
   metadata.contributors = authors
   metadata.latest_date = latestDate // Add latest date to metadata
