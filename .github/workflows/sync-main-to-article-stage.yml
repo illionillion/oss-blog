@@ -28,7 +28,7 @@ jobs:
 
       - name: Attempt merge
         run: |
-          git merge main -allow-unrelated-histories || echo "Merge conflict detected" > conflict.txt
+          git merge main --allow-unrelated-histories || echo "Merge conflict detected" > conflict.txt
 
       - name: Push changes or detect conflict
         run: |
