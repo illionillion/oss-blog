@@ -18,6 +18,13 @@ export async function GET(
     },
   })
 
+  if (!article) {
+    return NextResponse.json(
+      { message: responseMessage.error.notFound },
+      { status: 404 },
+    )
+  }
+
   return NextResponse.json(
     {
       message: responseMessage.success.get,
