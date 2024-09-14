@@ -1,7 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions[]
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
@@ -11,4 +11,96 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Article {
+  id                Int                @id @default(autoincrement())
+  url               String             @unique
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+  likes             Like[]
+  bookmarks         Bookmark[]
+  difficultyRatings DifficultyRating[]
+  technicalRatings  TechnicalRating[]
+}
+
+model Follow {
+  id                Int                @id @default(autoincrement())
+  fromUserId        Int                @map(name: "from_user_id")
+  toUserId          Int                @map(name: "to_user_id")
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+}
+
+model Like {
+  id                Int                @id @default(autoincrement())
+  userId            Int                @map(name: "user_id")
+  article           Article            @relation(fields: [articleId], references: [id])
+  articleId         Int                @map(name: "article_id")
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+}
+
+model Bookmark {
+  id                Int                @id @default(autoincrement())
+  userId            Int                @map(name: "user_id")
+  article           Article            @relation(fields: [articleId], references: [id])
+  articleId         Int                @map(name: "article_id")
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+}
+
+model DifficultyRating {
+  id                Int                @id @default(autoincrement())
+  userId            Int                @map(name: "user_id")
+  article           Article            @relation(fields: [articleId], references: [id])
+  articleId         Int                @map(name: "article_id")
+  rating            Int
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+}
+
+model TechnicalRating {
+  id                Int                @id @default(autoincrement())
+  userId            Int                @map(name: "user_id")
+  article           Article            @relation(fields: [articleId], references: [id])
+  articleId         Int                @map(name: "article_id")
+  rating            Int
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+}
+
+model Tag {
+  id                Int                @id @default(autoincrement())
+  name              String             @unique
+  iconUrl           String             @map(name: "icon_url")
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+  relationUserTags  RelationUserTag[]
+}
+
+model RelationUserTag {
+  id                Int                @id @default(autoincrement())
+  userId            Int                @map(name: "user_id")
+  tag               Tag                @relation(fields: [tagId], references: [id])
+  tagId             Int                @map(name: "tag_id")
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+}
+
+model Role {
+  id                Int                @id @default(autoincrement())
+  name              String
+  iconUrl           String             @map(name: "icon_url")
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
+}
+
+model Notice {
+  id                Int                @id @default(autoincrement())
+  userId            Int                @map(name: "user_id")
+  message           String
+  readFlag          Boolean            @map(name: "read_flag")
+  createdAt         DateTime           @default(now()) @map(name: "created_at")
+  updatedAt         DateTime           @updatedAt @map(name: "updated_at")
 }
