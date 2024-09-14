@@ -21,6 +21,11 @@ jobs:
         with:
           ref: main
 
+      - name: Set up Git identity
+        run: |
+          git config --local user.name "${{ github.actor }}"
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+
       - name: Checkout article-stage
         run: |
           git fetch origin article-stage
