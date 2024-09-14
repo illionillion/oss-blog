@@ -5,6 +5,12 @@ keyword:
   - React
   - TypeScript
   - Yamada UI
+contributors:
+  - id: 60034520
+    login: illionillion
+    avatar_url: 'https://avatars.githubusercontent.com/u/60034520?v=4'
+    html_url: 'https://github.com/illionillion'
+latest_date: '2024-09-14T07:49:56Z'
 ---
 
 # Yamada UIの`Markdown`コンポーネント
