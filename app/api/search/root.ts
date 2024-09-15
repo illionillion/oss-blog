@@ -1,28 +1,47 @@
-import { fetchFromPerplexity } from './api/search/perplexityApi';
-import { searchQiita, searchZenn, searchHatena } from './api/searchService';
+import { fetchFromPerplexity } from "@/app/api/search/perplexityApi"
+import {
+  searchQiita,
+  searchZenn,
+  searchHatena,
+} from "@/app/api/search/searchService"
 
+export async function GET(request: Request) {
+  const url = new URL(request.url)
+  const query = url.searchParams.get("query")
+  if (!query) {
+    console.error("Error fetching data: query is empty")
+    return new Response(JSON.stringify({ error: "Error fetching data" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    })
+  }
+  try {
+    // 複数のAPIリクエストを並行して実行
+    const [perplexityResult, qiitaResult, zennResult, hatenaResult] =
+      await Promise.all([
+        fetchFromPerplexity(query),
+        searchQiita(query),
+        searchZenn(query),
+        searchHatena(query),
+      ])
 
-async function main() {
-    const query = 'TypeScript';
-
-
-    // Perplexity API から全体の概要を取得
-    const perplexityResult = await fetchFromPerplexity(query);
-    console.log('Perplexity API Result:', perplexityResult);
-
-    // Qittaから記事を検索
-    const qiitaResult = await searchQiita(query);
-    console.log('Qiita Articles:', qiitaResult);
-
-    // Zennから記事を検索
-    const zennResult = await searchZenn(query);
-    console.log('Zenn Articles:', zennResult);
-
-
-    // Hatenaから記事を検索
-    const hatenaResult = await searchHatena(query);
-    console.log('Hatena Articles:', hatenaResult);
-    
+    // 結果をまとめて返す
+    return new Response(
+      JSON.stringify({
+        perplexityResult,
+        qiitaResult,
+        zennResult,
+        hatenaResult,
+      }),
+      {
+        headers: { "Content-Type": "application/json" },
+      },
+    )
+  } catch (error) {
+    console.error("Error fetching data:", error)
+    return new Response(JSON.stringify({ error: "Error fetching data" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 }
-
-main().catch(console.error);
