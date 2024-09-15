@@ -16,13 +16,13 @@ const REPO_OWNER = "illionillion"
 const REPO_NAME = "oss-blog"
 const TOP_N_CONTRIBUTORS = 5
 const DAYS_BACK = 7
-const OUTPUT_FILE_PATH = "i18n/ranking.json"
+const OUTPUT_FILE_PATH = "i18n/contributors.json"
 
 const octokit = new Octokit({
   auth: GITHUB_TOKEN,
 })
 
-const getTopContributors = async () => {
+const getContributorsData = async () => {
   const sinceDate = subDays(new Date(), DAYS_BACK).toISOString()
   const untilDate = endOfDay(new Date()).toISOString()
 
@@ -34,33 +34,45 @@ const getTopContributors = async () => {
       until: untilDate,
     })
 
-    const contributors: Record<string, number> = {}
+    const contributors: Record<string, any> = {}
     commits.data.forEach((commit) => {
-      const author = commit.author?.login
+      const author = commit.author
       if (author) {
-        contributors[author] = (contributors[author] || 0) + 1
+        const { id, login, avatar_url, html_url } = author
+        if (!contributors[login]) {
+          contributors[login] = {
+            id,
+            login,
+            avatar_url,
+            html_url,
+            commitCount: 0,
+          }
+        }
+        contributors[login].commitCount += 1
       }
     })
 
-    const topContributors = Object.entries(contributors)
-      .sort(([, a], [, b]) => b - a)
-      .slice(0, TOP_N_CONTRIBUTORS)
-      .map(([author, commitCount]) => ({ author, commitCount }))
+    // 全contributors
+    const allContributors = Object.values(contributors)
 
-    console.log("Top contributors in the past week:", topContributors)
+    // 上位貢献者を取得
+    const topContributors = allContributors
+      .sort((a, b) => b.commitCount - a.commitCount)
+      .slice(0, TOP_N_CONTRIBUTORS)
 
     // JSONファイルに書き込む
-    const rankingData = {
+    const outputData = {
       date: new Date().toISOString(),
-      contributors: topContributors,
+      contributors: allContributors,
+      top_contributors: topContributors,
     }
 
-    fs.writeFileSync(OUTPUT_FILE_PATH, JSON.stringify(rankingData, null, 2))
+    fs.writeFileSync(OUTPUT_FILE_PATH, JSON.stringify(outputData, null, 2))
 
-    console.log(`Ranking data has been written to ${OUTPUT_FILE_PATH}`)
+    console.log(`Contributor data has been written to ${OUTPUT_FILE_PATH}`)
   } catch (error) {
     console.error("Error fetching commits: ", error)
   }
 }
 
-getTopContributors()
+getContributorsData()

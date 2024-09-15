@@ -1,0 +1,49 @@
+{
+  "date": "2024-09-15T10:36:38.968Z",
+  "contributors": [
+    {
+      "id": 60034520,
+      "login": "illionillion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
+      "html_url": "https://github.com/illionillion",
+      "commitCount": 19
+    },
+    {
+      "id": 56211510,
+      "login": "SEKI-YUTA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56211510?v=4",
+      "html_url": "https://github.com/SEKI-YUTA",
+      "commitCount": 7
+    },
+    {
+      "id": 109452865,
+      "login": "taku10101",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
+      "html_url": "https://github.com/taku10101",
+      "commitCount": 4
+    }
+  ],
+  "top_contributors": [
+    {
+      "id": 60034520,
+      "login": "illionillion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
+      "html_url": "https://github.com/illionillion",
+      "commitCount": 19
+    },
+    {
+      "id": 56211510,
+      "login": "SEKI-YUTA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56211510?v=4",
+      "html_url": "https://github.com/SEKI-YUTA",
+      "commitCount": 7
+    },
+    {
+      "id": 109452865,
+      "login": "taku10101",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
+      "html_url": "https://github.com/taku10101",
+      "commitCount": 4
+    }
+  ]
+}
