@@ -24,17 +24,14 @@ export default async function Home() {
       <HStack w="full" alignItems="start">
         <VStack w="full" gap="md">
           <TopPageTabs articles={articles} />
-          {/* <Box px="md">
-            <RecentActivitiesTabs />
-          </Box> */}
         </VStack>
         <VStack
           maxW="sm"
           w="full"
           gap="md"
-          display={{ base: "flex", md: "none" }}
+          display={{ base: "flex", lg: "none" }}
         >
-          <TopContributor />
+          <TopContributor isLink />
           <GithubButtons />
         </VStack>
       </HStack>
@@ -56,7 +53,7 @@ const Banner: FC = () => {
           オープンソースで技術ブログを革新する
         </Heading>
         <Text color="white">
-          Githubを活用、した共同執筆でより質の高いコンテンツを
+          Githubを活用した共同執筆でより質の高いコンテンツを
         </Text>
 
         <ButtonGroup gap="md" margin="0 auto">
