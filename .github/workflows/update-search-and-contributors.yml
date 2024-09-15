@@ -69,6 +69,6 @@ jobs:
           delete-branch: true
           commit-message: "ci: updated search and contributors"
           title: "Updated search and contributors"
-          branch: ci/contributors-search
+          branch: ci/article-stage-update
           assignees: "illionillion"
           reviewers: "illionillion"
