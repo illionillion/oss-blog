@@ -25,7 +25,7 @@ import { Layout } from "@/components/layouts"
 
 export default function Home() {
   return (
-    <Layout maxW="6xl" px="0">
+    <Layout>
       <Container
         textAlign="center"
         w="full"
@@ -38,7 +38,11 @@ export default function Home() {
         <Text color="white">
           オープンソースの力で、より良い技術ブログを一緒に作り上げましょう
         </Text>
-        <Button m="auto" as={Link} href="#">
+        <Button
+          m="auto"
+          as={Link}
+          href="https://github.com/illionillion/oss-blog/blob/main/CONTRIBUTING.ja.md"
+        >
           今すぐ始める
         </Button>
       </Container>
@@ -174,13 +178,17 @@ const QuestionAccordion = () => {
 const CommunityIntroduction = () => {
   return (
     <Container textAlign="center" w="full" margin="auto">
-      <Heading as="h1" fontSize={{ base: "6xl", md: "xl" }}>
+      <Heading as="h1" fontSize={{ base: "5xl", md: "xl" }}>
         OSSBlogコミュニティに参加しよう
       </Heading>
       <Text>
         あなたの知識と経験を共有し、他の開発者から学び、一緒に成長しましょう
       </Text>
-      <Button m="auto" as={Link} href="#">
+      <Button
+        m="auto"
+        as={Link}
+        href="https://github.com/illionillion/oss-blog/"
+      >
         Githubリポジトリ
       </Button>
     </Container>
