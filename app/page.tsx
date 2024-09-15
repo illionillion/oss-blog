@@ -60,7 +60,13 @@ const Banner: FC = () => {
         </Text>
 
         <ButtonGroup gap="md" margin="0 auto">
-          <Button>はじめる</Button>
+          <Button
+            as="a"
+            target="_blank"
+            href="https://github.com/illionillion/oss-blog/blob/main/CONTRIBUTING.ja.md"
+          >
+            はじめる
+          </Button>
           <Button as={Link} href="/welcome">
             詳しく見る
           </Button>
@@ -74,7 +80,7 @@ const GithubButtons: FC = () => {
   return (
     <Card w="full" p="md">
       <CardBody textAlign="left">
-        <Heading as="h3" mb="md">
+        <Heading as="h3" mb="md" fontSize="xl">
           参加する
         </Heading>
         <VStack gap="md" m="0 auto">
