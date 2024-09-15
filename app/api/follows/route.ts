@@ -22,21 +22,21 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (body.fromUserId === undefined || body.toUserId === undefined) {
+  if (body.fromUserId == null || body.toUserId == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  if (body.fromUserId === body.toUserId) {
+  if (body.fromUserId == body.toUserId) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const follow: Pick<Follow, 'fromUserId' | 'toUserId'> = {
+  const follow: Pick<Follow, "fromUserId" | "toUserId"> = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
   }
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       select: {
         id: true,
       },
-    })) !== null
+    })) != null
 
   if (isExist) {
     return NextResponse.json(
@@ -84,19 +84,19 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  if (body.fromUserId === undefined || body.toUserId === undefined) {
+  if (body.fromUserId == null || body.toUserId == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const follow: Pick<Follow, 'fromUserId' | 'toUserId'> = {
+  const follow: Pick<Follow, "fromUserId" | "toUserId"> = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
   }
 
-  const targetData: Pick<Follow, 'id'> | null = await prisma.follow.findFirst({
+  const targetData: Pick<Follow, "id"> | null = await prisma.follow.findFirst({
     where: follow,
     select: {
       id: true,
