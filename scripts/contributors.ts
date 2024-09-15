@@ -1,66 +1,166 @@
-import fs from "fs"
+import { readFile, writeFile } from "node:fs/promises"
+import * as p from "@clack/prompts"
 import { Octokit } from "@octokit/rest"
-import { endOfDay, subDays } from "date-fns"
+import type { ArticleMetadata } from "article"
+import c from "chalk"
 import { config } from "dotenv"
+import { glob } from "glob"
+import matter from "gray-matter"
+import { recursiveOctokit } from "./utils"
 
-// .envファイルの環境変数を読み込み
+type Commit = Awaited<
+  ReturnType<typeof octokit.repos.listCommits>
+>["data"][number]
+type Author = Commit["author"]
+
+const COMMON_PARAMS = { owner: "illionillion", repo: "oss-blog" }
+
 config()
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN
+const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
 
-if (!GITHUB_TOKEN) {
-  throw new Error("GitHub token is missing")
+const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
+  s.start("Getting the OSS Blog metadata paths")
+
+  const metadataPaths = await glob("contents/**/*.md")
+
+  s.stop("Got the OSS Blog metadata paths")
+
+  return metadataPaths
 }
 
-const REPO_OWNER = "illionillion"
-const REPO_NAME = "oss-blog"
-const TOP_N_CONTRIBUTORS = 5
-const DAYS_BACK = 7
-const OUTPUT_FILE_PATH = "i18n/ranking.json"
+const updateMetadata = async (
+  path: string,
+  _authors: Author[],
+  latestDate: string,
+) => {
+  const file = await readFile(path, "utf-8")
+  const { data, content } = matter(file)
 
-const octokit = new Octokit({
-  auth: GITHUB_TOKEN,
-})
+  const metadata = data as ArticleMetadata
+  const authors = _authors.map((author) => {
+    const { id, login, avatar_url, html_url } = author ?? {}
+    return {
+      id,
+      login,
+      avatar_url,
+      html_url,
+    }
+  }) as ArticleMetadata["contributors"]
 
-const getTopContributors = async () => {
-  const sinceDate = subDays(new Date(), DAYS_BACK).toISOString()
-  const untilDate = endOfDay(new Date()).toISOString()
+  metadata.contributors = authors
+  metadata.latest_date = latestDate // Add latest date to metadata
+
+  const updatedContent = matter.stringify(content, metadata)
+
+  await writeFile(path, updatedContent)
+}
+
+const getCommits = async (path: string) => {
+  const commits: Commit[] = []
+  let page = 1
+  let count = 0
+  const perPage = 100
+
+  const listForRepo = async () => {
+    const { data } = await octokit.repos.listCommits({
+      ...COMMON_PARAMS,
+      sha: "main",
+      path,
+      per_page: perPage,
+      page,
+    })
+
+    commits.push(...data)
+    count = data.length
+
+    if (count === perPage) {
+      page++
+      await recursiveOctokit(listForRepo)
+    }
+  }
+
+  await recursiveOctokit(listForRepo)
+
+  // Sort commits by date and get the latest one
+  const latestCommit = commits.sort(
+    (a, b) =>
+      new Date(b.commit.committer?.date || "").getTime() -
+      new Date(a.commit.committer?.date || "").getTime(),
+  )[0]
+
+  const latestDate = latestCommit?.commit.committer?.date ?? ""
+
+  return { commits, latestDate }
+}
+
+const getAuthors: p.RequiredRunner<
+  [string[]],
+  Promise<Record<string, Author[]>>
+> = (paths) => async (_, s) => {
+  s.start("Getting the OSS Blog contributors")
+
+  const authorMap: Record<string, Author[]> = {}
+
+  await Promise.all(
+    paths.map(async (path) => {
+      const { commits } = await getCommits(path.replace(/\\/g, "/"))
+
+      const commitMap: Record<string, { count: number; author: Author }> = {}
+
+      for (const { author } of commits) {
+        if (author?.type !== "User") return
+
+        if (Object.prototype.hasOwnProperty.call(commitMap, author.id)) {
+          commitMap[author.id] = {
+            count: commitMap[author.id].count + 1,
+            author,
+          }
+        } else {
+          commitMap[author.id] = { count: 1, author }
+        }
+      }
+
+      authorMap[path] = Object.values(commitMap)
+        .sort((a, b) => b.count - a.count)
+        .map(({ author }) => author)
+    }),
+  )
+
+  s.stop("Got the OSS Blog contributors")
+
+  return authorMap
+}
+
+const main = async () => {
+  p.intro(c.magenta("Generating OSS Blog contributors"))
+
+  const s = p.spinner()
 
   try {
-    const commits = await octokit.repos.listCommits({
-      owner: REPO_OWNER,
-      repo: REPO_NAME,
-      since: sinceDate,
-      until: untilDate,
-    })
+    const start = process.hrtime.bigint()
 
-    const contributors: Record<string, number> = {}
-    commits.data.forEach((commit) => {
-      const author = commit.author?.login
-      if (author) {
-        contributors[author] = (contributors[author] || 0) + 1
-      }
-    })
+    const metadataPaths = await getMetadataPaths()(p, s)
+    const authorMap = await getAuthors(metadataPaths)(p, s)
 
-    const topContributors = Object.entries(contributors)
-      .sort(([, a], [, b]) => b - a)
-      .slice(0, TOP_N_CONTRIBUTORS)
-      .map(([author, commitCount]) => ({ author, commitCount }))
+    s.start("Writing the metadata")
 
-    console.log("Top contributors in the past week:", topContributors)
+    await Promise.all(
+      Object.entries(authorMap).map(async ([path, authors]) => {
+        const { latestDate } = await getCommits(path.replace(/\\/g, "/")) // Get latest date
+        await updateMetadata(path, authors, latestDate) // Pass latest date
+      }),
+    )
 
-    // JSONファイルに書き込む
-    const rankingData = {
-      date: new Date().toISOString(),
-      contributors: topContributors,
-    }
+    s.stop("Wrote the metadata")
 
-    fs.writeFileSync(OUTPUT_FILE_PATH, JSON.stringify(rankingData, null, 2))
+    const end = process.hrtime.bigint()
+    const duration = (Number(end - start) / 1e9).toFixed(2)
 
-    console.log(`Ranking data has been written to ${OUTPUT_FILE_PATH}`)
-  } catch (error) {
-    console.error("Error fetching commits: ", error)
+    p.outro(c.green(`Done in ${duration}s\n`))
+  } catch (e) {
+    if (e instanceof Error) console.log(e.message)
   }
 }
 
-getTopContributors()
+main()
