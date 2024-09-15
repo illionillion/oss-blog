@@ -1,6 +1,13 @@
 "use client"
 
-import { GitForkIcon, Moon, Palette, Sun } from "@yamada-ui/lucide"
+import {
+  GitForkIcon,
+  LogInIcon,
+  LogOutIcon,
+  Moon,
+  Palette,
+  Sun,
+} from "@yamada-ui/lucide"
 import type {
   ColorMode,
   IconButtonProps,
@@ -30,7 +37,6 @@ import {
   useMotionValueEvent,
   Flex,
   Heading,
-  Button,
   Loading,
 } from "@yamada-ui/react"
 import Link from "next/link"
@@ -109,9 +115,19 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
           {status === "loading" ? (
             <Loading />
           ) : session ? (
-            <Button onClick={() => signOut()}>Sign out</Button>
+            <IconButton
+              variant="ghost"
+              fontSize="2xl"
+              icon={<LogInIcon />}
+              onClick={() => signOut()}
+            />
           ) : (
-            <Button onClick={() => signIn()}>Sign in</Button>
+            <IconButton
+              variant="ghost"
+              fontSize="2xl"
+              icon={<LogOutIcon />}
+              onClick={() => signIn()}
+            />
           )}
         </HStack>
       </HStack>
