@@ -1,3 +1,4 @@
+import { Button } from "@yamada-ui/react"
 import React from "react"
 import { auth, signIn, signOut } from "../../utils/auth/auth"
 
@@ -12,7 +13,7 @@ export async function SignInButton() {
           await signIn()
         }}
       >
-        <button type="submit">Sign in</button>
+        <Button type="submit">Sign in</Button>
       </form>
     </>
   )
@@ -27,7 +28,7 @@ export async function SignOutButton() {
           await signOut()
         }}
       >
-        <button type="submit">Sign out</button>
+        <Button type="submit">Sign out</Button>
       </form>
     </>
   )
