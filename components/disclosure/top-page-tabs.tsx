@@ -1,5 +1,13 @@
 "use client"
-import { Button, Center, Loading, Tab, TabPanel, Tabs } from "@yamada-ui/react"
+import {
+  Button,
+  Center,
+  Loading,
+  Tab,
+  TabPanel,
+  Tabs,
+  Text,
+} from "@yamada-ui/react"
 import { useSession, signIn } from "next-auth/react"
 import type { FC } from "react"
 import React from "react"
@@ -25,19 +33,19 @@ export const TopPageTabs: FC<TopPageTabsProps> = ({ articles }) => {
         ))}
       </TabPanel>
       <TabPanel>
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        <Center>
+          <Text>いいねされた記事はありません</Text>
+        </Center>
       </TabPanel>
       <TabPanel>
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        <Center>
+          <Text>ブックマークされた記事はありません</Text>
+        </Center>
       </TabPanel>
       <TabPanel>
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        <Center>
+          <Text>フォロー中のユーザーの記事はありません</Text>
+        </Center>
       </TabPanel>
       <TabPanel>
         {status === "loading" ? (
