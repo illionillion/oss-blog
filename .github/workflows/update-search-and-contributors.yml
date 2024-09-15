@@ -3,10 +3,10 @@ name: "Update search and contributors"
 on:
   push:
     paths:
-      - "contents/**/*.md"
+      - "contents/**"
       - ".github/workflows/update-search-and-contributors.yml"
     branches:
-      - article-stage
+      - main
 
 permissions:
   contents: write
@@ -40,12 +40,6 @@ jobs:
           node --version
           pnpm install
 
-      - name: Checkout article-stage
-        run: |
-          git fetch origin article-stage
-          git checkout article-stage
-          git pull origin article-stage
-
       - name: Run update script
         run: |
           pnpm gen:search
@@ -59,6 +53,6 @@ jobs:
           delete-branch: true
           commit-message: "ci: updated search and contributors"
           title: "Updated search and contributors"
-          branch: ci/article-stage-update
+          branch: ci/contributors-search
           assignees: "illionillion"
           reviewers: "illionillion"
