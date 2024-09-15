@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
   const tag: Tag = {
     name: body.name,
-    iconUrl: body.iconUrl,
+    iconUrl: body.iconUrl != undefined ? body.iconUrl : "",
   }
 
   // 重複したデータが存在するか確認
