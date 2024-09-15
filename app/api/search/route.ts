@@ -1,8 +1,7 @@
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
-import type { Article } from "../types/article"
-
+import { fetchFromPerplexity } from "./perplexityApi"
 export async function GET(request: NextRequest) {
   const searchParams: URLSearchParams = request.nextUrl.searchParams
   const keyword: string | null = searchParams.get("query")
@@ -21,7 +20,7 @@ export async function GET(request: NextRequest) {
   }
 
   // AI検索
-  const articleList: Array<Article> = []
+  const articleList = fetchFromPerplexity(keyword)
 
   return NextResponse.json(
     {
