@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check --cache .",
-    "format:write": "prettier --write --cache ."
+    "format:write": "prettier --write --cache .",
+    "gen:article": "plop article",
+    "gen:contributors": "tsx scripts/contributors",
+    "gen:search": "tsx scripts/search"
   },
   "dependencies": {
     "@newrelic/next": "^0.10.0",
@@ -21,6 +24,7 @@
     "glob": "^11.0.0",
     "gray-matter": "^4.0.3",
     "match-sorter": "^6.3.4",
+    "mermaid": "^11.2.0",
     "newrelic": "^12.3.0",
     "next": "14.1.1",
     "react": "^18",
