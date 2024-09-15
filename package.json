@@ -24,7 +24,6 @@
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.13",
     "figlet": "^1.7.0",
-    "axios": "^1.7.7",
     "glob": "^11.0.0",
     "gray-matter": "^4.0.3",
     "match-sorter": "^6.3.4",
