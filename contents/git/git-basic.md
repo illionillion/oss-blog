@@ -2,8 +2,18 @@
 title: 猫でもわかるGitCommand
 description: 猫でもGitHubのコマンドです
 keyword:
-  - "Git"
-  - "GitHub"
+  - Git
+  - GitHub
+contributors:
+  - id: 126809856
+    login: hatimaruuuu
+    avatar_url: "https://avatars.githubusercontent.com/u/126809856?v=4"
+    html_url: "https://github.com/hatimaruuuu"
+  - id: 60034520
+    login: illionillion
+    avatar_url: "https://avatars.githubusercontent.com/u/60034520?v=4"
+    html_url: "https://github.com/illionillion"
+latest_date: "2024-09-15T11:29:03Z"
 ---
 
 ## Gitの概要
