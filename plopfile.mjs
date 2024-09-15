@@ -45,9 +45,13 @@ const folderPrompt = (_, basePath, isTopLevel) => {
         } else {
           const folders = getDirectories(basePath)
           if (isTopLevel) {
-            return [...folders, "Create new folder"]
+            return [...folders, "🗂️  Create new folder"]
           }
-          return [...folders, "Create new folder", "Create new markdown file"]
+          return [
+            ...folders,
+            "🗂️  Create new folder",
+            "📝 Create new markdown file",
+          ]
         }
       },
     },
