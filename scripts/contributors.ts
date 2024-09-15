@@ -51,6 +51,7 @@ const updateMetadata = async (
   }) as ArticleMetadata["contributors"]
 
   metadata.contributors = authors
+  metadata.slug = path
   metadata.latest_date = formatIsoDate(latestDate) // Add latest date to metadata
 
   const updatedContent = matter.stringify(content, metadata)
