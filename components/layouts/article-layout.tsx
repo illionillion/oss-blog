@@ -105,7 +105,7 @@ export const ArticleLayout: FC<ArticleLayoutProps> = ({
         pt="lg"
         top="4rem"
         w="sm"
-        maxH="calc(100dvh - 4rem)"
+        maxH="calc(100dvh - 4rem- 1rem)"
         display={{ base: "flex", lg: "none" }}
       >
         <Text>コントリビューター</Text>
