@@ -1,6 +1,13 @@
 "use client"
 
-import { GitForkIcon, Moon, Palette, Sun } from "@yamada-ui/lucide"
+import {
+  GitForkIcon,
+  LogInIcon,
+  LogOutIcon,
+  Moon,
+  Palette,
+  Sun,
+} from "@yamada-ui/lucide"
 import type {
   ColorMode,
   IconButtonProps,
@@ -30,8 +37,10 @@ import {
   useMotionValueEvent,
   Flex,
   Heading,
+  Loading,
 } from "@yamada-ui/react"
 import Link from "next/link"
+import { useSession, signIn, signOut } from "next-auth/react"
 import type { FC } from "react"
 import { useRef, useState, memo } from "react"
 import { Search, SearchButton } from "../forms/search"
@@ -47,6 +56,8 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
   useMotionValueEvent(scrollY, "change", setY)
 
   const isScroll = y > height
+
+  const { data: session, status } = useSession()
 
   return (
     <Center
@@ -101,6 +112,23 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
           <SearchButton display={{ base: "none", md: "inline-flex" }} />
           <ThemeSchemeButton />
           <ColorModeButton />
+          {status === "loading" ? (
+            <Loading />
+          ) : session ? (
+            <IconButton
+              variant="ghost"
+              fontSize="2xl"
+              icon={<LogInIcon />}
+              onClick={() => signOut()}
+            />
+          ) : (
+            <IconButton
+              variant="ghost"
+              fontSize="2xl"
+              icon={<LogOutIcon />}
+              onClick={() => signIn()}
+            />
+          )}
         </HStack>
       </HStack>
     </Center>
