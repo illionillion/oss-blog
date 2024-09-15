@@ -20,6 +20,7 @@
     "@newrelic/next": "^0.10.0",
     "@prisma/client": "5.19.0",
     "@types/newrelic": "^9.14.4",
+    "figlet": "^1.7.0",
     "glob": "^11.0.0",
     "gray-matter": "^4.0.3",
     "match-sorter": "^6.3.4",
