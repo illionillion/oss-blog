@@ -1,5 +1,4 @@
 import { Text } from "@yamada-ui/react"
-import React from "react"
 import { Layout } from "@/components/layouts"
 import { ArticleLayout } from "@/components/layouts/article-layout"
 import {

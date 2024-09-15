@@ -30,7 +30,6 @@ export const generateArticleMetadata =
 export const generateStaticArticleParams =
   (categoryGroupName: string) => async () => {
     const paths = await getArticlePaths(categoryGroupName)
-    console.log(paths)
 
     return paths
   }

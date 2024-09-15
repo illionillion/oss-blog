@@ -3,15 +3,16 @@ import type { ArticleMetadata } from "article"
 import { glob } from "glob"
 import matter from "gray-matter"
 
-export const getArticlePaths = async (dir: string): Promise<string[][]> => {
+export const getArticlePaths = async (dir: string) => {
   const articlePaths = (await glob(`contents/${dir}/**/*.md`)).map((filePath) =>
     filePath
       .replace(/\\/g, "/")
       .replace(/^contents\//, "")
+      .replace(`${dir}/`, "")
       .replace(".md", "")
       .split("/"),
   )
-  return articlePaths
+  return articlePaths.map((path) => ({ slug: path }))
 }
 
 export const getArticleList = async () => {
