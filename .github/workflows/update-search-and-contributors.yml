@@ -46,6 +46,11 @@ jobs:
           pnpm gen:contributors
           cat i18n/content.json
 
+      - name: Set up Git identity
+        run: |
+          git config --local user.name "${{ github.actor }}"
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+
       - name: Create a new branch and commit changes
         run: |
           git checkout -b ci/contributors-search
