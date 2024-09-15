@@ -2,7 +2,8 @@
 title:　猫でもわかるGitCommand
 description: 猫でもGitHubのコマンドです
 keyword:
-    - "" #Git #basic
+    - "Git"
+    - "GitHub"
 ---
 
 ## Gitの概要
