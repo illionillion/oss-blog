@@ -6,7 +6,7 @@ import type { Article } from "../types/article"
 export async function searchQiita(query: string): Promise<Article[]> {
   try {
     const response = await axius.get(
-      `${config.searchEndpoints.zenn}?query=${query}`,
+      `${config.searchEndpoints.qiita}?query=${query}`,
     )
     return response.data.map((item: any) => ({
       title: item.title,
