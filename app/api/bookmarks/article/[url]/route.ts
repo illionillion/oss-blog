@@ -1,10 +1,10 @@
+import type { Article } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
+
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
 import { responseMessage } from "@/app/api/types/responseMessage"
-
-import type { Article } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
