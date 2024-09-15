@@ -1,6 +1,7 @@
 ---
 title: 基本的なAWSクラウドサービスの概要
-description: AWSの基本的なクラウドサービスについて、主要なサービスの概要とその利点、使い方の基本を解説します。これにより、AWSクラウドを利用する際の基本的な知識を身につけることができます。
+description: >-
+  AWSの基本的なクラウドサービスについて、主要なサービスの概要とその利点、使い方の基本を解説します。これにより、AWSクラウドを利用する際の基本的な知識を身につけることができます。
 keyword:
   - AWS
   - クラウドサービス
@@ -13,7 +14,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-15T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## 基本的なAWSクラウドサービスの概要

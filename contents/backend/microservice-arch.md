@@ -1,6 +1,7 @@
 ---
 title: マイクロサービスアーキテクチャを解説
-description: マイクロサービスアーキテクチャの基本概念とその利点、導入時の注意点について解説します。このアーキテクチャがどのようにシステムのスケーラビリティと柔軟性を向上させるかを学びます。
+description: >-
+  マイクロサービスアーキテクチャの基本概念とその利点、導入時の注意点について解説します。このアーキテクチャがどのようにシステムのスケーラビリティと柔軟性を向上させるかを学びます。
 keyword:
   - マイクロサービス
   - アーキテクチャ
@@ -11,7 +12,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-15T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## マイクロサービスアーキテクチャを解説

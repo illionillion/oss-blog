@@ -1,6 +1,7 @@
 ---
 title: サーバーレスアーキテクチャの基本
-description: サーバーレスアーキテクチャの基本概念とその利点、代表的なサービスについて解説します。スケーラビリティ、コスト効率、開発スピードの向上など、サーバーレスが提供するメリットを紹介します。
+description: >-
+  サーバーレスアーキテクチャの基本概念とその利点、代表的なサービスについて解説します。スケーラビリティ、コスト効率、開発スピードの向上など、サーバーレスが提供するメリットを紹介します。
 keyword:
   - サーバーレス
   - アーキテクチャ
@@ -12,7 +13,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-14T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## サーバーレスアーキテクチャの基本

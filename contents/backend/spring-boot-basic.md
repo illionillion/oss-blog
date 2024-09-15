@@ -1,6 +1,8 @@
 ---
 title: Spring Bootの基本的な使い方
-description: Spring Bootを使用したJavaアプリケーション開発の基本について解説します。プロジェクトのセットアップから簡単なREST APIの作成、アプリケーションの実行までの手順をサンプルコードを交えて紹介します。
+description: >-
+  Spring Bootを使用したJavaアプリケーション開発の基本について解説します。プロジェクトのセットアップから簡単なREST
+  APIの作成、アプリケーションの実行までの手順をサンプルコードを交えて紹介します。
 keyword:
   - Spring Boot
   - Java
@@ -11,7 +13,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-16T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## Spring Bootの基本的な使い方

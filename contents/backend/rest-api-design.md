@@ -1,6 +1,8 @@
 ---
 title: REST APIの設計
-description: REST APIの基本的な設計原則とベストプラクティスについて解説します。エンドポイント設計、HTTPメソッドの使い方、エラーハンドリングなど、効率的で拡張性のあるAPIを作成するためのガイドです。
+description: >-
+  REST
+  APIの基本的な設計原則とベストプラクティスについて解説します。エンドポイント設計、HTTPメソッドの使い方、エラーハンドリングなど、効率的で拡張性のあるAPIを作成するためのガイドです。
 keyword:
   - REST API
   - API設計
@@ -11,7 +13,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-14T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## REST APIの設計

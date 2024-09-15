@@ -1,6 +1,8 @@
 ---
 title: Android開発のRoom Databaseの基本
-description: Room Databaseを使用したAndroidアプリのデータ永続化の基本について解説します。SQLiteデータベースの操作を簡素化し、安全なデータ管理を実現する方法を学びましょう。
+description: >-
+  Room
+  Databaseを使用したAndroidアプリのデータ永続化の基本について解説します。SQLiteデータベースの操作を簡素化し、安全なデータ管理を実現する方法を学びましょう。
 keyword:
   - Android
   - Room Database
@@ -13,7 +15,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-15T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 # Android開発のRoom Databaseの基本

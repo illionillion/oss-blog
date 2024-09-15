@@ -1,6 +1,7 @@
 ---
-title: Android開発でのR8, Proguardの基本
-description: Androidアプリ開発でのR8とProguardの基本について解説します。コードの難読化と最適化の方法を学び、アプリのセキュリティとパフォーマンスを向上させましょう。
+title: "Android開発でのR8, Proguardの基本"
+description: >-
+  Androidアプリ開発でのR8とProguardの基本について解説します。コードの難読化と最適化の方法を学び、アプリのセキュリティとパフォーマンスを向上させましょう。
 keyword:
   - Android
   - R8
@@ -13,7 +14,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-14T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 # Android開発でのR8, Proguardの基本

@@ -12,7 +12,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-15T12:57:45Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 # iOSアプリのライフサイクルを理解する

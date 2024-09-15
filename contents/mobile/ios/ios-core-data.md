@@ -12,7 +12,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-14T10:57:17Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 # iOS開発のCore Dataの基本的な使い方について

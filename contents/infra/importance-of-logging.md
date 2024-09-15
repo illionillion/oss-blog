@@ -1,6 +1,7 @@
 ---
 title: インフラにおけるログ監視の重要性
-description: インフラストラクチャにおけるログ監視の重要性とその実践方法について解説します。システムのパフォーマンスとセキュリティの向上に不可欠なログ監視の基本的な概念とベストプラクティスを紹介します。
+description: >-
+  インフラストラクチャにおけるログ監視の重要性とその実践方法について解説します。システムのパフォーマンスとセキュリティの向上に不可欠なログ監視の基本的な概念とベストプラクティスを紹介します。
 keyword:
   - ログ監視
   - インフラストラクチャ
@@ -12,7 +13,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-16T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## インフラにおけるログ監視の重要性
