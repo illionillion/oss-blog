@@ -30,6 +30,8 @@ const printWelcomeMessage = () => {
 const validateDashCase = (i) => !/[A-Z]/.test(i) && !/_/.test(i)
 const contentsPath = path.resolve(process.cwd(), "contents")
 const appPath = path.resolve(process.cwd(), "app")
+const CREATE_FILE = "📝 Create new markdown file"
+const CREATE_FOLDER = "🗂️  Create new folder"
 
 const folderPrompt = (_, basePath, isTopLevel) => {
   return [
@@ -41,17 +43,13 @@ const folderPrompt = (_, basePath, isTopLevel) => {
         if (existsSync(basePath) == false) {
           // パスが現在存在しない場合
           // 新しいフォルダを作っている場合パスが存在しないからここの処理に入る
-          return ["Create new folder", "Create new markdown file"]
+          return [CREATE_FOLDER, CREATE_FILE]
         } else {
           const folders = getDirectories(basePath)
           if (isTopLevel) {
-            return [...folders, "🗂️  Create new folder"]
+            return [...folders, CREATE_FOLDER]
           }
-          return [
-            ...folders,
-            "🗂️  Create new folder",
-            "📝 Create new markdown file",
-          ]
+          return [...folders, CREATE_FOLDER, CREATE_FILE]
         }
       },
     },
@@ -59,7 +57,7 @@ const folderPrompt = (_, basePath, isTopLevel) => {
       type: "input",
       name: "newFolder",
       message: "Enter the name for the new folder:",
-      when: (answers) => answers.folderAction === "Create new folder",
+      when: (answers) => answers.folderAction === CREATE_FOLDER,
       validate: (input) => {
         if (!input) return "Folder name cannot be empty"
         if (!validateDashCase(input))
@@ -73,7 +71,7 @@ const folderPrompt = (_, basePath, isTopLevel) => {
       type: "input",
       name: "fileName",
       message: "Enter the name for the markdown file:",
-      when: (answers) => answers.folderAction === "Create new markdown file",
+      when: (answers) => answers.folderAction === CREATE_FILE,
       validate: (input) => {
         if (!input) return "File name cannot be empty"
         if (!validateDashCase(input))
@@ -102,7 +100,7 @@ export default async function plop(plop) {
         )
 
         // If a folder is selected or created, update basePath
-        if (answers.folderAction !== "Create new markdown file") {
+        if (answers.folderAction !== CREATE_FILE) {
           const folderName = answers.newFolder || answers.folderAction
           basePath = path.join(basePath, folderName)
 
