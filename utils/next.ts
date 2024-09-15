@@ -1,5 +1,6 @@
 import path from "path"
 import type { Metadata } from "next"
+import { notFound } from "next/navigation"
 import { getArticleContent, getArticlePaths } from "./articles"
 
 interface Props {
@@ -42,6 +43,10 @@ export const getStaticArticleContent =
       ...(slug || []),
     )
     const { content, metadata } = await getArticleContent(contentsPath)
+
+    if (!content) {
+      notFound()
+    }
 
     return {
       content: content || "No content found",
