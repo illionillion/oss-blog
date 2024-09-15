@@ -1,4 +1,3 @@
-// "use client"
 import {
   Box,
   ButtonGroup,
@@ -11,8 +10,10 @@ import {
   Tag,
   Spacer,
   Card,
+  CardBody,
 } from "@yamada-ui/react"
 import Link from "next/link"
+import type { FC } from "react"
 import { RecentActivitiesTabs } from "@/components/disclosure/recent-activities-tabs"
 import { TopPageTabs } from "@/components/disclosure/top-page-tabs"
 import { Layout } from "@/components/layouts"
@@ -44,7 +45,7 @@ export default async function Home() {
   )
 }
 
-function Banner() {
+const Banner: FC = () => {
   return (
     <Card
       w="full"
@@ -72,7 +73,7 @@ function Banner() {
   )
 }
 
-function TopContributeUser() {
+const TopContributeUser: FC = () => {
   const users = [
     {
       name: "yamada",
@@ -93,7 +94,7 @@ function TopContributeUser() {
 
   return (
     <Card w="full" p="md">
-      <VStack w="full">
+      <CardBody>
         <Heading as="h2">Top Contributer</Heading>
         <VStack m="0 auto">
           {users.map((user) => (
@@ -107,23 +108,25 @@ function TopContributeUser() {
             </HStack>
           ))}
         </VStack>
-      </VStack>
+      </CardBody>
     </Card>
   )
 }
 
-function GithubButtons() {
+const GithubButtons: FC = () => {
   return (
     <Card w="full" p="md">
-      <Box w="90%" m="0 auto" textAlign="left">
+      <CardBody textAlign="left">
         <Heading as="h3" mb="md">
           参加する
         </Heading>
         <VStack gap="md" m="0 auto">
-          <Button>GitHub</Button>
+          <Button as={Link} href="https://github.com/illionillion/oss-blog">
+            GitHub
+          </Button>
           <Button>Twitter</Button>
         </VStack>
-      </Box>
+      </CardBody>
     </Card>
   )
 }
