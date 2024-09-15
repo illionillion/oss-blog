@@ -1,13 +1,19 @@
 declare module "article" {
+  interface ArticleContent {
+    id: string
+    lv: number
+    title: string
+  }
   interface ArticleMetadata {
     title: string
     description: string
     keyword: string[]
+    slug: string
     contributors: {
-      id: number | undefined
-      login: string | undefined
-      avatar_url: string | undefined
-      html_url: string | undefined
+      id: number
+      login: string
+      avatar_url: string
+      html_url: string
     }[]
     latest_date: string
   }

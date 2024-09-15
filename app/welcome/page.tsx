@@ -25,17 +25,17 @@ import { Layout } from "@/components/layouts"
 
 export default function Home() {
   return (
-    <Layout maxW="6xl">
+    <Layout maxW="6xl" px="0">
       <Container
         textAlign="center"
         w="full"
         m="auto"
         bgGradient="linear(to-r, #59a9e1, #f37bdf)"
       >
-        <Heading as="h1" fontSize={{ base: "6xl", md: "xl" }}>
+        <Heading color="white" as="h1" fontSize={{ base: "6xl", md: "xl" }}>
           OSSBlogへようこそ
         </Heading>
-        <Text>
+        <Text color="white">
           オープンソースの力で、より良い技術ブログを一緒に作り上げましょう
         </Text>
         <Button m="auto" as={Link} href="#">
@@ -56,24 +56,28 @@ const FeatureCard = () => {
     {
       title: "オープンソースの力",
       icon: GitPullRequestArrow,
+      color: "blue.500",
       description:
         "Githubを活用した共同執筆で、より質の高い技術コンテンツを生み出します。",
     },
     {
-      title: "活発なコミュニティー",
-      icon: BookOpen,
-      description:
-        "エンジニア同士が知識を共有し、お互いに学び合える環境を提供します。",
-    },
-    {
       title: "幅広い技術トピック",
-      icon: UsersRound,
+      icon: BookOpen,
+      color: "green.500",
       description:
         "フロントエンド、バックエンド、データベース、セキュリティなど、幅広い技術トピックをカバーします。",
     },
     {
+      title: "活発なコミュニティー",
+      icon: UsersRound,
+      color: "purple.500",
+      description:
+        "エンジニア同士が知識を共有し、お互いに学び合える環境を提供します。",
+    },
+    {
       title: "キャリア成長",
       icon: Puzzle,
+      color: "red.500",
       description:
         "記事の執筆やレビューを通うじて、技術力とコミュニケーション能力を向上させます",
     },
@@ -88,7 +92,7 @@ const FeatureCard = () => {
           <GridItem key={feature.title} w="full" rounded="md" as={Card}>
             <CardBody>
               <HStack>
-                <Icon as={feature.icon} fontSize="4xl" />
+                <Icon color={feature.color} as={feature.icon} fontSize="4xl" />
                 <Heading as="h3" fontSize={{ base: "lg", md: "md" }}>
                   {feature.title}
                 </Heading>
