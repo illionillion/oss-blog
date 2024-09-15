@@ -23,7 +23,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({ article }) => {
   return (
     <Card key={article.slug} as={LinkBox}>
       <CardBody gap="md">
-        <Heading as="h3" mb="md">
+        <Heading as="h3" fontSize="xl" mb="md">
           <LinkOverlay href={`/${article.slug}`} as={Link}>
             {article.title}
           </LinkOverlay>
