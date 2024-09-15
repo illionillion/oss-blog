@@ -1,47 +1,35 @@
-import { fetchFromPerplexity } from "@/app/api/search/perplexityApi"
-import {
-  searchQiita,
-  searchZenn,
-  searchHatena,
-} from "@/app/api/search/searchService"
+import type { NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 
-export async function GET(request: Request) {
-  const url = new URL(request.url)
-  const query = url.searchParams.get("query")
-  if (!query) {
-    console.error("Error fetching data: query is empty")
-    return new Response(JSON.stringify({ error: "Error fetching data" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    })
-  }
-  try {
-    // 複数のAPIリクエストを並行して実行
-    const [perplexityResult, qiitaResult, zennResult, hatenaResult] =
-      await Promise.all([
-        fetchFromPerplexity(query),
-        searchQiita(query),
-        searchZenn(query),
-        searchHatena(query),
-      ])
+import type { Article } from "../types/article"
 
-    // 結果をまとめて返す
-    return new Response(
-      JSON.stringify({
-        perplexityResult,
-        qiitaResult,
-        zennResult,
-        hatenaResult,
-      }),
+export async function GET(request: NextRequest) {
+  const searchParams: URLSearchParams = request.nextUrl.searchParams
+  const keyword: string | null = searchParams.get("query")
+
+  // キーワードがない場合はエラーを返す
+  if (!keyword) {
+    return NextResponse.json(
       {
-        headers: { "Content-Type": "application/json" },
+        message: "キーワードを入力してください",
+        data: {
+          keyword: keyword,
+        },
       },
+      { status: 400 },
     )
-  } catch (error) {
-    console.error("Error fetching data:", error)
-    return new Response(JSON.stringify({ error: "Error fetching data" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    })
   }
+
+  // AI検索
+  const articleList: Array<Article> = []
+
+  return NextResponse.json(
+    {
+      message: "検索結果",
+      data: {
+        articleList: articleList,
+      },
+    },
+    { status: 200 },
+  )
 }
