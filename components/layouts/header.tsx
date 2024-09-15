@@ -30,8 +30,11 @@ import {
   useMotionValueEvent,
   Flex,
   Heading,
+  Button,
+  Loading,
 } from "@yamada-ui/react"
 import Link from "next/link"
+import { useSession, signIn, signOut } from "next-auth/react"
 import type { FC } from "react"
 import { useRef, useState, memo } from "react"
 import { Search, SearchButton } from "../forms/search"
@@ -47,6 +50,8 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
   useMotionValueEvent(scrollY, "change", setY)
 
   const isScroll = y > height
+
+  const { data: session, status } = useSession()
 
   return (
     <Center
@@ -101,6 +106,13 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
           <SearchButton display={{ base: "none", md: "inline-flex" }} />
           <ThemeSchemeButton />
           <ColorModeButton />
+          {status === "loading" ? (
+            <Loading />
+          ) : session ? (
+            <Button onClick={() => signOut()}>Sign out</Button>
+          ) : (
+            <Button onClick={() => signIn()}>Sign in</Button>
+          )}
         </HStack>
       </HStack>
     </Center>
