@@ -11,6 +11,20 @@ type Tag = {
   iconUrl: string
 }
 
+export async function GET() {
+  const tagList = await prisma.tag.findMany()
+
+  return NextResponse.json(
+    {
+      message: responseMessage.success.get,
+      data: {
+        tagList: tagList,
+      },
+    },
+    { status: 200 },
+  )
+}
+
 export async function POST(request: NextRequest) {
   let body
 
