@@ -3,15 +3,21 @@ import Link from "next/link"
 import React from "react"
 export const Footer = () => {
   const links = [
-    { href: "/about", label: "About" },
-    { href: "/contribute", label: "貢献する" },
-    { href: "/contact", label: "行動規範" },
+    { href: "/welcome", label: "About" },
+    {
+      href: "https://github.com/illionillion/oss-blog/blob/main/CONTRIBUTING.ja.md",
+      label: "貢献する",
+      isBlank: true,
+    },
+    {
+      href: "https://github.com/illionillion/oss-blog/blob/main/CODE_OF_CONDUCT.ja.md",
+      label: "行動規範",
+      isBlank: true,
+    },
   ]
 
   const community = [
-    { href: "", label: "Twitter" },
-    { href: "", label: "GitHub" },
-    { href: "", label: "Discord" },
+    { href: "https://github.com/illionillion/oss-blog/", label: "GitHub" },
   ]
 
   return (
@@ -29,11 +35,17 @@ export const Footer = () => {
             <Heading size="md" py="md">
               リンク
             </Heading>
-            {links.map((link) => (
-              <Link href={link.href} key={link.href}>
-                <Text>{link.label}</Text>
-              </Link>
-            ))}
+            {links.map((link) =>
+              link.isBlank ? (
+                <Link href={link.href} target="_blank" key={link.href}>
+                  <Text>{link.label}</Text>
+                </Link>
+              ) : (
+                <Link href={link.href} key={link.href}>
+                  <Text>{link.label}</Text>
+                </Link>
+              ),
+            )}
           </Box>
           <Spacer />
           <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>

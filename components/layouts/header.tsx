@@ -35,7 +35,6 @@ import {
   Center,
   useScroll,
   useMotionValueEvent,
-  Flex,
   Heading,
   Loading,
 } from "@yamada-ui/react"
@@ -96,7 +95,6 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
             OSS Blog
           </Heading>
         </HStack>
-        <NavMenu />
         <Spacer />
         <Search
           display={{ base: "flex", md: "none" }}
@@ -139,24 +137,6 @@ type ColorModeButtonProps = IconButtonProps & {
   menuProps?: MenuProps
 }
 
-const NavMenu: FC = () => {
-  // TODO: ページに応じてリンクを変更
-  const linkList = [
-    { href: "/", label: "記事一覧" },
-    { href: "/", label: "タグ" },
-    { href: "/", label: "コントリビュータ" },
-    { href: "/", label: "About" },
-  ]
-  return (
-    <Flex display={{ base: "flex", lg: "none" }} gap="md">
-      {linkList.map((link) => (
-        <Link key={link.label} href={link.href}>
-          {link.label}
-        </Link>
-      ))}
-    </Flex>
-  )
-}
 const ColorModeButton: FC<ColorModeButtonProps> = memo(
   ({ menuProps, ...rest }) => {
     const { colorMode, internalColorMode, changeColorMode } = useColorMode()
