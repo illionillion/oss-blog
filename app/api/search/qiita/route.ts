@@ -1,20 +1,36 @@
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
+import type { Article } from "../../types/article"
+import { searchQiita } from "@/app/api/search/searchService"
 import { responseMessage } from "@/app/api/types/responseMessage"
+
 
 export async function GET(request: NextRequest) {
   const searchParams: URLSearchParams = request.nextUrl.searchParams
   const keyword: string | null = searchParams.get("keyword")
 
-  // ここで検索のロジックを実装する
+  // キーワードがない場合はエラーを返す
+  if (!keyword) {
+    return NextResponse.json(
+      {
+        message: responseMessage.error.invalidRequest,
+        data: {
+          keyword: keyword,
+        },
+      },
+      { status: 400 },
+    )
+  }
+
+  // Qittaから記事を検索
+  const qiitaArticleList: Array<Article> = await searchQiita(keyword)
 
   return NextResponse.json(
     {
       message: responseMessage.success.get,
       data: {
-        // 結果を返す
-        keyword: keyword,
+        articleList: qiitaArticleList,
       },
     },
     { status: 200 },
