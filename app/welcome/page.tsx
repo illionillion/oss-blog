@@ -20,7 +20,6 @@ import {
   CardBody,
   HStack,
 } from "@yamada-ui/react"
-import Link from "next/link"
 import { Layout } from "@/components/layouts"
 
 export default function Home() {
@@ -40,7 +39,8 @@ export default function Home() {
         </Text>
         <Button
           m="auto"
-          as={Link}
+          as="a"
+          target="_blank"
           href="https://github.com/illionillion/oss-blog/blob/main/CONTRIBUTING.ja.md"
         >
           今すぐ始める
@@ -186,7 +186,8 @@ const CommunityIntroduction = () => {
       </Text>
       <Button
         m="auto"
-        as={Link}
+        as="a"
+        target="_blank"
         href="https://github.com/illionillion/oss-blog/"
       >
         Githubリポジトリ
