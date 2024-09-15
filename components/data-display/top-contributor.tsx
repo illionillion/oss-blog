@@ -11,10 +11,11 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
+import Link from "next/link"
 import type { FC } from "react"
 import { useI18n } from "@/contexts"
 
-export const TopContributor: FC = () => {
+export const TopContributor: FC<{ isLink?: boolean }> = ({ isLink }) => {
   const { contributors } = useI18n()
   const top_contributors = contributors?.top_contributors
   return (
@@ -34,6 +35,11 @@ export const TopContributor: FC = () => {
             </HStack>
           ))}
         </VStack>
+        {isLink ? (
+          <Text as={Link} href="/contributors">
+            もっと見る
+          </Text>
+        ) : undefined}
       </CardBody>
     </Card>
   )
