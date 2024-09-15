@@ -68,7 +68,8 @@ export async function PUT(
 
   const updatedName = body.name !== undefined ? body.name : tag.name
 
-  const updatedIconUrl = body.iconUrl !== undefined ? body.iconUrl : tag.iconUrl
+  const updatedIconname =
+    body.iconname !== undefined ? body.iconname : tag.iconname
 
   const responseData = await prisma.tag.update({
     where: {
@@ -76,7 +77,7 @@ export async function PUT(
     },
     data: {
       name: updatedName,
-      iconUrl: updatedIconUrl,
+      iconname: updatedIconname,
     },
   })
 
@@ -86,5 +87,41 @@ export async function PUT(
       data: responseData,
     },
     { status: 201 },
+  )
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { name: string } },
+) {
+  const name: string = params.name
+
+  const tag = await prisma.tag.findFirst({
+    where: {
+      name: name,
+    },
+    select: {
+      id: true,
+    },
+  })
+
+  if (!tag) {
+    return NextResponse.json(
+      { message: responseMessage.error.notFound },
+      { status: 404 },
+    )
+  }
+
+  await prisma.tag.delete({
+    where: {
+      id: tag.id,
+    },
+  })
+
+  return NextResponse.json(
+    {
+      message: responseMessage.success.delete,
+    },
+    { status: 200 },
   )
 }
