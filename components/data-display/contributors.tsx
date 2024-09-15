@@ -2,6 +2,7 @@
 import { Avatar, AvatarGroup, Box, forwardRef, Tooltip } from "@yamada-ui/react"
 import type { AvatarGroupProps, AvatarProps } from "@yamada-ui/react"
 import type { ArticleMetadata } from "article"
+import Link from "next/link"
 import { memo } from "react"
 
 export type ContributorProps = AvatarGroupProps & {
@@ -22,7 +23,7 @@ export const Contributor = memo(
           max={5}
           {...rest}
         >
-          {contributors.map(({ login, avatar_url, html_url }) => (
+          {contributors.map(({ login, avatar_url }) => (
             <Box
               key={login}
               position="relative"
@@ -32,9 +33,8 @@ export const Contributor = memo(
             >
               <Tooltip label={login} placement="top" flexShrink="0">
                 <Avatar
-                  as="a"
-                  target="_blank"
-                  href={html_url}
+                  as={Link}
+                  href={`/contributors/${login}`}
                   name={login}
                   src={avatar_url}
                   boxSize={avatarSize}
