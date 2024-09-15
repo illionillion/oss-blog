@@ -26,7 +26,11 @@ export const TopContributor: FC<{ isLink?: boolean }> = ({ isLink }) => {
         <VStack m="0 auto">
           {top_contributors?.map((contributor) => (
             <HStack key={contributor.login}>
-              <Avatar src={contributor.avatar_url} />
+              <Avatar
+                src={contributor.avatar_url}
+                as={Link}
+                href={`/contributors/${contributor.login}`}
+              />
               <Text>{contributor.login}</Text>
               <Spacer />
               <Tag rounded="full">
