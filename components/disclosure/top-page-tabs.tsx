@@ -1,5 +1,6 @@
 "use client"
-import { Tab, TabPanel, Tabs } from "@yamada-ui/react"
+import { Button, Center, Loading, Tab, TabPanel, Tabs } from "@yamada-ui/react"
+import { useSession, signIn } from "next-auth/react"
 import type { FC } from "react"
 import React from "react"
 import { ArticleCard } from "../data-display/article-card"
@@ -9,6 +10,7 @@ interface TopPageTabsProps {
   articles: Awaited<ReturnType<typeof getArticleList>>
 }
 export const TopPageTabs: FC<TopPageTabsProps> = ({ articles }) => {
+  const { data: session, status } = useSession()
   return (
     <Tabs>
       <Tab>一覧</Tab>
@@ -38,9 +40,19 @@ export const TopPageTabs: FC<TopPageTabsProps> = ({ articles }) => {
         ))}
       </TabPanel>
       <TabPanel>
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        {status === "loading" ? (
+          <Center w="full" h="full">
+            <Loading />
+          </Center>
+        ) : session ? (
+          articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))
+        ) : (
+          <Center w="full" h="full">
+            <Button onClick={() => signIn()}>ログインしてください</Button>
+          </Center>
+        )}
       </TabPanel>
     </Tabs>
   )
