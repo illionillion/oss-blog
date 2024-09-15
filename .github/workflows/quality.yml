@@ -100,6 +100,12 @@ jobs:
           node --version
           pnpm install
 
+      - name: Set up DATABASE_URL
+        run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
+
+      - name: Run Build
+        run: pnpm run vercel-build
+
       - name: Run typecheck
         run: pnpm typecheck
 
@@ -126,5 +132,8 @@ jobs:
           node --version
           pnpm install
 
+      - name: Set up DATABASE_URL
+        run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
+
       - name: Run Build
-        run: pnpm run build
+        run: pnpm run vercel-build
