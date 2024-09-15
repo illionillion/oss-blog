@@ -25,7 +25,7 @@ export async function GET(
     )
   }
 
-  const userList = await prisma.like.findMany({
+  const userList:Array<{userId:number}> = await prisma.like.findMany({
     where: {
       articleId: article.id,
     },
@@ -34,13 +34,11 @@ export async function GET(
     },
   })
 
-  const userIdList = userList.map((like) => like.userId)
-
   return NextResponse.json(
     {
       message: responseMessage.success.get,
       data: {
-        userIdList: userIdList,
+        userList: userList,
       },
     },
     { status: 200 },
