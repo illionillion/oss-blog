@@ -38,14 +38,14 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (body.url === undefined) {
+  if (body.url == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const article: Article = {
+  const article: Pick<Article, "url"> = {
     url: body.url,
   }
 
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       select: {
         id: true,
       },
-    })) !== null
+    })) != null
 
   if (isExist) {
     return NextResponse.json(

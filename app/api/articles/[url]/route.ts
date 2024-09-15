@@ -53,14 +53,14 @@ export async function PUT(
     )
   }
 
-  if (body.url === undefined) {
+  if (body.url == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: url,
     },
@@ -100,7 +100,7 @@ export async function DELETE(
 ) {
   const url: string = params.url
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: url,
     },

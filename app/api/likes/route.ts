@@ -6,9 +6,12 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
 
-type Like = {
+interface ResponseLike {
+  id: number
   userId: number
-  articleId: number
+  articleUrl: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export async function POST(request: NextRequest) {
@@ -25,14 +28,14 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (body.userId === undefined || body.articleUrl === undefined) {
+  if (body.userId == null || body.articleUrl == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -49,7 +52,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const like: Like = {
+  const like: Pick<Like, "userId" | "articleId"> = {
     userId: body.userId,
     articleId: article.id,
   }
@@ -61,7 +64,7 @@ export async function POST(request: NextRequest) {
       select: {
         id: true,
       },
-    })) !== null
+    })) != null
 
   if (isExist) {
     return NextResponse.json(
@@ -70,16 +73,17 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const createdData = await prisma.like.create({
-    data: like,
-    include: {
-      article: {
-        select: {
-          url: true,
+  const createdData: Like & { article: { url: string } } =
+    await prisma.like.create({
+      data: like,
+      include: {
+        article: {
+          select: {
+            url: true,
+          },
         },
       },
-    },
-  })
+    })
 
   const responseData = {
     id: createdData.id,
@@ -112,14 +116,14 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  if (body.userId === undefined || body.articleUrl === undefined) {
+  if (body.userId == null || body.articleUrl == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -136,13 +140,13 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const like: Like = {
+  const like: Pick<Like, "userId" | "articleId"> = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const likeData = await prisma.like.findFirst({
+  const likeData: Pick<Like, "id"> | null = await prisma.like.findFirst({
     where: like,
     select: {
       id: true,
