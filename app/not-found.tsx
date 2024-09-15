@@ -7,12 +7,11 @@ import { Layout } from "@/components/layouts"
 
 export default function Component() {
   return (
-    <Layout h="full">
+    <Layout>
       <Box
-        flexGrow={1}
         display="flex"
         w="100vw"
-        minH="100vh"
+        h="100dvh"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
