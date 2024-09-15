@@ -4,9 +4,11 @@ import { Octokit } from "@octokit/rest"
 import type { ArticleMetadata } from "article"
 import c from "chalk"
 import { config } from "dotenv"
+
 import { glob } from "glob"
 import matter from "gray-matter"
 import { recursiveOctokit } from "./utils"
+import { formatIsoDate } from "@/utils/fomat/iso-date"
 
 type Commit = Awaited<
   ReturnType<typeof octokit.repos.listCommits>
@@ -49,7 +51,7 @@ const updateMetadata = async (
   }) as ArticleMetadata["contributors"]
 
   metadata.contributors = authors
-  metadata.latest_date = latestDate // Add latest date to metadata
+  metadata.latest_date = formatIsoDate(latestDate) // Add latest date to metadata
 
   const updatedContent = matter.stringify(content, metadata)
 

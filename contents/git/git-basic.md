@@ -13,7 +13,7 @@ contributors:
     login: illionillion
     avatar_url: "https://avatars.githubusercontent.com/u/60034520?v=4"
     html_url: "https://github.com/illionillion"
-latest_date: "2024-09-15T11:29:03Z"
+latest_date: "2024-09-15"
 ---
 
 ## Gitの概要
