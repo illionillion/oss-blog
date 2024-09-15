@@ -21,12 +21,18 @@ export const TopContributor: FC<{ isLink?: boolean }> = ({ isLink }) => {
   return (
     <Card w="full" p="md">
       <CardBody>
-        <Heading as="h2">Top Contributor</Heading>
+        <Heading as="h2" fontSize="xl">
+          Top Contributor
+        </Heading>
         <Text>集計：{contributors?.date}</Text>
         <VStack m="0 auto">
           {top_contributors?.map((contributor) => (
             <HStack key={contributor.login}>
-              <Avatar src={contributor.avatar_url} />
+              <Avatar
+                src={contributor.avatar_url}
+                as={Link}
+                href={`/contributors/${contributor.login}`}
+              />
               <Text>{contributor.login}</Text>
               <Spacer />
               <Tag rounded="full">

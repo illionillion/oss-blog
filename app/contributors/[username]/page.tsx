@@ -59,7 +59,13 @@ export const generateStaticParams = async () => {
 const Page = async ({ params }: Props) => {
   const { username } = params
 
+  // 全記事を取得
   const articles = await getArticleList()
+
+  // 指定されたusernameに関連する記事のみをフィルタリング
+  const userArticles = articles.filter((article) =>
+    article.contributors?.some((contributor) => contributor.login === username),
+  )
 
   return (
     <Layout>
@@ -115,7 +121,7 @@ const Page = async ({ params }: Props) => {
             </HStack>
           </CardBody>
         </Card>
-        <ProfileTabs articles={articles} />
+        <ProfileTabs articles={userArticles} />
       </Container>
     </Layout>
   )

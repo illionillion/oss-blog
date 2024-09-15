@@ -118,14 +118,14 @@ export const Header: FC<HeaderProps> = ({ ...rest }) => {
             <IconButton
               variant="ghost"
               fontSize="2xl"
-              icon={<LogInIcon />}
+              icon={<LogOutIcon />}
               onClick={() => signOut()}
             />
           ) : (
             <IconButton
               variant="ghost"
               fontSize="2xl"
-              icon={<LogOutIcon />}
+              icon={<LogInIcon />}
               onClick={() => signIn()}
             />
           )}
