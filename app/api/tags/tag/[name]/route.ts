@@ -68,8 +68,8 @@ export async function PUT(
 
   const updatedName = body.name !== undefined ? body.name : tag.name
 
-  const updatedIconname =
-    body.iconname !== undefined ? body.iconname : tag.iconname
+  const updatedIconUrl =
+    body.iconname !== undefined ? body.iconname : tag.iconUrl
 
   const responseData = await prisma.tag.update({
     where: {
@@ -77,7 +77,7 @@ export async function PUT(
     },
     data: {
       name: updatedName,
-      iconname: updatedIconname,
+      iconUrl: updatedIconUrl,
     },
   })
 
