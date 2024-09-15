@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (!body.name) {
+  if (body.name == undefined) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
