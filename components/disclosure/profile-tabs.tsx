@@ -3,13 +3,14 @@
 import { Tab, TabPanel, Tabs } from "@yamada-ui/react"
 import type { FC } from "react"
 import React from "react"
+import { ArticleCard } from "../data-display/article-card"
 import type { getArticleList } from "@/utils/articles"
 
 interface ProfileTabsProps {
   articles: Awaited<ReturnType<typeof getArticleList>>
 }
 
-export const ProfileTabs: FC<ProfileTabsProps> = () => {
+export const ProfileTabs: FC<ProfileTabsProps> = ({ articles }) => {
   return (
     <>
       <Tabs>
@@ -17,9 +18,21 @@ export const ProfileTabs: FC<ProfileTabsProps> = () => {
         <Tab>いいね</Tab>
         <Tab>ブックマーク</Tab>
 
-        <TabPanel>コントリビュート</TabPanel>
-        <TabPanel>いいね</TabPanel>
-        <TabPanel>ブックマーク</TabPanel>
+        <TabPanel>
+          {articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+        </TabPanel>
+        <TabPanel>
+          {articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+        </TabPanel>
+        <TabPanel>
+          {articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+        </TabPanel>
       </Tabs>
     </>
   )

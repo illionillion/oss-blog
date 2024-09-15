@@ -8,6 +8,7 @@ declare module "article" {
     title: string
     description: string
     keyword: string[]
+    slug: string
     contributors: {
       id: number
       login: string

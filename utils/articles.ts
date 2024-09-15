@@ -30,7 +30,7 @@ export const getArticleList = async () => {
     }),
   )
 
-  return articleList
+  return articleList as ArticleMetadata[]
 }
 
 export const getArticleContent = async (
