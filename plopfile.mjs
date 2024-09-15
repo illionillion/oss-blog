@@ -9,12 +9,9 @@ const getDirectories = (source) =>
 
 const checkAvailableName = (basePath, name) => {
   const newPath = path.join(basePath, name)
-  console.log(newPath)
   if (existsSync(newPath)) {
-    console.log("Already exists")
     return false
   }
-  console.log("Available")
   return true
 }
 
@@ -35,8 +32,6 @@ const contentsPath = path.resolve(process.cwd(), "contents")
 const appPath = path.resolve(process.cwd(), "app")
 
 const folderPrompt = (_, basePath, isTopLevel) => {
-  console.log(basePath)
-  console.log(isTopLevel)
   return [
     {
       type: "list",
@@ -128,12 +123,8 @@ export default async function plop(plop) {
       return lastAnswers
     },
     actions: (answers) => {
-      console.log("actions!!")
-      console.log(answers.basePath)
       const actions = []
       const folderName = answers.basePath
-
-      console.log("folderName: ", folderName)
 
       const filePath = path.join(folderName, `${answers.fileName}.md`)
       actions.push({
