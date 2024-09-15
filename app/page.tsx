@@ -1,7 +1,5 @@
-"use client"
-import { Star, Calendar, User } from "@yamada-ui/lucide"
+import { GitPullRequestIcon, InfoIcon } from "@yamada-ui/lucide"
 import {
-  Box,
   ButtonGroup,
   Heading,
   Text,
@@ -12,23 +10,32 @@ import {
   Tag,
   Spacer,
   Card,
-  Tabs,
-  Tab,
-  TabPanel,
   CardBody,
 } from "@yamada-ui/react"
+import Link from "next/link"
+import type { FC } from "react"
+import { TopPageTabs } from "@/components/disclosure/top-page-tabs"
 import { Layout } from "@/components/layouts"
+import { getArticleList } from "@/utils/articles"
 
-export default function Home() {
+export default async function Home() {
+  const articles = await getArticleList()
   return (
     <Layout>
-      <Head />
-      <HStack w="full">
+      <Banner />
+      <HStack w="full" alignItems="start">
         <VStack w="full" gap="md">
-          <ContentsCard />
-          <RecentActivities />
+          <TopPageTabs articles={articles} />
+          {/* <Box px="md">
+            <RecentActivitiesTabs />
+          </Box> */}
         </VStack>
-        <VStack w="50%" gap="md" display={{ md: "none" }}>
+        <VStack
+          maxW="sm"
+          w="full"
+          gap="md"
+          display={{ base: "flex", md: "none" }}
+        >
           <TopContributeUser />
           <GithubButtons />
         </VStack>
@@ -37,29 +44,35 @@ export default function Home() {
   )
 }
 
-function Head() {
+const Banner: FC = () => {
   return (
     <Card
       w="full"
       textAlign="center"
       p="lg"
       borderRadius="md"
-      backgroundColor="primary.200"
+      bgGradient="linear(to-r, purple.500, blue.400)"
     >
       <VStack gap="md">
-        <Heading as="h1">オープンソースで技術ブログを革新する</Heading>
-        <Text>Githubを活用、した共同執筆で、より質の高いコンテンツを </Text>
+        <Heading color="white" as="h1">
+          オープンソースで技術ブログを革新する
+        </Heading>
+        <Text color="white">
+          Githubを活用、した共同執筆でより質の高いコンテンツを
+        </Text>
 
         <ButtonGroup gap="md" margin="0 auto">
           <Button>はじめる</Button>
-          <Button>詳しく見る</Button>
+          <Button as={Link} href="/welcome">
+            詳しく見る
+          </Button>
         </ButtonGroup>
       </VStack>
     </Card>
   )
 }
 
-function TopContributeUser() {
+const TopContributeUser: FC = () => {
   const users = [
     {
       name: "yamada",
@@ -79,8 +92,8 @@ function TopContributeUser() {
   ]
 
   return (
-    <Card w="full" backgroundColor="White" p="md">
-      <VStack w="full">
+    <Card w="full" p="md">
+      <CardBody>
         <Heading as="h2">Top Contributer</Heading>
         <VStack m="0 auto">
           {users.map((user) => (
@@ -94,152 +107,40 @@ function TopContributeUser() {
             </HStack>
           ))}
         </VStack>
-      </VStack>
+      </CardBody>
     </Card>
   )
 }
 
-function ContentsCard() {
-  const contents = [
-    {
-      title: "タイトル",
-      description:
-        "説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明説明",
-      tags: ["タグ1", "タグ2"],
-      avatars: [
-        { src: "", name: "" },
-        { src: "", name: "" },
-      ],
-      updatedAt: "2000-01-01",
-      stars: 10,
-    },
-
-    {
-      title: "タイトル",
-      description: "説明",
-      tags: ["タグ1", "タグ2"],
-      avatars: [
-        { src: "", name: "" },
-        { src: "", name: "" },
-      ],
-      updatedAt: "2000-01-01",
-      stars: 10,
-    },
-  ]
+const GithubButtons: FC = () => {
   return (
-    <Box w="full">
-      {contents.map((content, index) => (
-        <Card key={index} p="md">
-          <VStack gap="md" p="md">
-            <Heading as="h3" mb="md">
-              {content.title}
-            </Heading>
-            <Text>{content.description}</Text>
-            <HStack textAlign="right">
-              {content.tags.map((tag) => (
-                <Tag key={tag}>{tag}</Tag>
-              ))}
-            </HStack>
-
-            <HStack>
-              <HStack>
-                <User />
-                {content.avatars.map((avatar) => (
-                  <Avatar key={avatar.name} src={avatar.src} />
-                ))}
-              </HStack>
-              <Spacer />
-              <HStack>
-                <Calendar />
-                <Text>{content.updatedAt}</Text>
-              </HStack>
-              <HStack>
-                <Star />
-                <Text>{content.stars}</Text>
-              </HStack>
-            </HStack>
-          </VStack>
-        </Card>
-      ))}
-    </Box>
-  )
-}
-
-function GithubButtons() {
-  return (
-    <Card w="full" backgroundColor="white" p="md">
-      <Box w="90%" m="0 auto" textAlign="left">
+    <Card w="full" p="md">
+      <CardBody textAlign="left">
         <Heading as="h3" mb="md">
           参加する
         </Heading>
         <VStack gap="md" m="0 auto">
-          <Button>GitHub</Button>
-          <Button>Twitter</Button>
+          <Button
+            variant="outline"
+            colorScheme="primary"
+            leftIcon={<InfoIcon />}
+            as="a"
+            target="_blank"
+            href="https://github.com/illionillion/oss-blog/issues"
+          >
+            Issueを見る
+          </Button>
+          <Button
+            variant="outline"
+            colorScheme="primary"
+            leftIcon={<GitPullRequestIcon />}
+            as="a"
+            target="_blank"
+            href="https://github.com/illionillion/oss-blog/pulls"
+          >
+            Pull Requestを見る
+          </Button>
         </VStack>
-      </Box>
-    </Card>
-  )
-}
-
-function RecentActivities() {
-  const activityLinks = [
-    {
-      link: "https://github.com",
-    },
-    {
-      link: "https://github.com",
-    },
-    {
-      link: "https://github.com",
-    },
-  ]
-  const issueLinks = [
-    {
-      link: "https://github.com",
-    },
-    {
-      link: "https://github.com",
-    },
-    {
-      link: "https://github.com",
-    },
-  ]
-
-  const pulRequestLinks = [
-    {
-      link: "https://github.com",
-    },
-    {
-      link: "https://github.com",
-    },
-    {
-      link: "https://github.com",
-    },
-  ]
-
-  return (
-    <Card w="full" backgroundColor="white" p="md">
-      <CardBody>
-        <Tabs m="0 auto" variant="sticky" align="start">
-          <Tab>新着記事</Tab>
-          <Tab>最近のIssue</Tab>
-          <Tab>最近のPR</Tab>
-          <TabPanel>
-            {activityLinks.map((link) => (
-              <Button key={link.link}>{link.link}</Button>
-            ))}
-          </TabPanel>
-          <TabPanel>
-            {issueLinks.map((link) => (
-              <Button key={link.link}>{link.link}</Button>
-            ))}
-          </TabPanel>
-          <TabPanel>
-            {pulRequestLinks.map((link) => (
-              <Button key={link.link}>{link.link}</Button>
-            ))}
-          </TabPanel>
-        </Tabs>
       </CardBody>
     </Card>
   )
