@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div style="display: flex;">
+    <img src="./public/oss-blog-logo.png" width="40" height="40" style="display: block; margin-right: 16px;">
+    <h1>OSS Blog</h1>
+</div>
 
-## Getting Started
+`OSS Blog`は**みんなで記事を作る**ことに焦点を当てた全く新しい技術記事サイトです。
+<a href="#english-version">English version is available!!</a>
+## 概要
+従来の技術記事サイトは、基本的に1人の著者が記事を書いて他の人がそれを読むという形式でした。しかし、その形式だと記事の内容が間違っていたり、古くなっていた場合に著者しか編集はできないので更新されないまま残ってしまうなどこれ以外にもさまざまな問題があると感じていました。そこでこの問題を解決するために、OSS(Open Source Software)の仕組みを活用してみんなが著者であり、読者である技術記事サイト`OSS Blog`を開発することを決めました。
 
-First, run the development server:
+## このサイトが解決できる問題
+- 記事の内容が古いままである
+- 記事の内容が間違っている
+- 勝手に記事が削除される
+etc...
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 従来の技術記事サイトとの比較
+| 比較点 | OSS Blog | Q | Z |
+| --- | --- | --- | --- |
+| 記事の作成 | みんなで作成 | 1人で作成 | 1人で作成 | 
+| 記事の編集 | みんなで編集 | 著者のみ | 著者のみ |
+| 記事の閲覧 | 誰でも閲覧可能 | 誰でも閲覧可能 | 誰でも閲覧可能 |
+| 管理体制 | 分散型 | 中央集権 | 中央集権 |
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+また、これらの点以外にもOSSで誰でも記事を作成、編集ができるので、記事の品質や新しさが保たれるという優れた特徴があります。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 使用技術
+- Next.js
+- YamadaUI
+- Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## コントリビュートの仕方 & 記事の投稿のしかた
+バグ修正や機能追加の際にプルリクエストを送るのと同様に記事の投稿をする際にもプルリクエストを送ります。詳細は<a href='./CONTRIBUTING.ja.md'>CONTRIBUTING.md</a>を参照してください。
 
-## Learn More
+<details>
+<summary>なぜ記事投稿の際にプルリクエストを送るのですか？</summary>
+記事投稿の際にプルリクエストを送ることによって、記事の内容が間違っていたり、古い情報のままになることを抑えることができます。自分以外の人に見てもらうことで記事の品質が向上し、より多くの人に有益な情報を提供することができます。
+</details>
 
-To learn more about Next.js, take a look at the following resources:
+<br><br><br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<div id="english-version"></div>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<div style="display: flex;">
+    <img src="./public/oss-blog-logo.png" width="40" height="40" style="display: block; margin-right: 16px;">
+    <h1>OSS Blog</h1>
+</div>
 
-## Deploy on Vercel
+`OSS Blog` is a completely new technology article site that focuses on **creating articles together**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Overview
+Traditional technical article sites typically involve a single author writing an article for others to read. However, if the article contains inaccuracies or becomes outdated, only the author can edit it, which means the incorrect or old information may remain unchanged. To solve this issue, we decided to develop `OSS Blog`, a technical article site where everyone is both an author and a reader, utilizing the concept of OSS (Open Source Software).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Problems this site can solve
+- Articles becoming outdated
+- Articles containing inaccuracies
+- Articles being deleted without notice
+etc...
+
+## Comparison with traditional technical article sites
+| Comparison Point | OSS Blog | Q | Z |
+| --- | --- | --- | --- |
+| Article Creation | Created by everyone | Created by one person | Created by one person |
+| Article Editing | Edited by everyone | Only the author | Only the author |
+| Article Viewing | Accessible to everyone | Accessible to everyone | Accessible to everyone |
+| Management System | Decentralized | Centralized | Centralized |
+
+Additionally, because anyone can create and edit articles through OSS, it ensures that the articles remain high-quality and up-to-date.
+
+## Technologies Used
+- Next.js
+- YamadaUI
+- Docker
+
+## How to Contribute & Submit Articles
+Similar to submitting a pull request for bug fixes or feature additions, you also submit a pull request when posting articles. For more details, refer to <a href='./CONTRIBUTING.ja.md'>CONTRIBUTING.md</a>.
+
+<details>
+<summary>Why do you need to submit a pull request when posting an article?</summary>
+By submitting a pull request when posting an article, it helps prevent inaccuracies or outdated information from remaining. Having others review your article improves its quality and provides more useful information to a wider audience.
+</details>
