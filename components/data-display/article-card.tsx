@@ -29,16 +29,19 @@ export const ArticleCard: FC<ArticleCardProps> = ({ article }) => {
           </LinkOverlay>
         </Heading>
         <Text>{article.description}</Text>
-        <HStack textAlign="right">
+        <HStack textAlign="right" display={{ base: "flex", sm: "none" }}>
           {article?.keyword?.map((word) => <Tag key={word}>{word}</Tag>)}
         </HStack>
 
-        <HStack>
-          <HStack>
+        <HStack
+          flexDir={{ base: "row", sm: "column" }}
+          alignItems={{ base: "center", sm: "start" }}
+        >
+          <HStack gap="0">
             <UserIcon />
             <Contributor contributors={article.contributors} />
           </HStack>
-          <Spacer />
+          <Spacer display={{ base: "flex", sm: "none" }} />
           <HStack>
             <CalendarIcon />
             <Text>{article.latest_date}</Text>

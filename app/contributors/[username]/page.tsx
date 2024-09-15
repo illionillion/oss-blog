@@ -72,31 +72,34 @@ const Page = async ({ params }: Props) => {
       <Container maxW="9xl" w="full">
         <Card>
           <CardBody>
-            <HStack w="full">
+            <HStack w="full" flexDir={{ base: "row", lg: "column" }}>
               <Box>
                 <Avatar boxSize="16" />
               </Box>
-              <VStack flexGrow={1}>
+              <VStack
+                flexGrow={1}
+                alignItems={{ base: "stretch", lg: "center" }}
+              >
                 <Text fontSize="md">{username}</Text>
                 <Text fontSize="sm" color={["gray.500", "gray.100"]}>
                   説明
                 </Text>
-                <HStack>
-                  <Center gap="sm">
+                <HStack flexDir={{ base: "row", md: "column" }}>
+                  <Center w={{ md: "full" }} gap="sm">
                     <UsersIcon color={["gray.500", "gray.100"]} />
                     <Flex>
                       <Text>1234</Text>
                       <Text color={["gray.500", "gray.100"]}>フォロワー</Text>
                     </Flex>
                   </Center>
-                  <Center gap="sm">
+                  <Center w={{ md: "full" }} gap="sm">
                     <UsersIcon color={["gray.500", "gray.100"]} />
                     <Flex>
                       <Text>1234</Text>
                       <Text color={["gray.500", "gray.100"]}>フォロー</Text>
                     </Flex>
                   </Center>
-                  <Center gap="sm">
+                  <Center w={{ md: "full" }} gap="sm">
                     <GitPullRequestIcon color={["gray.500", "gray.100"]} />
                     <Flex>
                       <Text>1234</Text>

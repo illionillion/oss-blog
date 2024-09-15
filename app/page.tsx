@@ -24,17 +24,14 @@ export default async function Home() {
       <HStack w="full" alignItems="start">
         <VStack w="full" gap="md">
           <TopPageTabs articles={articles} />
-          {/* <Box px="md">
-            <RecentActivitiesTabs />
-          </Box> */}
         </VStack>
         <VStack
           maxW="sm"
           w="full"
           gap="md"
-          display={{ base: "flex", md: "none" }}
+          display={{ base: "flex", lg: "none" }}
         >
-          <TopContributor />
+          <TopContributor isLink />
           <GithubButtons />
         </VStack>
       </HStack>
