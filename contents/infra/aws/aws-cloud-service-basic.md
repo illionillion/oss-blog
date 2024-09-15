@@ -1,29 +1,32 @@
 ---
+
 title: 基本的なAWSクラウドサービスの概要
 description: >-
-  AWSの基本的なクラウドサービスについて、主要なサービスの概要とその利点、使い方の基本を解説します。これにより、AWSクラウドを利用する際の基本的な知識を身につけることができます。
+AWSの基本的なクラウドサービスについて、主要なサービスの概要とその利点、使い方の基本を解説します。これにより、AWSクラウドを利用する際の基本的な知識を身につけることができます。
 keyword:
-  - AWS
-  - クラウドサービス
-  - EC2
-  - S3
-  - RDS
-  - Lambda
-contributors:
-  - id: 60034520
-    login: illionillion
-    avatar_url: "https://avatars.githubusercontent.com/u/60034520?v=4"
-    html_url: "https://github.com/illionillion"
-  - id: 56211510
-    login: SEKI-YUTA
-    avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
-    html_url: "https://github.com/SEKI-YUTA"
-  - id: 109452865
-    login: taku10101
-    avatar_url: "https://avatars.githubusercontent.com/u/109452865?v=4"
-    html_url: "https://github.com/taku10101"
-latest_date: "2024-09-15"
-slug: contents/infra/aws/aws-cloud-service-basic.md
+
+- AWS
+- クラウドサービス
+- EC2
+- S3
+- RDS
+- Lambda
+  contributors:
+- id: 60034520
+  login: illionillion
+  avatar_url: "https://avatars.githubusercontent.com/u/60034520?v=4"
+  html_url: "https://github.com/illionillion"
+- id: 56211510
+  login: SEKI-YUTA
+  avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
+  html_url: "https://github.com/SEKI-YUTA"
+- id: 109452865
+  login: taku10101
+  avatar_url: "https://avatars.githubusercontent.com/u/109452865?v=4"
+  html_url: "https://github.com/taku10101"
+  latest_date: "2024-09-15"
+  slug: contents/infra/aws/aws-cloud-service-basic.md
+
 ---
 
 ## 基本的なAWSクラウドサービスの概要
