@@ -52,7 +52,7 @@ const Banner: FC = () => {
       bgGradient="linear(to-r, purple.500, blue.400)"
     >
       <VStack gap="md">
-        <Heading color="white" as="h1">
+        <Heading color="white" as="h2">
           オープンソースで技術ブログを革新する
         </Heading>
         <Text color="white">
@@ -80,7 +80,7 @@ const GithubButtons: FC = () => {
   return (
     <Card w="full" p="md">
       <CardBody textAlign="left">
-        <Heading as="h3" mb="md" fontSize="xl">
+        <Heading as="h4" mb="md" fontSize="xl">
           参加する
         </Heading>
         <VStack gap="md" m="0 auto">
