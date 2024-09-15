@@ -23,6 +23,7 @@ git clone https://github.com/illionillion/oss-blog
 ## Technologies Used
 
 - Next.js
+- Yamada UI
 - Docker
 
 ## Commonly Used Commands
