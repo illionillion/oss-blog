@@ -1100,10 +1100,13 @@ packages:
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
+<<<<<<< HEAD
   '@types/date-fns@2.6.0':
     resolution: {integrity: sha512-9DSw2ZRzV0Tmpa6PHHJbMcZn79HHus+BBBohcOaDzkK/G3zMjDUDYjJIWBFLbkh+1+/IOS0A59BpQfdr37hASg==}
     deprecated: This is a stub types definition for date-fns (https://github.com/date-fns/date-fns). date-fns provides its own type definitions, so you don't need @types/date-fns installed!
 
+=======
+>>>>>>> 6e89eee (feat: next-auth設定追加)
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
 
@@ -6376,10 +6379,13 @@ snapshots:
 
   '@types/cookie@0.6.0': {}
 
+<<<<<<< HEAD
   '@types/date-fns@2.6.0':
     dependencies:
       date-fns: 3.6.0
 
+=======
+>>>>>>> 6e89eee (feat: next-auth設定追加)
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 0.7.34
