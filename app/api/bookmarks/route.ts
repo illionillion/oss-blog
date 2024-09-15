@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
+  let article = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -44,12 +44,16 @@ export async function POST(request: NextRequest) {
     },
   })
 
-  // 記事が存在しない場合
+  // 記事が存在しない場合は作成する
   if (!article) {
-    return NextResponse.json(
-      { message: responseMessage.error.notFound },
-      { status: 404 },
-    )
+    article = await prisma.article.create({
+      data: {
+        url: body.articleUrl,
+      },
+      select: {
+        id: true,
+      },
+    })
   }
 
   const bookmark: Pick<Bookmark, "userId" | "articleId"> = {
