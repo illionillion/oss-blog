@@ -1,6 +1,4 @@
-import type { Article } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
-
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
@@ -14,7 +12,7 @@ export async function GET(
 ) {
   const url: string = params.url
 
-  const article: Article | null = await prisma.article.findFirst({
+  const article = await prisma.article.findFirst({
     where: {
       url: url,
     },
@@ -55,14 +53,14 @@ export async function PUT(
     )
   }
 
-  if (body.url == null) {
+  if (body.url === undefined) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
+  const article = await prisma.article.findFirst({
     where: {
       url: url,
     },
@@ -78,7 +76,7 @@ export async function PUT(
     )
   }
 
-  const responseData: Article = await prisma.article.update({
+  const responseData = await prisma.article.update({
     where: {
       id: article.id,
     },
@@ -102,7 +100,7 @@ export async function DELETE(
 ) {
   const url: string = params.url
 
-  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
+  const article = await prisma.article.findFirst({
     where: {
       url: url,
     },

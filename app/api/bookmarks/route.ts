@@ -1,6 +1,4 @@
-import type { Article, Bookmark } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
-
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
@@ -8,12 +6,9 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
 
-interface ResponseBookmark {
-  id: number
+type Bookmark = {
   userId: number
-  articleUrl: string
-  createdAt?: Date
-  updatedAt?: Date
+  articleId: number
 }
 
 export async function POST(request: NextRequest) {
@@ -30,14 +25,14 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (body.userId == null || body.articleUrl == null) {
+  if (body.userId === undefined || body.articleUrl === undefined) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  let article: Pick<Article, "id"> | null = await prisma.article.findFirst({
+  const article = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -46,25 +41,21 @@ export async function POST(request: NextRequest) {
     },
   })
 
-  // 記事が存在しない場合は作成する
+  // 記事が存在しない場合
   if (!article) {
-    article = await prisma.article.create({
-      data: {
-        url: body.articleUrl,
-      },
-      select: {
-        id: true,
-      },
-    })
+    return NextResponse.json(
+      { message: responseMessage.error.notFound },
+      { status: 404 },
+    )
   }
 
-  const bookmark: Pick<Bookmark, "userId" | "articleId"> = {
+  const bookmark: Bookmark = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const isExist: boolean =
+  const isExist =
     (await prisma.bookmark.findFirst({
       where: bookmark,
       select: {
@@ -79,19 +70,18 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const createdData: Bookmark & { article: { url: string } } =
-    await prisma.bookmark.create({
-      data: bookmark,
-      include: {
-        article: {
-          select: {
-            url: true,
-          },
+  const createdData = await prisma.bookmark.create({
+    data: bookmark,
+    include: {
+      article: {
+        select: {
+          url: true,
         },
       },
-    })
+    },
+  })
 
-  const responseData: ResponseBookmark = {
+  const responseData = {
     id: createdData.id,
     userId: createdData.userId,
     articleUrl: createdData.article.url,
@@ -122,14 +112,14 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  if (body.userId == null || body.articleUrl == null) {
+  if (body.userId === undefined || body.articleUrl === undefined) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
+  const article = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -146,19 +136,18 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const bookmark: Pick<Bookmark, "userId" | "articleId"> = {
+  const bookmark: Bookmark = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const bookmarkData: Pick<Bookmark, "id"> | null =
-    await prisma.bookmark.findFirst({
-      where: bookmark,
-      select: {
-        id: true,
-      },
-    })
+  const bookmarkData = await prisma.bookmark.findFirst({
+    where: bookmark,
+    select: {
+      id: true,
+    },
+  })
 
   if (!bookmarkData) {
     return NextResponse.json(

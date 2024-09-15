@@ -1,12 +1,15 @@
-import type { Follow } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
-
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
 import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
+
+type Follow = {
+  fromUserId: number
+  toUserId: number
+}
 
 export async function POST(request: NextRequest) {
   let body
@@ -22,27 +25,27 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (body.fromUserId == null || body.toUserId == null) {
+  if (body.fromUserId === undefined || body.toUserId === undefined) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  if (body.fromUserId == body.toUserId) {
+  if (body.fromUserId === body.toUserId) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const follow: Pick<Follow, "fromUserId" | "toUserId"> = {
+  const follow: Follow = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
   }
 
   // 重複したデータが存在するか確認
-  const isExist: boolean =
+  const isExist =
     (await prisma.follow.findFirst({
       where: follow,
       select: {
@@ -57,7 +60,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const responseData: Follow = await prisma.follow.create({
+  const responseData = await prisma.follow.create({
     data: follow,
   })
 
@@ -84,19 +87,19 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  if (body.fromUserId == null || body.toUserId == null) {
+  if (!body.fromUserId || !body.toUserId) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const follow: Pick<Follow, "fromUserId" | "toUserId"> = {
+  const follow: Follow = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
   }
 
-  const targetData: Pick<Follow, "id"> | null = await prisma.follow.findFirst({
+  const targetData = await prisma.follow.findFirst({
     where: follow,
     select: {
       id: true,
