@@ -5,7 +5,6 @@ import type { Article } from "../../types/article"
 import { searchQiita } from "@/app/api/search/searchService"
 import { responseMessage } from "@/app/api/types/responseMessage"
 
-
 export async function GET(request: NextRequest) {
   const searchParams: URLSearchParams = request.nextUrl.searchParams
   const keyword: string | null = searchParams.get("keyword")
@@ -24,13 +23,13 @@ export async function GET(request: NextRequest) {
   }
 
   // Qittaから記事を検索
-  const qiitaArticleList: Array<Article> = await searchQiita(keyword)
+  const articleList: Array<Article> = await searchQiita(keyword)
 
   return NextResponse.json(
     {
       message: responseMessage.success.get,
       data: {
-        articleList: qiitaArticleList,
+        articleList: articleList,
       },
     },
     { status: 200 },
