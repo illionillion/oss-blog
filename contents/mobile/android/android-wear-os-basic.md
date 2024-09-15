@@ -1,6 +1,0 @@
----
-title: タイトル
-description: 説明
-keyword:
-  - "" # キーワード
----
