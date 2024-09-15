@@ -23,6 +23,7 @@ git clone https://github.com/illionillion/oss-blog
 ## 使用技術
 
 - Next.js
+- Yamada UI
 - Docker
 
 ## よく使用するコマンド
