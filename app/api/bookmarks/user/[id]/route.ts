@@ -12,18 +12,19 @@ export async function GET(
 ) {
   const id: number = Number(params.id)
 
-  const articleList:Array<{article:{url:string}}> = await prisma.bookmark.findMany({
-    where: {
-      userId: id,
-    },
-    include: {
-      article: {
-        select: {
-          url: true,
+  const articleList: Array<{ article: { url: string } }> =
+    await prisma.bookmark.findMany({
+      where: {
+        userId: id,
+      },
+      include: {
+        article: {
+          select: {
+            url: true,
+          },
         },
       },
-    },
-  })
+    })
 
   return NextResponse.json(
     {
