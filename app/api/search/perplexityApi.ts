@@ -9,7 +9,7 @@ export async function fetchFromPerplexity(query: string): Promise<any> {
       { query },
       {
         headers: {
-          Authorization: `Bearer ${config.perplexityApiKey}`,
+          Authorization: `Bearer ${process.env.PERPLEXITY_API_KEY}`,
           "Content-Type": "application/json",
         },
       },
