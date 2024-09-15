@@ -20,8 +20,8 @@ contributors:
     login: taku10101
     avatar_url: "https://avatars.githubusercontent.com/u/109452865?v=4"
     html_url: "https://github.com/taku10101"
-latest_date: "2024-09-16"
-slug: mobile/ios/ios-app-lifecycle-understanding
+latest_date: "2024-09-15"
+slug: contents/mobile/ios/ios-app-lifecycle-understanding.md
 ---
 
 # iOSアプリのライフサイクルを理解する
