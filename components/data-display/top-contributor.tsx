@@ -14,17 +14,20 @@ import {
 import Link from "next/link"
 import type { FC } from "react"
 import { useI18n } from "@/contexts"
+import { formatIsoDate } from "@/utils/fomat/iso-date"
 
 export const TopContributor: FC<{ isLink?: boolean }> = ({ isLink }) => {
   const { contributors } = useI18n()
   const top_contributors = contributors?.top_contributors
+  const isoDate = formatIsoDate(contributors?.date || "")
+
   return (
     <Card w="full" p="md">
       <CardBody>
         <Heading as="h2" fontSize="xl">
           Top Contributor
         </Heading>
-        <Text>集計：{contributors?.date}</Text>
+        <Text>集計：{isoDate}</Text>
         <VStack m="0 auto">
           {top_contributors?.map((contributor) => (
             <HStack key={contributor.login}>
