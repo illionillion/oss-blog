@@ -5,7 +5,6 @@ declare module "article" {
     title: string
   }
   interface ArticleMetadata {
-    slug: string
     title: string
     description: string
     keyword: string[]
