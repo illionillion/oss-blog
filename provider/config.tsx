@@ -6,6 +6,7 @@ import {
   ThemeSchemeScript,
   UIProvider,
 } from "@yamada-ui/react"
+import { SessionProvider } from "next-auth/react"
 import type { FC, ReactNode } from "react"
 import { I18nProvider } from "@/contexts"
 import { theme, config } from "@/theme"
@@ -29,7 +30,9 @@ export const ConfigProvider: FC<{ children: ReactNode }> = ({ children }) => {
         colorModeManager={colorModeManager.cookieStorage}
         themeSchemeManager={themeSchemeManager.cookieStorage}
       >
-        <I18nProvider>{children}</I18nProvider>
+        <I18nProvider>
+          <SessionProvider>{children}</SessionProvider>
+        </I18nProvider>
       </UIProvider>
     </>
   )
