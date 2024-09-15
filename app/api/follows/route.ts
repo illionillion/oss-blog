@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const follow: Pick<Follow, 'fromUserId' | 'toUserId'> = {
+  const follow: Pick<Follow, "fromUserId" | "toUserId"> = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
   }
@@ -91,12 +91,12 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const follow: Pick<Follow, 'fromUserId' | 'toUserId'> = {
+  const follow: Pick<Follow, "fromUserId" | "toUserId"> = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
   }
 
-  const targetData: Pick<Follow, 'id'> | null = await prisma.follow.findFirst({
+  const targetData: Pick<Follow, "id"> | null = await prisma.follow.findFirst({
     where: follow,
     select: {
       id: true,

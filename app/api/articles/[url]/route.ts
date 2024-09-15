@@ -62,7 +62,7 @@ export async function PUT(
     )
   }
 
-  const article: Pick<Article, 'id'> | null = await prisma.article.findFirst({
+  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: url,
     },
@@ -102,7 +102,7 @@ export async function DELETE(
 ) {
   const url: string = params.url
 
-  const article: Pick<Article, 'id'> | null = await prisma.article.findFirst({
+  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: url,
     },

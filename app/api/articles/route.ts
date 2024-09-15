@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const article: Pick<Article, 'url'> = {
+  const article: Pick<Article, "url"> = {
     url: body.url,
   }
 

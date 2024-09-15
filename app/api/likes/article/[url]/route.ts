@@ -25,7 +25,7 @@ export async function GET(
     )
   }
 
-  const userList:Array<{userId:number}> = await prisma.like.findMany({
+  const userList: Array<{ userId: number }> = await prisma.like.findMany({
     where: {
       articleId: article.id,
     },

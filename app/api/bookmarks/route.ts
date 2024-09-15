@@ -9,11 +9,11 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 const prisma = new PrismaClient()
 
 interface ResponseBookmark {
-  id: number;
-  userId: number;
-  articleUrl: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  id: number
+  userId: number
+  articleUrl: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export async function POST(request: NextRequest) {
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const article: Pick<Article, 'id'> | null = await prisma.article.findFirst({
+  let article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -46,15 +46,19 @@ export async function POST(request: NextRequest) {
     },
   })
 
-  // 記事が存在しない場合
+  // 記事が存在しない場合は作成する
   if (!article) {
-    return NextResponse.json(
-      { message: responseMessage.error.notFound },
-      { status: 404 },
-    )
+    article = await prisma.article.create({
+      data: {
+        url: body.articleUrl,
+      },
+      select: {
+        id: true,
+      },
+    })
   }
 
-  const bookmark: Pick<Bookmark, 'userId' | 'articleId'> = {
+  const bookmark: Pick<Bookmark, "userId" | "articleId"> = {
     userId: body.userId,
     articleId: article.id,
   }
@@ -75,16 +79,17 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const createdData: Bookmark & { article: { url: string }} = await prisma.bookmark.create({
-    data: bookmark,
-    include: {
-      article: {
-        select: {
-          url: true,
+  const createdData: Bookmark & { article: { url: string } } =
+    await prisma.bookmark.create({
+      data: bookmark,
+      include: {
+        article: {
+          select: {
+            url: true,
+          },
         },
       },
-    },
-  })
+    })
 
   const responseData: ResponseBookmark = {
     id: createdData.id,
@@ -124,7 +129,7 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const article: Pick<Article, 'id'> | null = await prisma.article.findFirst({
+  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -141,18 +146,19 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const bookmark: Pick<Bookmark, 'userId' | 'articleId'> = {
+  const bookmark: Pick<Bookmark, "userId" | "articleId"> = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const bookmarkData: Pick<Bookmark, 'id'> | null = await prisma.bookmark.findFirst({
-    where: bookmark,
-    select: {
-      id: true,
-    },
-  })
+  const bookmarkData: Pick<Bookmark, "id"> | null =
+    await prisma.bookmark.findFirst({
+      where: bookmark,
+      select: {
+        id: true,
+      },
+    })
 
   if (!bookmarkData) {
     return NextResponse.json(

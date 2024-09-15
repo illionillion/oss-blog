@@ -27,7 +27,7 @@ export async function GET(
     )
   }
 
-  const userList:Array<{ userId: number }> = await prisma.bookmark.findMany({
+  const userList: Array<{ userId: number }> = await prisma.bookmark.findMany({
     where: {
       articleId: article.id,
     },
