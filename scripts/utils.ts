@@ -1,7 +1,16 @@
 import path from "path"
 import type { RequestError } from "@octokit/request-error"
+import { Octokit } from "@octokit/rest"
+import { isArray } from "@yamada-ui/react"
 import type { Options } from "prettier"
 import { format, resolveConfig } from "prettier"
+
+const COMMON_PARAMS = {
+  owner: "illionillion",
+  repo: "oss-blog",
+  path: "",
+  ref: "main",
+}
 
 export const prettier = async (content: string, options?: Options) => {
   const prettierConfig = await resolveConfig(
@@ -53,4 +62,42 @@ export const recursiveOctokit = async <T extends any = void>(
       throw e
     }
   }
+}
+
+export type Constant = Record<string, any>
+
+const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
+
+export const getConstant = async (): Promise<Constant> => {
+  const result: Constant = {}
+
+  const { data } = await octokit.repos.getContent(COMMON_PARAMS)
+
+  if (isArray(data)) {
+    await Promise.all(
+      data.map(async ({ name, path }) => {
+        try {
+          const { data } = await octokit.repos.getContent({
+            ...COMMON_PARAMS,
+            path,
+          })
+
+          if ("content" in data) {
+            const content = Buffer.from(data.content, "base64").toString(
+              "utf-8",
+            )
+
+            name = name.replace(".json", "")
+            name = toCamelCase(name)
+
+            if (content) result[name] = JSON.parse(content)
+          }
+        } catch (e) {
+          console.error(e)
+        }
+      }),
+    )
+  }
+
+  return result
 }

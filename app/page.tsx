@@ -5,15 +5,13 @@ import {
   Text,
   Button,
   VStack,
-  Avatar,
   HStack,
-  Tag,
-  Spacer,
   Card,
   CardBody,
 } from "@yamada-ui/react"
 import Link from "next/link"
 import type { FC } from "react"
+import { TopContributor } from "@/components/data-display/top-contributor"
 import { TopPageTabs } from "@/components/disclosure/top-page-tabs"
 import { Layout } from "@/components/layouts"
 import { getArticleList } from "@/utils/articles"
@@ -36,7 +34,7 @@ export default async function Home() {
           gap="md"
           display={{ base: "flex", md: "none" }}
         >
-          <TopContributeUser />
+          <TopContributor />
           <GithubButtons />
         </VStack>
       </HStack>
@@ -68,46 +66,6 @@ const Banner: FC = () => {
           </Button>
         </ButtonGroup>
       </VStack>
-    </Card>
-  )
-}
-
-const TopContributeUser: FC = () => {
-  const users = [
-    {
-      name: "yamada",
-      avatar: "",
-      count: 10,
-    },
-    {
-      name: "yamada",
-      avatar: "",
-      count: 10,
-    },
-    {
-      name: "yamada",
-      avatar: "",
-      count: 10,
-    },
-  ]
-
-  return (
-    <Card w="full" p="md">
-      <CardBody>
-        <Heading as="h2">Top Contributer</Heading>
-        <VStack m="0 auto">
-          {users.map((user) => (
-            <HStack key={user.name}>
-              <Avatar src={user.avatar} />
-              <Text>{user.name}</Text>
-              <Spacer />
-              <Tag rounded="full">
-                <Text>{user.count}</Text>
-              </Tag>
-            </HStack>
-          ))}
-        </VStack>
-      </CardBody>
     </Card>
   )
 }
