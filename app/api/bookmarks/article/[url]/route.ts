@@ -25,7 +25,7 @@ export async function GET(
     )
   }
 
-  const userList = await prisma.bookmark.findMany({
+  const userList:Array<{ userId: any }> = await prisma.bookmark.findMany({
     where: {
       articleId: article.id,
     },
@@ -34,7 +34,7 @@ export async function GET(
     },
   })
 
-  const userIdList = userList.map((bookmark) => bookmark.userId)
+  const userIdList = userList.map((user) => user.userId)
 
   return NextResponse.json(
     {
