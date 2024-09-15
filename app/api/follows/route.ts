@@ -87,7 +87,7 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  if (!body.fromUserId || !body.toUserId) {
+  if (body.fromUserId === undefined || body.toUserId === undefined) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
