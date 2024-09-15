@@ -34,13 +34,11 @@ export async function GET(
     },
   })
 
-  const userIdList = userList.map((like) => like.userId)
-
   return NextResponse.json(
     {
       message: responseMessage.success.get,
       data: {
-        userIdList: userIdList,
+        userList: userList,
       },
     },
     { status: 200 },

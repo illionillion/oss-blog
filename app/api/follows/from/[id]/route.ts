@@ -21,12 +21,10 @@ export async function GET(
     },
   })
 
-  const userIdList = userList.map((user) => user.toUserId)
-
   return NextResponse.json(
     {
       message: responseMessage.success.get,
-      userIdList: userIdList,
+      userList: userList,
     },
     { status: 200 },
   )

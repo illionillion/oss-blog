@@ -25,13 +25,11 @@ export async function GET(
     },
   })
 
-  const articleUrlList = articleList.map((a) => a.article.url)
-
   return NextResponse.json(
     {
       message: responseMessage.success.get,
       data: {
-        articleUrlList: articleUrlList,
+        articleList: articleList,
       },
     },
     { status: 200 },

@@ -4,6 +4,8 @@ import { NextResponse } from "next/server"
 
 import { responseMessage } from "@/app/api/types/responseMessage"
 
+import type { Article } from "@prisma/client"
+
 const prisma = new PrismaClient()
 
 export async function GET(
@@ -12,7 +14,7 @@ export async function GET(
 ) {
   const url: string = params.url
 
-  const article = await prisma.article.findFirst({
+  const article: Article | null = await prisma.article.findFirst({
     where: {
       url: url,
     },
@@ -60,7 +62,7 @@ export async function PUT(
     )
   }
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, 'id'> | null = await prisma.article.findFirst({
     where: {
       url: url,
     },
@@ -76,7 +78,7 @@ export async function PUT(
     )
   }
 
-  const responseData = await prisma.article.update({
+  const responseData: Article = await prisma.article.update({
     where: {
       id: article.id,
     },
@@ -100,7 +102,7 @@ export async function DELETE(
 ) {
   const url: string = params.url
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, 'id'> | null = await prisma.article.findFirst({
     where: {
       url: url,
     },

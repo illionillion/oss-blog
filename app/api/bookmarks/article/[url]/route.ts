@@ -4,6 +4,8 @@ import { NextResponse } from "next/server"
 
 import { responseMessage } from "@/app/api/types/responseMessage"
 
+import type { Article } from "@prisma/client"
+
 const prisma = new PrismaClient()
 
 export async function GET(
@@ -12,7 +14,7 @@ export async function GET(
 ) {
   const url: string = params.url
 
-  const article = await prisma.article.findFirst({
+  const article: Article | null = await prisma.article.findFirst({
     where: {
       url: url,
     },
@@ -25,7 +27,7 @@ export async function GET(
     )
   }
 
-  const userList:Array<{ userId: any }> = await prisma.bookmark.findMany({
+  const userList:Array<{ userId: number }> = await prisma.bookmark.findMany({
     where: {
       articleId: article.id,
     },
@@ -34,13 +36,11 @@ export async function GET(
     },
   })
 
-  const userIdList = userList.map((user) => user.userId)
-
   return NextResponse.json(
     {
       message: responseMessage.success.get,
       data: {
-        userIdList: userIdList,
+        userList: userList,
       },
     },
     { status: 200 },
