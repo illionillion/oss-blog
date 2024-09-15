@@ -1,5 +1,5 @@
+import { GitPullRequestIcon, InfoIcon } from "@yamada-ui/lucide"
 import {
-  Box,
   ButtonGroup,
   Heading,
   Text,
@@ -14,7 +14,6 @@ import {
 } from "@yamada-ui/react"
 import Link from "next/link"
 import type { FC } from "react"
-import { RecentActivitiesTabs } from "@/components/disclosure/recent-activities-tabs"
 import { TopPageTabs } from "@/components/disclosure/top-page-tabs"
 import { Layout } from "@/components/layouts"
 import { getArticleList } from "@/utils/articles"
@@ -27,9 +26,9 @@ export default async function Home() {
       <HStack w="full" alignItems="start">
         <VStack w="full" gap="md">
           <TopPageTabs articles={articles} />
-          <Box px="md">
+          {/* <Box px="md">
             <RecentActivitiesTabs />
-          </Box>
+          </Box> */}
         </VStack>
         <VStack
           maxW="sm"
@@ -52,7 +51,7 @@ const Banner: FC = () => {
       textAlign="center"
       p="lg"
       borderRadius="md"
-      bgGradient="linear(to-r, #2663eb, #4f46e5)"
+      bgGradient="linear(to-r, purple.500, blue.400)"
     >
       <VStack gap="md">
         <Heading color="white" as="h1">
@@ -121,10 +120,26 @@ const GithubButtons: FC = () => {
           参加する
         </Heading>
         <VStack gap="md" m="0 auto">
-          <Button as={Link} href="https://github.com/illionillion/oss-blog">
-            GitHub
+          <Button
+            variant="outline"
+            colorScheme="primary"
+            leftIcon={<InfoIcon />}
+            as="a"
+            target="_blank"
+            href="https://github.com/illionillion/oss-blog/issues"
+          >
+            Issueを見る
           </Button>
-          <Button>Twitter</Button>
+          <Button
+            variant="outline"
+            colorScheme="primary"
+            leftIcon={<GitPullRequestIcon />}
+            as="a"
+            target="_blank"
+            href="https://github.com/illionillion/oss-blog/pulls"
+          >
+            Pull Requestを見る
+          </Button>
         </VStack>
       </CardBody>
     </Card>
