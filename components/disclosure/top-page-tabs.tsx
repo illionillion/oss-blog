@@ -7,6 +7,7 @@ import {
   TabPanel,
   Tabs,
   Text,
+  VStack,
 } from "@yamada-ui/react"
 import { useSession, signIn } from "next-auth/react"
 import type { FC } from "react"
@@ -28,9 +29,11 @@ export const TopPageTabs: FC<TopPageTabsProps> = ({ articles }) => {
       <Tab>AI厳選</Tab>
 
       <TabPanel>
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        <VStack>
+          {articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+        </VStack>
       </TabPanel>
       <TabPanel>
         <Center>

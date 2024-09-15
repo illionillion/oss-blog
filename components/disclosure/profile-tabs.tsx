@@ -1,6 +1,6 @@
 "use client"
 
-import { Tab, TabPanel, Tabs } from "@yamada-ui/react"
+import { Center, Tab, TabPanel, Tabs, Text, VStack } from "@yamada-ui/react"
 import type { FC } from "react"
 import React from "react"
 import { ArticleCard } from "../data-display/article-card"
@@ -18,19 +18,21 @@ export const ProfileTabs: FC<ProfileTabsProps> = ({ articles }) => {
       <Tab>ブックマーク</Tab>
 
       <TabPanel>
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        <VStack>
+          {articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+        </VStack>
       </TabPanel>
       <TabPanel>
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        <Center>
+          <Text>いいねした記事はありません</Text>
+        </Center>
       </TabPanel>
       <TabPanel>
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
+        <Center>
+          <Text>ブックマークした記事はありません</Text>
+        </Center>
       </TabPanel>
     </Tabs>
   )
