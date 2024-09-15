@@ -8,13 +8,13 @@ keyword:
 contributors:
   - id: 60034520
     login: illionillion
-    avatar_url: 'https://avatars.githubusercontent.com/u/60034520?v=4'
-    html_url: 'https://github.com/illionillion'
+    avatar_url: "https://avatars.githubusercontent.com/u/60034520?v=4"
+    html_url: "https://github.com/illionillion"
   - id: 109452865
     login: taku10101
-    avatar_url: 'https://avatars.githubusercontent.com/u/109452865?v=4'
-    html_url: 'https://github.com/taku10101'
-latest_date: '2024-09-14T23:54:04Z'
+    avatar_url: "https://avatars.githubusercontent.com/u/109452865?v=4"
+    html_url: "https://github.com/taku10101"
+latest_date: "2024-09-15T00:05:02Z"
 ---
 
 # Reactの`useRef`フックについて

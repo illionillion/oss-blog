@@ -1,6 +1,7 @@
 ---
 title: AWSを使用したCI/CDパイプラインの構築
-description: AWSの各種サービスを活用してCI/CDパイプラインを構築する方法について解説します。CodeCommit、CodeBuild、CodeDeploy、CodePipelineを組み合わせて、自動化されたビルド、テスト、デプロイのワークフローを作成します。
+description: >-
+  AWSの各種サービスを活用してCI/CDパイプラインを構築する方法について解説します。CodeCommit、CodeBuild、CodeDeploy、CodePipelineを組み合わせて、自動化されたビルド、テスト、デプロイのワークフローを作成します。
 keyword:
   - AWS
   - CI/CD
@@ -13,7 +14,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-15T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## AWSを使用したCI/CDパイプラインの構築

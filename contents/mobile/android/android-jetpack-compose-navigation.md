@@ -1,6 +1,8 @@
 ---
 title: Android開発のJetpack Composeでの画面遷移の基本
-description: Jetpack Composeを使用したAndroidアプリの画面遷移の基本について解説します。ナビゲーションコンポーネントを使って効率的な画面遷移を実装する方法を学びましょう。
+description: >-
+  Jetpack
+  Composeを使用したAndroidアプリの画面遷移の基本について解説します。ナビゲーションコンポーネントを使って効率的な画面遷移を実装する方法を学びましょう。
 keyword:
   - Android
   - Jetpack Compose
@@ -13,7 +15,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-16T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 # Android開発のJetpack Composeでの画面遷移の基本

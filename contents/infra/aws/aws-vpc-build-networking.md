@@ -1,6 +1,8 @@
 ---
 title: AWS VPCを用いたネットワーク構築の基本
-description: AWS VPCを使用したネットワーク構築の基本について解説します。VPCの作成、サブネットの設定、セキュリティグループの構成など、VPCの主要な機能とその利点を紹介します。
+description: >-
+  AWS
+  VPCを使用したネットワーク構築の基本について解説します。VPCの作成、サブネットの設定、セキュリティグループの構成など、VPCの主要な機能とその利点を紹介します。
 keyword:
   - AWS
   - VPC
@@ -12,7 +14,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-14T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## AWS VPCを用いたネットワーク構築の基本

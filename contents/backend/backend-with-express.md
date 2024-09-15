@@ -1,6 +1,7 @@
 ---
 title: Node.jsを使ったバックエンド開発（Express）
-description: Node.jsとExpressを使用したバックエンド開発の基本について解説します。シンプルなAPIサーバーの構築からルーティングやミドルウェアの活用方法まで、具体的なサンプルコードを交えて紹介します。
+description: >-
+  Node.jsとExpressを使用したバックエンド開発の基本について解説します。シンプルなAPIサーバーの構築からルーティングやミドルウェアの活用方法まで、具体的なサンプルコードを交えて紹介します。
 keyword:
   - Node.js
   - Express
@@ -11,7 +12,7 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-14T00:00:00Z"
+latest_date: "2024-09-15T02:18:55Z"
 ---
 
 ## Node.jsを使ったバックエンド開発（Express）
