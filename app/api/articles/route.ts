@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
       select: {
         id: true,
       },
-    })) != null
+    })) !== null
 
   if (isExist) {
     return NextResponse.json(
