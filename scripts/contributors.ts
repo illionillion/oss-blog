@@ -2,6 +2,7 @@ import fs from "fs"
 import { Octokit } from "@octokit/rest"
 import { endOfDay, subDays } from "date-fns"
 import { config } from "dotenv"
+import { formatIsoDate } from "@/utils/fomat/iso-date"
 
 // .envファイルの環境変数を読み込み
 config()
@@ -51,7 +52,7 @@ const getTopContributors = async () => {
 
     // JSONファイルに書き込む
     const rankingData = {
-      date: new Date().toISOString(),
+      date: formatIsoDate(new Date()),
       contributors: topContributors,
     }
 
