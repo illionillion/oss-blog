@@ -100,6 +100,10 @@ jobs:
           node --version
           pnpm install
 
+      - name: generate prisma
+        run: |
+          pnpx prisma generate
+
       - name: Run typecheck
         run: pnpm typecheck
 
@@ -125,6 +129,10 @@ jobs:
         run: |
           node --version
           pnpm install
+
+      - name: generate prisma
+        run: |
+          pnpx prisma generate
 
       - name: Run Build
         run: pnpm run build

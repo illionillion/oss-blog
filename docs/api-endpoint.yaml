@@ -308,7 +308,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArticleUrlListResponse'
+                $ref: '#/components/schemas/ArticleListResponse'
         '404':
           description: ユーザーが存在しない
           content:
@@ -402,7 +402,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArticleUrlListResponse'
+                $ref: '#/components/schemas/ArticleListResponse'
         '404':
           description: ユーザーが存在しない
           content:
@@ -1212,25 +1212,13 @@ components:
         data:
           type: object
           properties:
-            userIdList:
+            userList:
               type: array
-              items:
-                type: number
-              description: ユーザーのIDのリスト
-    ArticleUrlListResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          example: 'Success'
-        data:
-          type: object
-          properties:
-            articleUrlList:
-              type: array
-              items:
-                type: string
-              description: 記事のURLのリスト
+              properties:
+                userId:
+                  type: number
+                  description: ID
+              description: ユーザーのリスト
     RatingResponse:
       type: object
       properties:

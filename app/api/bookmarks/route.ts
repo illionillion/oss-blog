@@ -1,4 +1,6 @@
+import type { Article, Bookmark } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
+
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
@@ -6,9 +8,12 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
 
-type Bookmark = {
-  userId: number
-  articleId: number
+interface ResponseBookmark {
+  id: number;
+  userId: number;
+  articleUrl: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export async function POST(request: NextRequest) {
@@ -32,7 +37,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, 'id'> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -49,13 +54,13 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const bookmark: Bookmark = {
+  const bookmark: Pick<Bookmark, 'userId' | 'articleId'> = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const isExist =
+  const isExist: boolean =
     (await prisma.bookmark.findFirst({
       where: bookmark,
       select: {
@@ -70,7 +75,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const createdData = await prisma.bookmark.create({
+  const createdData: Bookmark & { article: { url: string }} = await prisma.bookmark.create({
     data: bookmark,
     include: {
       article: {
@@ -81,7 +86,7 @@ export async function POST(request: NextRequest) {
     },
   })
 
-  const responseData = {
+  const responseData: ResponseBookmark = {
     id: createdData.id,
     userId: createdData.userId,
     articleUrl: createdData.article.url,
@@ -119,7 +124,7 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, 'id'> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -136,13 +141,13 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const bookmark: Bookmark = {
+  const bookmark: Pick<Bookmark, 'userId' | 'articleId'> = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const bookmarkData = await prisma.bookmark.findFirst({
+  const bookmarkData: Pick<Bookmark, 'id'> | null = await prisma.bookmark.findFirst({
     where: bookmark,
     select: {
       id: true,
