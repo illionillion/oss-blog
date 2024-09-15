@@ -1,4 +1,6 @@
+import type { Tag } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
+
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
@@ -6,13 +8,8 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
 
-type Tag = {
-  name: string
-  iconUrl: string
-}
-
 export async function GET() {
-  const tagList = await prisma.tag.findMany()
+  const tagList: Array<Tag> = await prisma.tag.findMany()
 
   return NextResponse.json(
     {
@@ -39,20 +36,20 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (body.name == undefined) {
+  if (body.name == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  const tag: Tag = {
+  const tag: Pick<Tag, "name" | "iconUrl"> = {
     name: body.name,
     iconUrl: body.iconUrl != undefined ? body.iconUrl : "",
   }
 
   // 重複したデータが存在するか確認
-  const isExist =
+  const isExist: boolean =
     (await prisma.tag.findFirst({
       where: {
         name: tag.name,
@@ -69,7 +66,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const responseData = await prisma.tag.create({
+  const responseData: Tag = await prisma.tag.create({
     data: tag,
   })
 

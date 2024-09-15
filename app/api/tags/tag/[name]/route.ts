@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client"
+import type { Tag, PrismaClient } from "@prisma/client"
+
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
@@ -12,7 +13,7 @@ export async function GET(
 ) {
   const name: string = params.name
 
-  const tag = await prisma.tag.findFirst({
+  const tag: Tag | null = await prisma.tag.findFirst({
     where: {
       name: name,
     },
@@ -66,12 +67,12 @@ export async function PUT(
     )
   }
 
-  const updatedName = body.name !== undefined ? body.name : tag.name
+  const updatedName: string = body.name != null ? body.name : tag.name
 
-  const updatedIconUrl =
-    body.iconname !== undefined ? body.iconname : tag.iconUrl
+  const updatedIconUrl: string =
+    body.iconname != null ? body.iconname : tag.iconUrl
 
-  const responseData = await prisma.tag.update({
+  const responseData: Tag = await prisma.tag.update({
     where: {
       id: tag.id,
     },
@@ -96,7 +97,7 @@ export async function DELETE(
 ) {
   const name: string = params.name
 
-  const tag = await prisma.tag.findFirst({
+  const tag: Pick<Tag, "id"> | null = await prisma.tag.findFirst({
     where: {
       name: name,
     },
