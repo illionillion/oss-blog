@@ -1,4 +1,4 @@
-import { GitPullRequestIcon, UsersIcon } from "@yamada-ui/lucide"
+import { GithubIcon, GitPullRequestIcon, UsersIcon } from "@yamada-ui/lucide"
 import {
   Avatar,
   Box,
@@ -9,6 +9,7 @@ import {
   Container,
   Flex,
   HStack,
+  IconButton,
   Text,
   VStack,
 } from "@yamada-ui/react"
@@ -52,7 +53,6 @@ export const generateStaticParams = async () => {
     new Set(allContributors.map((contributor) => contributor.login)),
   )
 
-  // 各ユーザー名に対してパスを生成
   return uniqueUsernames.map((username) => ({ username }))
 }
 
@@ -61,7 +61,6 @@ const Page = async ({ params }: Props) => {
 
   const articles = await getArticleList()
 
-  // ユーザー名が表示されることを確認するためのサンプル
   return (
     <Layout>
       <Container maxW="9xl" w="full">
@@ -73,30 +72,40 @@ const Page = async ({ params }: Props) => {
               </Box>
               <VStack flexGrow={1}>
                 <Text fontSize="md">{username}</Text>
-                <Text fontSize="sm" color="gray.100">
+                <Text fontSize="sm" color={["gray.500", "gray.100"]}>
                   説明
                 </Text>
                 <HStack>
                   <Center gap="sm">
-                    <UsersIcon color="gray.100" />
+                    <UsersIcon color={["gray.500", "gray.100"]} />
                     <Flex>
                       <Text>1234</Text>
-                      <Text color="gray.100">フォロワー</Text>
+                      <Text color={["gray.500", "gray.100"]}>フォロワー</Text>
                     </Flex>
                   </Center>
                   <Center gap="sm">
-                    <UsersIcon color="gray.100" />
+                    <UsersIcon color={["gray.500", "gray.100"]} />
                     <Flex>
                       <Text>1234</Text>
-                      <Text color="gray.100">フォロー</Text>
+                      <Text color={["gray.500", "gray.100"]}>フォロー</Text>
                     </Flex>
                   </Center>
                   <Center gap="sm">
-                    <GitPullRequestIcon color="gray.100" />
+                    <GitPullRequestIcon color={["gray.500", "gray.100"]} />
                     <Flex>
                       <Text>1234</Text>
-                      <Text color="gray.100">フォロワー</Text>
+                      <Text color={["gray.500", "gray.100"]}>フォロワー</Text>
                     </Flex>
+                  </Center>
+                  <Center>
+                    <IconButton
+                      variant="ghost"
+                      fontSize="4xl"
+                      icon={<GithubIcon />}
+                      as="a"
+                      target="_blank"
+                      href={`https://github.com/${username}`}
+                    />
                   </Center>
                 </HStack>
               </VStack>
