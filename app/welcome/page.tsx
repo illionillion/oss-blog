@@ -32,10 +32,10 @@ export default function Home() {
         m="auto"
         bgGradient="linear(to-r, #59a9e1, #f37bdf)"
       >
-        <Heading as="h1" fontSize={{ base: "6xl", md: "xl" }}>
+        <Heading color="white" as="h1" fontSize={{ base: "6xl", md: "xl" }}>
           OSSBlogへようこそ
         </Heading>
-        <Text>
+        <Text color="white">
           オープンソースの力で、より良い技術ブログを一緒に作り上げましょう
         </Text>
         <Button m="auto" as={Link} href="#">
