@@ -55,7 +55,7 @@ export async function PUT(
     )
   }
 
-  if (!body.url) {
+  if (body.url == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },

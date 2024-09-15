@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (!body.url) {
+  if (body.url == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },

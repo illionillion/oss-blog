@@ -22,14 +22,14 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (!body.fromUserId || !body.toUserId) {
+  if (body.fromUserId == null || body.toUserId == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
     )
   }
 
-  if (body.fromUserId === body.toUserId) {
+  if (body.fromUserId == body.toUserId) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
@@ -84,7 +84,7 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  if (!body.fromUserId || !body.toUserId) {
+  if (body.fromUserId == null || body.toUserId == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },

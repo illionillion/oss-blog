@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (!body.userId || !body.articleUrl) {
+  if (body.userId == null || body.articleUrl == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
@@ -122,7 +122,7 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  if (!body.userId || !body.articleUrl) {
+  if (body.userId == null || body.articleUrl == null) {
     return NextResponse.json(
       { message: responseMessage.error.invalidRequest },
       { status: 400 },
