@@ -12,26 +12,25 @@ export async function GET(
 ) {
   const id: number = Number(params.id)
 
-  const articleList = await prisma.bookmark.findMany({
-    where: {
-      userId: id,
-    },
-    include: {
-      article: {
-        select: {
-          url: true,
+  const articleList: Array<{ article: { url: string } }> =
+    await prisma.bookmark.findMany({
+      where: {
+        userId: id,
+      },
+      include: {
+        article: {
+          select: {
+            url: true,
+          },
         },
       },
-    },
-  })
-
-  const articleUrlList = articleList.map((bookmark) => bookmark.article.url)
+    })
 
   return NextResponse.json(
     {
       message: responseMessage.success.get,
       data: {
-        articleUrlList: articleUrlList,
+        articleList: articleList,
       },
     },
     { status: 200 },

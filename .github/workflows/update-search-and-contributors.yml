@@ -1,0 +1,58 @@
+name: "Update search and contributors"
+
+on:
+  push:
+    paths:
+      - "contents/**"
+      - ".github/workflows/update-search-and-contributors.yml"
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+  checks: write
+
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
+
+      - name: Install node_modules
+        run: |
+          node --version
+          pnpm install
+
+      - name: Run update script
+        run: |
+          pnpm gen:search
+          pnpm gen:contributors
+          cat i18n/content.json
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          delete-branch: true
+          commit-message: "ci: updated search and contributors"
+          title: "Updated search and contributors"
+          branch: ci/contributors-search
+          assignees: "illionillion"
+          reviewers: "illionillion"

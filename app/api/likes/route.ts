@@ -1,4 +1,6 @@
+import type { Article, Like } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
+
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
@@ -6,9 +8,12 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
 
-type Like = {
+interface ResponseLike {
+  id: number
   userId: number
-  articleId: number
+  articleUrl: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export async function POST(request: NextRequest) {
@@ -32,7 +37,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  let article = await prisma.article.findFirst({
+  let article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -53,13 +58,13 @@ export async function POST(request: NextRequest) {
     })
   }
 
-  const like: Like = {
+  const like: Pick<Like, "userId" | "articleId"> = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const isExist =
+  const isExist: boolean =
     (await prisma.like.findFirst({
       where: like,
       select: {
@@ -74,18 +79,19 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const createdData = await prisma.like.create({
-    data: like,
-    include: {
-      article: {
-        select: {
-          url: true,
+  const createdData: Like & { article: { url: string } } =
+    await prisma.like.create({
+      data: like,
+      include: {
+        article: {
+          select: {
+            url: true,
+          },
         },
       },
-    },
-  })
+    })
 
-  const responseData = {
+  const responseData: ResponseLike = {
     id: createdData.id,
     userId: createdData.userId,
     articleUrl: createdData.article.url,
@@ -123,7 +129,7 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const article = await prisma.article.findFirst({
+  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -140,13 +146,13 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const like: Like = {
+  const like: Pick<Like, "userId" | "articleId"> = {
     userId: body.userId,
     articleId: article.id,
   }
 
   // 重複したデータが存在するか確認
-  const likeData = await prisma.like.findFirst({
+  const likeData: Pick<Like, "id"> | null = await prisma.like.findFirst({
     where: like,
     select: {
       id: true,

@@ -1,4 +1,4 @@
-openapi: '3.0.0'
+openapi: "3.0.0"
 
 info:
   title: Backend Endpoint
@@ -31,12 +31,12 @@ paths:
       tags:
         - articles
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArticleListResponse'
+                $ref: "#/components/schemas/ArticleListResponse"
     post:
       summary: 記事の登録
       tags:
@@ -45,38 +45,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ArticleRequest'
+              $ref: "#/components/schemas/ArticleRequest"
       responses:
-        '201':
+        "201":
           description: 作成成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArticleCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/ArticleCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
   /articles/{articleUrl}:
     get:
       summary: 記事の取得
       tags:
         - articles
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArticleDetailResponse'
-        '404':
+                $ref: "#/components/schemas/ArticleDetailResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
     put:
       summary: 記事の更新
       tags:
@@ -85,49 +85,49 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ArticleRequest'
+              $ref: "#/components/schemas/ArticleRequest"
       responses:
-        '200':
+        "200":
           description: 更新成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArticleUpdatedResponse'
-        '400':
+                $ref: "#/components/schemas/ArticleUpdatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
     delete:
       summary: 記事の削除
       tags:
         - articles
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /follows:
     post:
       summary: ユーザーフォローの作成
@@ -137,26 +137,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FollowRequest' 
+              $ref: "#/components/schemas/FollowRequest"
       responses:
-        '201':
+        "201":
           description: 作成成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FollowCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/FollowCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '409':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "409":
           description: 既にフォローしている
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConflictErrorResponse'
+                $ref: "#/components/schemas/ConflictErrorResponse"
     delete:
       summary: ユーザーフォローの削除
       tags:
@@ -165,63 +165,63 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FollowRequest' 
+              $ref: "#/components/schemas/FollowRequest"
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: フォローが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /follows/from/{userId}:
     get:
       summary: フォローしているユーザーの取得
       tags:
         - follows
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserListResponse'
-        '404':
+                $ref: "#/components/schemas/UserListResponse"
+        "404":
           description: ユーザーが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /follows/to/{userId}:
     get:
       summary: フォローされているユーザーの取得
       tags:
         - follows
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserListResponse'
-        '404':
+                $ref: "#/components/schemas/UserListResponse"
+        "404":
           description: ユーザーが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
-  
+                $ref: "#/components/schemas/NotFoundErrorResponse"
+
   /likes:
     post:
       summary: いいねの作成
@@ -231,26 +231,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LikeRequest'
+              $ref: "#/components/schemas/LikeRequest"
       responses:
-        '201':
+        "201":
           description: 作成成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LikeCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/LikeCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '409':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "409":
           description: 既にいいねしている
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConflictErrorResponse'
+                $ref: "#/components/schemas/ConflictErrorResponse"
     delete:
       summary: いいねの削除
       tags:
@@ -259,62 +259,62 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LikeRequest'
+              $ref: "#/components/schemas/LikeRequest"
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: いいねが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /likes/article/{articleUrl}:
     get:
       summary: 記事に対していいねしているユーザーの取得
       tags:
         - likes
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserListResponse'
-        '404':
+                $ref: "#/components/schemas/UserListResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /likes/user/{userId}:
     get:
       summary: ユーザーがいいねしている記事の取得
       tags:
         - likes
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArticleUrlListResponse'
-        '404':
+                $ref: "#/components/schemas/ArticleListResponse"
+        "404":
           description: ユーザーが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
 
   /bookmarks:
     post:
@@ -325,26 +325,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BookmarkRequest'
+              $ref: "#/components/schemas/BookmarkRequest"
       responses:
-        '201':
+        "201":
           description: 作成成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookmarkCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/BookmarkCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '409':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "409":
           description: 既にブックマークしている
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConflictErrorResponse'
+                $ref: "#/components/schemas/ConflictErrorResponse"
     delete:
       summary: ブックマークの削除
       tags:
@@ -353,62 +353,62 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BookmarkRequest'
+              $ref: "#/components/schemas/BookmarkRequest"
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: ブックマークが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /bookmarks/article/{articleUrl}:
     get:
       summary: 記事をブックマークしているユーザーの取得
       tags:
         - bookmarks
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserListResponse'
-        '404':
+                $ref: "#/components/schemas/UserListResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /bookmarks/user/{userId}:
     get:
       summary: ユーザーがブックマークしている記事の取得
       tags:
         - bookmarks
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArticleUrlListResponse'
-        '404':
+                $ref: "#/components/schemas/ArticleListResponse"
+        "404":
           description: ユーザーが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
 
   /ratings/difficulty:
     post:
@@ -419,32 +419,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RatingRequest'
+              $ref: "#/components/schemas/RatingRequest"
       responses:
-        '201':
+        "201":
           description: 評価成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/RatingCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
-        '409':
+                $ref: "#/components/schemas/NotFoundErrorResponse"
+        "409":
           description: 既に評価している
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConflictErrorResponse'
+                $ref: "#/components/schemas/ConflictErrorResponse"
     put:
       summary: 記事の難易度評価の更新
       tags:
@@ -453,27 +453,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RatingRequest'
+              $ref: "#/components/schemas/RatingRequest"
       responses:
-        '200':
+        "200":
           description: 更新成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingUpdatedResponse'
-        '400':
+                $ref: "#/components/schemas/RatingUpdatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 記事または評価が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
-          
+                $ref: "#/components/schemas/NotFoundErrorResponse"
+
     delete:
       summary: 記事の難易度評価の削除
       tags:
@@ -482,44 +482,44 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RatingRequest'
+              $ref: "#/components/schemas/RatingRequest"
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 記事または評価が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /ratings/difficulty/{articleUrl}:
     get:
       summary: 記事の難易度評価平均の取得
       tags:
         - ratings
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingResponse'
-        '404':
+                $ref: "#/components/schemas/RatingResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /ratings/technical:
     post:
       summary: 記事の技術評価
@@ -529,32 +529,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RatingRequest'
+              $ref: "#/components/schemas/RatingRequest"
       responses:
-        '201':
+        "201":
           description: 評価成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/RatingCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404': 
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
-        '409':
+                $ref: "#/components/schemas/NotFoundErrorResponse"
+        "409":
           description: 既に評価している
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConflictErrorResponse'
+                $ref: "#/components/schemas/ConflictErrorResponse"
     put:
       summary: 記事の技術評価の更新
       tags:
@@ -563,26 +563,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RatingRequest'
+              $ref: "#/components/schemas/RatingRequest"
       responses:
-        '200':
+        "200":
           description: 更新成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingUpdatedResponse'
-        '400':
+                $ref: "#/components/schemas/RatingUpdatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 記事または評価が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
     delete:
       summary: 記事の技術評価の削除
       tags:
@@ -591,44 +591,44 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RatingRequest'
+              $ref: "#/components/schemas/RatingRequest"
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 記事または評価が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /ratings/technical/{articleUrl}:
     get:
       summary: 記事の技術評価平均の取得
       tags:
         - ratings
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingResponse'
-        '404':
+                $ref: "#/components/schemas/RatingResponse"
+        "404":
           description: 記事が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
 
   /tags:
     get:
@@ -636,12 +636,12 @@ paths:
       tags:
         - tags
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TagListResponse'
+                $ref: "#/components/schemas/TagListResponse"
     post:
       summary: タグの作成
       tags:
@@ -650,44 +650,44 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TagRequest'
+              $ref: "#/components/schemas/TagRequest"
       responses:
-        '201':
+        "201":
           description: 作成成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TagCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/TagCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '409':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "409":
           description: 既にタグが存在する
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConflictErrorResponse'
+                $ref: "#/components/schemas/ConflictErrorResponse"
   /tags/tag/{tagName}:
     get:
       summary: タグの詳細取得
       tags:
         - tags
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TagDetailResponse'
-        '404':
+                $ref: "#/components/schemas/TagDetailResponse"
+        "404":
           description: タグが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
     put:
       summary: タグの更新
       tags:
@@ -696,26 +696,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TagRequest'
+              $ref: "#/components/schemas/TagRequest"
       responses:
-        '200':
+        "200":
           description: 更新成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TagUpdatedResponse'
-        '400':
+                $ref: "#/components/schemas/TagUpdatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: タグが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
     delete:
       summary: タグの削除
       tags:
@@ -724,26 +724,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TagRequest'
+              $ref: "#/components/schemas/TagRequest"
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: タグが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /tags/user:
     post:
       summary: ユーザーとタグの紐づけ追加
@@ -753,44 +753,44 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserTagRequest'
+              $ref: "#/components/schemas/UserTagRequest"
       responses:
-        '201':
+        "201":
           description: 作成成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserTagCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/UserTagCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '409':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "409":
           description: 既にタグが存在する
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConflictErrorResponse'
+                $ref: "#/components/schemas/ConflictErrorResponse"
   /tags/user/{userId}:
     get:
       summary: ユーザーに紐づいているタグの取得
       tags:
         - tags
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TagListResponse'
-        '404':
+                $ref: "#/components/schemas/TagListResponse"
+        "404":
           description: ユーザーが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
     delete:
       summary: ユーザーとタグの紐づけの削除
       tags:
@@ -799,26 +799,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserTagRequest'
+              $ref: "#/components/schemas/UserTagRequest"
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: タグが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /notices:
     post:
       summary: 通知の作成
@@ -828,20 +828,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NoticeCreateRequest'
+              $ref: "#/components/schemas/NoticeCreateRequest"
       responses:
-        '201':
+        "201":
           description: 作成成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NoticeCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/NoticeCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
   /notices/notice/{noticeId}:
     put:
       summary: 通知の更新
@@ -851,67 +851,67 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NoticeUpdateRequest'
+              $ref: "#/components/schemas/NoticeUpdateRequest"
       responses:
-        '200':
+        "200":
           description: 更新成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NoticeCreatedResponse'
-        '400':
+                $ref: "#/components/schemas/NoticeCreatedResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 通知が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
     delete:
       summary: 通知の削除
       tags:
         - notices
       responses:
-        '200':
+        "200":
           description: 削除成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteSuccessResponse'
-        '400':
+                $ref: "#/components/schemas/DeleteSuccessResponse"
+        "400":
           description: リクエストボディが不正
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvalidRequestErrorResponse'
-        '404':
+                $ref: "#/components/schemas/InvalidRequestErrorResponse"
+        "404":
           description: 通知が存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
   /notices/user/{userId}:
     get:
       summary: ユーザーに対する通知一覧の取得
       tags:
         - notices
       responses:
-        '200':
+        "200":
           description: 取得成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NoticeListResponse'
-        '404':
+                $ref: "#/components/schemas/NoticeListResponse"
+        "404":
           description: ユーザーが存在しない
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundErrorResponse'
+                $ref: "#/components/schemas/NotFoundErrorResponse"
 
 components:
   schemas:
@@ -1029,7 +1029,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Created Successful'
+          example: "Created Successful"
         data:
           type: object
           properties:
@@ -1044,7 +1044,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Updated Successful'
+          example: "Updated Successful"
         data:
           type: object
           properties:
@@ -1059,7 +1059,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Success'
+          example: "Success"
         data:
           type: object
           properties:
@@ -1079,7 +1079,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Success'
+          example: "Success"
         data:
           type: object
           properties:
@@ -1094,7 +1094,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Created Successful'
+          example: "Created Successful"
         data:
           type: object
           properties:
@@ -1112,7 +1112,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Created Successful'
+          example: "Created Successful"
         data:
           type: object
           properties:
@@ -1130,7 +1130,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Created Successful'
+          example: "Created Successful"
         data:
           type: object
           properties:
@@ -1148,7 +1148,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Created Successful'
+          example: "Created Successful"
         data:
           type: object
           properties:
@@ -1169,7 +1169,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Updated Successful'
+          example: "Updated Successful"
         data:
           type: object
           properties:
@@ -1190,7 +1190,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Created Successful'
+          example: "Created Successful"
         data:
           type: object
           properties:
@@ -1208,35 +1208,23 @@ components:
       properties:
         message:
           type: string
-          example: 'Success'
+          example: "Success"
         data:
           type: object
           properties:
-            userIdList:
+            userList:
               type: array
-              items:
-                type: number
-              description: ユーザーのIDのリスト
-    ArticleUrlListResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          example: 'Success'
-        data:
-          type: object
-          properties:
-            articleUrlList:
-              type: array
-              items:
-                type: string
-              description: 記事のURLのリスト
+              properties:
+                userId:
+                  type: number
+                  description: ID
+              description: ユーザーのリスト
     RatingResponse:
       type: object
       properties:
         message:
           type: string
-          example: 'Success'
+          example: "Success"
         data:
           type: object
           properties:
@@ -1248,7 +1236,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Success'
+          example: "Success"
         data:
           type: object
           properties:
@@ -1271,7 +1259,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Created Successful'
+          example: "Created Successful"
         data:
           type: object
           properties:
@@ -1289,7 +1277,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Updated Successful'
+          example: "Updated Successful"
         data:
           type: object
           properties:
@@ -1307,7 +1295,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Success'
+          example: "Success"
         data:
           type: object
           properties:
@@ -1325,7 +1313,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Created Successful'
+          example: "Created Successful"
         data:
           type: object
           properties:
@@ -1346,7 +1334,7 @@ components:
       properties:
         message:
           type: string
-          example: 'Success'
+          example: "Success"
         data:
           type: object
           properties:
@@ -1373,23 +1361,23 @@ components:
       properties:
         message:
           type: string
-          example: 'Deleted Successful'
+          example: "Deleted Successful"
 
     InvalidRequestErrorResponse:
       type: object
       properties:
         message:
           type: string
-          example: 'Invalid Request'
+          example: "Invalid Request"
     ConflictErrorResponse:
       type: object
       properties:
         message:
           type: string
-          example: 'Conflict'
+          example: "Conflict"
     NotFoundErrorResponse:
       type: object
       properties:
         message:
           type: string
-          example: 'Not Found'
+          example: "Not Found"

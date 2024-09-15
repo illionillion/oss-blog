@@ -1,15 +1,12 @@
+import type { Follow } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
+
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
 import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
-
-type Follow = {
-  fromUserId: number
-  toUserId: number
-}
 
 export async function POST(request: NextRequest) {
   let body
@@ -39,13 +36,13 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const follow: Follow = {
+  const follow: Pick<Follow, "fromUserId" | "toUserId"> = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
   }
 
   // 重複したデータが存在するか確認
-  const isExist =
+  const isExist: boolean =
     (await prisma.follow.findFirst({
       where: follow,
       select: {
@@ -60,7 +57,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const responseData = await prisma.follow.create({
+  const responseData: Follow = await prisma.follow.create({
     data: follow,
   })
 
@@ -94,12 +91,12 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  const follow: Follow = {
+  const follow: Pick<Follow, "fromUserId" | "toUserId"> = {
     fromUserId: body.fromUserId,
     toUserId: body.toUserId,
   }
 
-  const targetData = await prisma.follow.findFirst({
+  const targetData: Pick<Follow, "id"> | null = await prisma.follow.findFirst({
     where: follow,
     select: {
       id: true,

@@ -1,4 +1,6 @@
+import type { Article } from "@prisma/client"
 import { PrismaClient } from "@prisma/client"
+
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
@@ -6,12 +8,8 @@ import { responseMessage } from "@/app/api/types/responseMessage"
 
 const prisma = new PrismaClient()
 
-type Article = {
-  url: string
-}
-
 export async function GET() {
-  const articleList = await prisma.article.findMany()
+  const articleList: Array<Article> = await prisma.article.findMany()
 
   return NextResponse.json(
     {
@@ -45,12 +43,12 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const article: Article = {
+  const article: Pick<Article, "url"> = {
     url: body.url,
   }
 
   // 重複したデータが存在するか確認
-  const isExist =
+  const isExist: boolean =
     (await prisma.article.findFirst({
       where: article,
       select: {
@@ -65,7 +63,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const responseData = await prisma.article.create({
+  const responseData: Article = await prisma.article.create({
     data: article,
   })
 
