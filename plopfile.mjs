@@ -1,5 +1,6 @@
 import { existsSync, readdirSync } from "fs"
 import path from "path"
+import figlet from "figlet"
 
 const getDirectories = (source) =>
   readdirSync(source, { withFileTypes: true })
@@ -15,6 +16,18 @@ const checkAvailableName = (basePath, name) => {
   }
   console.log("Available")
   return true
+}
+
+const printWelcomeMessage = () => {
+  return new Promise((resolve, reject) => {
+    figlet("Welcome!", function (err, data) {
+      if (err) {
+        reject(err)
+      }
+      console.log(data)
+      resolve()
+    })
+  })
 }
 
 const validateDashCase = (i) => !/[A-Z]/.test(i) && !/_/.test(i)
@@ -74,8 +87,8 @@ const folderPrompt = (_, basePath, isTopLevel) => {
   ]
 }
 
-export default function plop(plop) {
-  console.log("ここにアスキーアートとかでウェルカムメッセージとかを表示する")
+export default async function plop(plop) {
+  await printWelcomeMessage()
   plop.setGenerator("article", {
     description: "Generate article folder and markdown file",
     prompts: async (inquirer) => {
