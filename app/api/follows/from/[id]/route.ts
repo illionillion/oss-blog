@@ -12,7 +12,7 @@ export async function GET(
 ) {
   const userId: number = Number(params.id)
 
-  const userList = await prisma.follow.findMany({
+  const userList:Array<{toUserId:number}> = await prisma.follow.findMany({
     where: {
       fromUserId: userId,
     },
@@ -21,12 +21,10 @@ export async function GET(
     },
   })
 
-  const userIdList = userList.map((user) => user.toUserId)
-
   return NextResponse.json(
     {
       message: responseMessage.success.get,
-      userIdList: userIdList,
+      userList: userList,
     },
     { status: 200 },
   )
