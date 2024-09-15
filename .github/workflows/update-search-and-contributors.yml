@@ -19,7 +19,7 @@ jobs:
     name: Update
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: main
@@ -45,22 +45,6 @@ jobs:
           pnpm gen:search
           pnpm gen:contributors
           cat i18n/content.json
-
-      - name: Set up Git identity
-        run: |
-          git config --local user.name "${{ github.actor }}"
-          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-
-      - name: Create a new branch and commit changes
-        run: |
-          git checkout -b ci/contributors-search
-          git add .
-          git commit -m "ci: updated search and contributors"
-
-      - name: Push new branch
-        run: |
-          git push origin ci/contributors-search
-
       - name: Create PR
         uses: peter-evans/create-pull-request@v6
         with:
