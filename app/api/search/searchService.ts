@@ -20,13 +20,16 @@ export async function searchQiita(query: string): Promise<Article[]> {
 }
 
 export async function searchZenn(query: string): Promise<Article[]> {
+  const zennUrl = "https://zenn.dev/"
+
   try {
     const response = await axius.get(
-      `${config.searchEndpoints.zenn}?query=${query}`,
+      `${config.searchEndpoints.zenn}?q=${query}`,
     )
-    return response.data.map((item: any) => ({
+    console.log("Zenn response:", response.data)
+    return response.data.articles.map((item: any) => ({
       title: item.title,
-      url: item.url,
+      url: zennUrl + item.path,
       platofrom: "Zenn",
     }))
   } catch (error) {
