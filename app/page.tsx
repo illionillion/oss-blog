@@ -58,7 +58,7 @@ const Banner: FC = () => {
           オープンソースで技術ブログを革新する
         </Heading>
         <Text color="white">
-          Githubを活用、した共同執筆で、より質の高いコンテンツを{" "}
+          Githubを活用、した共同執筆でより質の高いコンテンツを
         </Text>
 
         <ButtonGroup gap="md" margin="0 auto">
