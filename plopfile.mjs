@@ -1,5 +1,6 @@
 import { existsSync, readdirSync } from "fs"
 import path from "path"
+import figlet from "figlet"
 
 const getDirectories = (source) =>
   readdirSync(source, { withFileTypes: true })
@@ -8,22 +9,31 @@ const getDirectories = (source) =>
 
 const checkAvailableName = (basePath, name) => {
   const newPath = path.join(basePath, name)
-  console.log(newPath)
   if (existsSync(newPath)) {
-    console.log("Already exists")
     return false
   }
-  console.log("Available")
   return true
+}
+
+const printWelcomeMessage = () => {
+  return new Promise((resolve, reject) => {
+    figlet("Welcome!", function (err, data) {
+      if (err) {
+        reject(err)
+      }
+      console.log(data)
+      resolve()
+    })
+  })
 }
 
 const validateDashCase = (i) => !/[A-Z]/.test(i) && !/_/.test(i)
 const contentsPath = path.resolve(process.cwd(), "contents")
 const appPath = path.resolve(process.cwd(), "app")
+const CREATE_FILE = "📝 Create new markdown file"
+const CREATE_FOLDER = "🗂️  Create new folder"
 
 const folderPrompt = (_, basePath, isTopLevel) => {
-  console.log(basePath)
-  console.log(isTopLevel)
   return [
     {
       type: "list",
@@ -33,13 +43,13 @@ const folderPrompt = (_, basePath, isTopLevel) => {
         if (existsSync(basePath) == false) {
           // パスが現在存在しない場合
           // 新しいフォルダを作っている場合パスが存在しないからここの処理に入る
-          return ["Create new folder", "Create new markdown file"]
+          return [CREATE_FOLDER, CREATE_FILE]
         } else {
           const folders = getDirectories(basePath)
           if (isTopLevel) {
-            return [...folders, "Create new folder"]
+            return [...folders, CREATE_FOLDER]
           }
-          return [...folders, "Create new folder", "Create new markdown file"]
+          return [...folders, CREATE_FOLDER, CREATE_FILE]
         }
       },
     },
@@ -47,7 +57,7 @@ const folderPrompt = (_, basePath, isTopLevel) => {
       type: "input",
       name: "newFolder",
       message: "Enter the name for the new folder:",
-      when: (answers) => answers.folderAction === "Create new folder",
+      when: (answers) => answers.folderAction === CREATE_FOLDER,
       validate: (input) => {
         if (!input) return "Folder name cannot be empty"
         if (!validateDashCase(input))
@@ -61,7 +71,7 @@ const folderPrompt = (_, basePath, isTopLevel) => {
       type: "input",
       name: "fileName",
       message: "Enter the name for the markdown file:",
-      when: (answers) => answers.folderAction === "Create new markdown file",
+      when: (answers) => answers.folderAction === CREATE_FILE,
       validate: (input) => {
         if (!input) return "File name cannot be empty"
         if (!validateDashCase(input))
@@ -74,8 +84,8 @@ const folderPrompt = (_, basePath, isTopLevel) => {
   ]
 }
 
-export default function plop(plop) {
-  console.log("ここにアスキーアートとかでウェルカムメッセージとかを表示する")
+export default async function plop(plop) {
+  await printWelcomeMessage()
   plop.setGenerator("article", {
     description: "Generate article folder and markdown file",
     prompts: async (inquirer) => {
@@ -90,7 +100,7 @@ export default function plop(plop) {
         )
 
         // If a folder is selected or created, update basePath
-        if (answers.folderAction !== "Create new markdown file") {
+        if (answers.folderAction !== CREATE_FILE) {
           const folderName = answers.newFolder || answers.folderAction
           basePath = path.join(basePath, folderName)
 
@@ -115,12 +125,8 @@ export default function plop(plop) {
       return lastAnswers
     },
     actions: (answers) => {
-      console.log("actions!!")
-      console.log(answers.basePath)
       const actions = []
       const folderName = answers.basePath
-
-      console.log("folderName: ", folderName)
 
       const filePath = path.join(folderName, `${answers.fileName}.md`)
       actions.push({
