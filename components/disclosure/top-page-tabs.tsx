@@ -56,9 +56,11 @@ export const TopPageTabs: FC<TopPageTabsProps> = ({ articles }) => {
             <Loading />
           </Center>
         ) : session ? (
-          articles.map((article) => (
-            <ArticleCard key={article.slug} article={article} />
-          ))
+          <VStack>
+            {articles.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
+          </VStack>
         ) : (
           <Center w="full" h="full">
             <Button onClick={() => signIn()}>ログインしてください</Button>
