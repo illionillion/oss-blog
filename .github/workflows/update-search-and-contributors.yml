@@ -41,6 +41,7 @@ jobs:
           pnpm install
 
       - name: Run update script
+        timeout-minutes: 2
         run: |
           pnpm gen:search
           pnpm gen:contributors
