@@ -69,7 +69,7 @@ const Page = async ({ params }: Props) => {
 
   return (
     <Layout>
-      <Container maxW="9xl" w="full">
+      <Container maxW="9xl" w="full" p={0}>
         <Card>
           <CardBody>
             <HStack w="full" flexDir={{ base: "row", lg: "column" }}>

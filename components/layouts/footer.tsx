@@ -21,8 +21,8 @@ export const Footer = () => {
   ]
 
   return (
-    <Box as="footer" w="full" backgroundColor="primary.300">
-      <Box maxW="6xl" m="0 auto">
+    <Box as="footer" w="full" px="lg" backgroundColor="primary.300">
+      <Box m="0 auto">
         <Flex w="full" gap="md" flexDir={{ base: "row", md: "column" }}>
           <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
             <Heading size="md" py="md">
