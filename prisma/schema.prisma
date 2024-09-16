@@ -26,8 +26,8 @@ model Article {
 
 model Follow {
   id                Int                @id @default(autoincrement())
-  fromUserId        Int                @map(name: "from_user_id")
-  toUserId          Int                @map(name: "to_user_id")
+  fromUserId        String              @map(name: "from_user_id")
+  toUserId          String                @map(name: "to_user_id")
   createdAt         DateTime           @default(now()) @map(name: "created_at")
   updatedAt         DateTime           @updatedAt @map(name: "updated_at")
 }
@@ -43,7 +43,7 @@ model Like {
 
 model Bookmark {
   id                Int                @id @default(autoincrement())
-  userId            Int                @map(name: "user_id")
+  userId            String                @map(name: "user_id")
   article           Article            @relation(fields: [articleId], references: [id])
   articleId         Int                @map(name: "article_id")
   createdAt         DateTime           @default(now()) @map(name: "created_at")
@@ -52,7 +52,7 @@ model Bookmark {
 
 model DifficultyRating {
   id                Int                @id @default(autoincrement())
-  userId            Int                @map(name: "user_id")
+  userId            String               @map(name: "user_id")
   article           Article            @relation(fields: [articleId], references: [id])
   articleId         Int                @map(name: "article_id")
   rating            Int
@@ -62,7 +62,7 @@ model DifficultyRating {
 
 model TechnicalRating {
   id                Int                @id @default(autoincrement())
-  userId            Int                @map(name: "user_id")
+  userId            String               @map(name: "user_id")
   article           Article            @relation(fields: [articleId], references: [id])
   articleId         Int                @map(name: "article_id")
   rating            Int
@@ -81,7 +81,7 @@ model Tag {
 
 model RelationUserTag {
   id                Int                @id @default(autoincrement())
-  userId            Int                @map(name: "user_id")
+  userId            String                @map(name: "user_id")
   tag               Tag                @relation(fields: [tagId], references: [id])
   tagId             Int                @map(name: "tag_id")
   createdAt         DateTime           @default(now()) @map(name: "created_at")
@@ -98,7 +98,7 @@ model Role {
 
 model Notice {
   id                Int                @id @default(autoincrement())
-  userId            Int                @map(name: "user_id")
+  userId            String                @map(name: "user_id")
   message           String
   readFlag          Boolean            @map(name: "read_flag")
   createdAt         DateTime           @default(now()) @map(name: "created_at")

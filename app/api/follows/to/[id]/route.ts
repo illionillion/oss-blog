@@ -10,9 +10,9 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  const userId: number = Number(params.id)
+  const userId: string = Number(params.id)
 
-  const userList: Array<{ fromUserId: number }> = await prisma.follow.findMany({
+  const userList: Array<{ fromUserId: string }> = await prisma.follow.findMany({
     where: {
       toUserId: userId,
     },
