@@ -1,0 +1,29 @@
+name: "🚀 新しい記事リクエスト"
+description: "プロジェクトに追加したい新しい記事や修正を提案してください。"
+title: "✨ [新記事] - "
+labels: ["enhancement", "feature request", "article"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 新記事についての詳細を教えてください
+
+  - type: input
+    id: summary
+    attributes:
+      label: "新記事の概要"
+      description: "追加したい記事の概要を簡潔に記述してください。"
+      placeholder: "例: フロントエンドの〇〇の記事を新しく作る"
+
+  - type: input
+    id: related_issues
+    attributes:
+      label: "関連するイシュー"
+      description: "関連する既存のイシューがあれば、そのリンクを記載してください。"
+      placeholder: "例: #123"
+
+  - type: markdown
+    id: additional_context
+    attributes:
+      label: "追加情報"
+      placeholder: "追加情報があれば書いてください。"
