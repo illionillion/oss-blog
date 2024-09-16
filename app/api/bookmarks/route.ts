@@ -10,7 +10,7 @@ const prisma = new PrismaClient()
 
 interface ResponseBookmark {
   id: number
-  userId: number
+  userId: string
   articleUrl: string
   createdAt?: Date
   updatedAt?: Date
