@@ -5,6 +5,7 @@ import { Contributor } from "../data-display/contributors"
 import { ArticleButtons } from "../forms/article-buttons"
 import { CustomMarkdown } from "../md/custom-markdown"
 import { TableOfContents } from "../navigation/table-of-contents"
+import { ArticleButtons } from "../forms/article-buttons"
 
 export interface ArticleLayoutProps {
   metadata: ArticleMetadata | undefined
