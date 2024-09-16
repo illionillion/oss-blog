@@ -66,7 +66,7 @@ export const ArticleLayout: FC<ArticleLayoutProps> = ({
           boxSize="10"
           as={Link}
           target="_blank"
-          href="https://github.com/illionillion/oss-blog/issues/new"
+          href="https://github.com/illionillion/oss-blog/issues/new?template=feature_request_article.yml"
           icon={<InfoIcon />}
         />
         <IconButton
@@ -76,7 +76,7 @@ export const ArticleLayout: FC<ArticleLayoutProps> = ({
           boxSize="10"
           as={Link}
           target="_blank"
-          href={`https://github.com/yamada-ui/yamada-components/tree/main/contents/${metadata?.slug}`}
+          href={`https://github.com/illionillion/oss-blog/tree/main/contents/${metadata?.slug}`}
           icon={<CodeIcon />}
         />
         <IconButton
