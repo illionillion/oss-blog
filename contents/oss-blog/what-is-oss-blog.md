@@ -6,16 +6,16 @@ keyword:
   - アプトプット
   - OSS Blog
 contributors:
-  - id: 56211510
-    login: SEKI-YUTA
-    avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
-    html_url: "https://github.com/SEKI-YUTA"
   - id: 60034520
     login: illionillion
     avatar_url: "https://avatars.githubusercontent.com/u/60034520?v=4"
     html_url: "https://github.com/illionillion"
+  - id: 56211510
+    login: SEKI-YUTA
+    avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
+    html_url: "https://github.com/SEKI-YUTA"
 latest_date: "2024-09-15"
-slug: contents/oss-blog/what-is-oss-blog.md
+slug: oss-blog/what-is-oss-blog
 ---
 
 # 技術記事サイトのOSS Blogとは

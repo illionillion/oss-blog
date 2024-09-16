@@ -19,7 +19,7 @@ contributors:
     avatar_url: "https://avatars.githubusercontent.com/u/109452865?v=4"
     html_url: "https://github.com/taku10101"
 latest_date: "2024-09-15"
-slug: contents/frontend/web/explain-angular-universal.md
+slug: frontend/web/explain-angular-universal
 ---
 
 # Angular Universalとは何か
