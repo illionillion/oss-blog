@@ -66,7 +66,7 @@ export const ArticleLayout: FC<ArticleLayoutProps> = ({
           boxSize="10"
           as={Link}
           target="_blank"
-          href="https://github.com/illionillion/oss-blog/issues/new?template=feature_request_article.yml"
+          href="https://github.com/illionillion/oss-blog/issues/new"
           icon={<InfoIcon />}
         />
         <IconButton
