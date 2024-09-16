@@ -27,7 +27,7 @@ const options = {
     Authorization: `Bearer ${process.env.TEAM_APIKEY}`,
     "Content-Type": "application/json",
   },
-  body: '{"model":"llama-3.1-sonar-large-128k-online","messages":[{"content":"Qiitaで記事を検索","role":"user"}],"max_tokens":30,"temperature":0.2,"top_p":0.5,"return_citations":true,"search_domain_filter":["Zenn","hatenablog","frontend","backend","data engineering"]}',
+  body: '{"model":"llama-3.1-sonar-large-128k-online","messages":[{"content":"search","role":"user"}],"max_tokens":30,"temperature":0.2,"top_p":0.5,"return_citations":true,"search_domain_filter":["frontend","backend","engineering","programming"," hatenablog","zenn"],"model":"llama-3.1-sonar-large-128k-online"}',
 }
 
 export const completionsPerplexity = async (keyword: string) => {
