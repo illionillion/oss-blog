@@ -5,6 +5,7 @@ import { Contributor } from "../data-display/contributors"
 import { ArticleButtons } from "../forms/article-buttons"
 import { CustomMarkdown } from "../md/custom-markdown"
 import { TableOfContents } from "../navigation/table-of-contents"
+import { ArticleButtons } from "../forms/article-buttons"
 
 export interface ArticleLayoutProps {
   metadata: ArticleMetadata | undefined
@@ -17,63 +18,7 @@ export const ArticleLayout: FC<ArticleLayoutProps> = ({
 }) => {
   return (
     <HStack maxW="9xl" w="full" alignItems="start" m="auto">
-      <VStack
-        maxW="2xs"
-        w="full"
-        alignItems="center"
-        position="sticky"
-        top="4rem"
-        py="lg"
-        display={{ base: "flex", md: "none" }}
-      >
-        <IconButton
-          variant="ghost"
-          colorScheme="primary"
-          fontSize="3xl"
-          boxSize="10"
-          as={Link}
-          href="#"
-          icon={<ThumbsUpIcon />}
-        />
-        <IconButton
-          variant="ghost"
-          colorScheme="primary"
-          fontSize="3xl"
-          boxSize="10"
-          as={Link}
-          href="#"
-          icon={<BookMarkedIcon />}
-        />
-        <IconButton
-          variant="ghost"
-          colorScheme="primary"
-          fontSize="3xl"
-          boxSize="10"
-          as={Link}
-          target="_blank"
-          href="https://github.com/illionillion/oss-blog/issues/new"
-          icon={<InfoIcon />}
-        />
-        <IconButton
-          variant="ghost"
-          colorScheme="primary"
-          fontSize="3xl"
-          boxSize="10"
-          as={Link}
-          target="_blank"
-          href={`https://github.com/illionillion/oss-blog/tree/main/contents/${metadata?.slug}`}
-          icon={<CodeIcon />}
-        />
-        <IconButton
-          variant="ghost"
-          colorScheme="primary"
-          fontSize="3xl"
-          boxSize="10"
-          as={Link}
-          href="#"
-          icon={<XIcon />}
-        />
-      </VStack>
+      <ArticleButtons metadata={metadata} />
       <VStack gap="md" flexGrow={1}>
         <VStack>
           <Heading>{metadata?.title}</Heading>
