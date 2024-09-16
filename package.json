@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:metadata": "pnpm gen:contributors && pnpm gen:search && pnpm gen:insights",
     "start": "next start",
     "lint": "eslint . --max-warnings=0 --config eslint.config.mjs",
     "lint:inspect": "pnpm dlx @eslint/config-inspector",
