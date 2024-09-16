@@ -20,13 +20,15 @@ export async function GET(request: NextRequest) {
   }
 
   // AI検索
-  const articleList = await completionsPerplexity(keyword)
+  const perplexityResponse = await completionsPerplexity(keyword)
+
+  const response = perplexityResponse.choices[0].message.content
 
   return NextResponse.json(
     {
       message: "検索結果",
       data: {
-        articleList: articleList,
+        articleList: response,
       },
     },
     { status: 200 },
