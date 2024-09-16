@@ -31,6 +31,12 @@ const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
   return metadataPaths
 }
 
+const getSlug = (path: string) =>
+  path
+    .replace(/\\/g, "/")
+    .replace(/^contents\//, "")
+    .replace(".md", "")
+
 const updateMetadata = async (
   path: string,
   _authors: Author[],
@@ -51,7 +57,7 @@ const updateMetadata = async (
   }) as ArticleMetadata["contributors"]
 
   metadata.contributors = authors
-  metadata.slug = path
+  metadata.slug = getSlug(path)
   metadata.latest_date = formatIsoDate(latestDate) // Add latest date to metadata
 
   const updatedContent = matter.stringify(content, metadata)
