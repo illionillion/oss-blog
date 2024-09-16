@@ -10,7 +10,7 @@ const prisma = new PrismaClient()
 
 interface ResponseLike {
   id: number
-  userId: string
+  userId: number
   articleUrl: string
   createdAt?: Date
   updatedAt?: Date
@@ -48,10 +48,7 @@ export async function POST(request: NextRequest) {
 
   // 記事が存在しない場合
   if (!article) {
-    return NextResponse.json(
-      { message: responseMessage.error.notFound },
-      { status: 404 },
-    )
+    return console.log("not found")
   }
 
   const like: Pick<Like, "userId" | "articleId"> = {
