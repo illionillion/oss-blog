@@ -100,7 +100,7 @@ export const ArticleLayout: FC<ArticleLayoutProps> = ({
           </CardBody>
         </Card>
         <Text>コントリビューター</Text>
-        <Contributor contributors={metadata?.contributors} avatarSize="14" />
+        <Contributor contributors={metadata?.contributors} avatarSize="10" />
       </VStack>
       <VStack
         position="sticky"
@@ -111,7 +111,7 @@ export const ArticleLayout: FC<ArticleLayoutProps> = ({
         display={{ base: "flex", lg: "none" }}
       >
         <Text>コントリビューター</Text>
-        <Contributor contributors={metadata?.contributors} avatarSize="14" />
+        <Contributor contributors={metadata?.contributors} avatarSize="10" />
         <TableOfContents content={content} />
       </VStack>
     </HStack>
