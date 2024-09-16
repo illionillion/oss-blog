@@ -22,12 +22,11 @@ export const ArticleButtons: FC<ArticleButtonsProps> = ({ metadata }) => {
     if (status === "loading" && !session) return
     console.log(session?.user?.id)
     console.log(metadata?.slug)
-    if (!session?.user?.id || 0) return
 
     const res = await fetch(`/api/likes/`, {
       method: "POST",
       body: JSON.stringify({
-        userId: session.user.id,
+        userId: session?.user?.id ? session?.user?.id : 0,
         articleUrl: metadata?.slug,
       }),
     })
