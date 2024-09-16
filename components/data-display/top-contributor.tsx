@@ -6,6 +6,8 @@ import {
   CardBody,
   Heading,
   HStack,
+  LinkBox,
+  LinkOverlay,
   Spacer,
   Tag,
   Text,
@@ -30,13 +32,14 @@ export const TopContributor: FC<{ isLink?: boolean }> = ({ isLink }) => {
         <Text>集計：{isoDate}</Text>
         <VStack m="0 auto">
           {top_contributors?.map((contributor) => (
-            <HStack key={contributor.login}>
-              <Avatar
-                src={contributor.avatar_url}
-                as={Link}
+            <HStack key={contributor.login} as={LinkBox}>
+              <Avatar src={contributor.avatar_url} />
+              <Text
+                as={LinkOverlay}
                 href={`/contributors/${contributor.login}`}
-              />
-              <Text>{contributor.login}</Text>
+              >
+                {contributor.login}
+              </Text>
               <Spacer />
               <Tag rounded="full">
                 <Text>{contributor.commitCount}</Text>
