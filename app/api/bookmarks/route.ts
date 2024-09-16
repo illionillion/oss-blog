@@ -10,7 +10,7 @@ const prisma = new PrismaClient()
 
 interface ResponseBookmark {
   id: number
-  userId: string
+  userId: number
   articleUrl: string
   createdAt?: Date
   updatedAt?: Date
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
+  let article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -48,10 +48,14 @@ export async function POST(request: NextRequest) {
 
   // 記事が存在しない場合
   if (!article) {
-    return NextResponse.json(
-      { message: responseMessage.error.notFound },
-      { status: 404 },
-    )
+    article = await prisma.article.create({
+      data: {
+        url: body.articleUrl,
+      },
+      select: {
+        id: true,
+      },
+    })
   }
 
   const bookmark: Pick<Bookmark, "userId" | "articleId"> = {
