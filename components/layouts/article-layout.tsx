@@ -1,26 +1,10 @@
-import {
-  ThumbsUpIcon,
-  InfoIcon,
-  CodeIcon,
-  XIcon,
-  BookMarkedIcon,
-} from "@yamada-ui/lucide"
-import {
-  Card,
-  CardBody,
-  Heading,
-  HStack,
-  IconButton,
-  Text,
-  VStack,
-} from "@yamada-ui/react"
+import { Card, CardBody, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import type { ArticleMetadata } from "article"
-import Link from "next/link"
 import type { FC } from "react"
 import { Contributor } from "../data-display/contributors"
+import { ArticleButtons } from "../forms/article-buttons"
 import { CustomMarkdown } from "../md/custom-markdown"
 import { TableOfContents } from "../navigation/table-of-contents"
-import { ArticleButtons } from "../forms/article-buttons"
 
 export interface ArticleLayoutProps {
   metadata: ArticleMetadata | undefined
