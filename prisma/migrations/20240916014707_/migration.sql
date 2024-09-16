@@ -11,8 +11,8 @@ CREATE TABLE "Article" (
 -- CreateTable
 CREATE TABLE "Follow" (
     "id" SERIAL NOT NULL,
-    "from_user_id" INTEGER NOT NULL,
-    "to_user_id" INTEGER NOT NULL,
+    "from_user_id" TEXT NOT NULL,
+    "to_user_id" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -33,7 +33,7 @@ CREATE TABLE "Like" (
 -- CreateTable
 CREATE TABLE "Bookmark" (
     "id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
+    "user_id" TEXT NOT NULL,
     "article_id" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE "Bookmark" (
 -- CreateTable
 CREATE TABLE "DifficultyRating" (
     "id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
+    "user_id" TEXT NOT NULL,
     "article_id" INTEGER NOT NULL,
     "rating" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -56,7 +56,7 @@ CREATE TABLE "DifficultyRating" (
 -- CreateTable
 CREATE TABLE "TechnicalRating" (
     "id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
+    "user_id" TEXT NOT NULL,
     "article_id" INTEGER NOT NULL,
     "rating" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -79,7 +79,7 @@ CREATE TABLE "Tag" (
 -- CreateTable
 CREATE TABLE "RelationUserTag" (
     "id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
+    "user_id" TEXT NOT NULL,
     "tag_id" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE "Role" (
 -- CreateTable
 CREATE TABLE "Notice" (
     "id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
+    "user_id" TEXT NOT NULL,
     "message" TEXT NOT NULL,
     "read_flag" BOOLEAN NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
