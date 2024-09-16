@@ -43,7 +43,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({ article }) => {
         >
           <HStack gap="0">
             <UserIcon />
-            <Contributor contributors={article.contributors} />
+            <Contributor avatarSize="4" contributors={article.contributors} />
           </HStack>
           <Spacer display={{ base: "flex", sm: "none" }} />
           <HStack>
