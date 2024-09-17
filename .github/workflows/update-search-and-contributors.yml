@@ -44,8 +44,7 @@ jobs:
         timeout-minutes: 2
         run: |
           pnpm gen:search
-          pnpm gen:contributors
-          cat i18n/content.json
+          # pnpm gen:contributors
       - name: Create PR
         uses: peter-evans/create-pull-request@v6
         with:
