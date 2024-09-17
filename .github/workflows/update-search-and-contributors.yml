@@ -7,6 +7,8 @@ on:
       - ".github/workflows/update-search-and-contributors.yml"
     branches:
       - main
+  schedule:
+    - cron: "0 0 * * 1" # 1週間に1回
 
 permissions:
   contents: write
