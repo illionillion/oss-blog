@@ -132,240 +132,6 @@
     "hierarchy": { "lv1": "技術記事サイトのOSS Blogとは", "lv2": "まとめ" }
   },
   {
-    "title": "猫でもわかるGitCommand",
-    "type": "page",
-    "description": "猫でもGitHubのコマンドです",
-    "slug": "/git/git-basic",
-    "hierarchy": { "lv1": "猫でもわかるGitCommand" }
-  },
-  {
-    "title": "Gitの概要",
-    "type": "fragment",
-    "slug": "/git/git-basic#gitの概要",
-    "hierarchy": { "lv1": "猫でもわかるGitCommand", "lv2": "Gitの概要" }
-  },
-  {
-    "title": "Gitの基本コマンド",
-    "type": "fragment",
-    "slug": "/git/git-basic#gitの基本コマンド",
-    "hierarchy": { "lv1": "猫でもわかるGitCommand", "lv2": "Gitの基本コマンド" }
-  },
-  {
-    "title": "1. git init ：ローカルリポジトリを新規作成",
-    "type": "fragment",
-    "slug": "/git/git-basic#1-git-init-ローカルリポジトリを新規作成",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "1. git init ：ローカルリポジトリを新規作成"
-    }
-  },
-  {
-    "title": "2. git clone :リモートリポジトリをローカルリポジトリにコピー",
-    "type": "fragment",
-    "slug": "/git/git-basic#2-git-clone-リモートリポジトリをローカルリポジトリにコピー",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "2. git clone :リモートリポジトリをローカルリポジトリにコピー"
-    }
-  },
-  {
-    "title": "3. git pull : リモートリポジトリの変更点をローカルリポジトリに取得",
-    "type": "fragment",
-    "slug": "/git/git-basic#3-git-pull--リモートリポジトリの変更点をローカルリポジトリに取得",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "3. git pull : リモートリポジトリの変更点をローカルリポジトリに取得"
-    }
-  },
-  {
-    "title": "4. git push：ローカルリポジトリの変更点をリモートリポジトリに反映",
-    "type": "fragment",
-    "slug": "/git/git-basic#4-git-pushローカルリポジトリの変更点をリモートリポジトリに反映",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "4. git push：ローカルリポジトリの変更点をリモートリポジトリに反映"
-    }
-  },
-  {
-    "title": "5. git add：コミット対象のファイルをステージングエリアへ登録",
-    "type": "fragment",
-    "slug": "/git/git-basic#5-git-addコミット対象のファイルをステージングエリアへ登録",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "5. git add：コミット対象のファイルをステージングエリアへ登録"
-    }
-  },
-  {
-    "title": "6. git commit :追加・変更したファイルをリポジトリに保存",
-    "type": "fragment",
-    "slug": "/git/git-basic#6-git-commit-追加・変更したファイルをリポジトリに保存",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "6. git commit :追加・変更したファイルをリポジトリに保存"
-    }
-  },
-  {
-    "title": "7. git log：コミット履歴を表示",
-    "type": "fragment",
-    "slug": "/git/git-basic#7-git-logコミット履歴を表示",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "7. git log：コミット履歴を表示"
-    }
-  },
-  {
-    "title": "8.git reset:直前のコミットを取消",
-    "type": "fragment",
-    "slug": "/git/git-basic#8git-reset直前のコミットを取消",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "8.git reset:直前のコミットを取消"
-    }
-  },
-  {
-    "title": "9.git revert:特定のコミットを取り消し",
-    "type": "fragment",
-    "slug": "/git/git-basic#9git-revert特定のコミットを取り消し",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "9.git revert:特定のコミットを取り消し"
-    }
-  },
-  {
-    "title": "10.git tag:コミットにタグを付ける",
-    "type": "fragment",
-    "slug": "/git/git-basic#10git-tagコミットにタグを付ける",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "10.git tag:コミットにタグを付ける"
-    }
-  },
-  {
-    "title": "11.git status :ローカルリポジトリの状態を確認",
-    "type": "fragment",
-    "slug": "/git/git-basic#11git-status-ローカルリポジトリの状態を確認",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "11.git status :ローカルリポジトリの状態を確認"
-    }
-  },
-  {
-    "title": "12.git diff:ファイル内の差分箇所を表示",
-    "type": "fragment",
-    "slug": "/git/git-basic#12git-diffファイル内の差分箇所を表示",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "12.git diff:ファイル内の差分箇所を表示"
-    }
-  },
-  {
-    "title": "13. gitmv: ファイル内の差分箇所を表示",
-    "type": "fragment",
-    "slug": "/git/git-basic#13-gitmv-ファイル内の差分箇所を表示",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "13. gitmv: ファイル内の差分箇所を表示"
-    }
-  },
-  {
-    "title": "14. git stash:作業ツリーの状態を一時保存",
-    "type": "fragment",
-    "slug": "/git/git-basic#14-git-stash作業ツリーの状態を一時保存",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "14. git stash:作業ツリーの状態を一時保存"
-    }
-  },
-  {
-    "title": "15. git branch:ブランチの作成/一覧表示/名前の変更/削除 等",
-    "type": "fragment",
-    "slug": "/git/git-basic#15-git-branchブランチの作成一覧表示名前の変更削除-等",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "15. git branch:ブランチの作成/一覧表示/名前の変更/削除 等"
-    }
-  },
-  {
-    "title": "16. git check out:操作対象となるブランチの指定",
-    "type": "fragment",
-    "slug": "/git/git-basic#16-git-check-out操作対象となるブランチの指定",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "16. git check out:操作対象となるブランチの指定"
-    }
-  },
-  {
-    "title": "17. git merge:枝分かれさせたブランチを統合",
-    "type": "fragment",
-    "slug": "/git/git-basic#17-git-merge枝分かれさせたブランチを統合",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "17. git merge:枝分かれさせたブランチを統合"
-    }
-  },
-  {
-    "title": "18. git fetch:リモートリポジトリの変更点をローカルリポジトリへ取得",
-    "type": "fragment",
-    "slug": "/git/git-basic#18-git-fetchリモートリポジトリの変更点をローカルリポジトリへ取得",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "18. git fetch:リモートリポジトリの変更点をローカルリポジトリへ取得"
-    }
-  },
-  {
-    "title": "19.git rebase:分岐元ブランチに変更点をマージ",
-    "type": "fragment",
-    "slug": "/git/git-basic#19git-rebase分岐元ブランチに変更点をマージ",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "19.git rebase:分岐元ブランチに変更点をマージ"
-    }
-  },
-  {
-    "title": "20.git gc:不要なファイルを整理してローカルリポジトリを最適化",
-    "type": "fragment",
-    "slug": "/git/git-basic#20git-gc不要なファイルを整理してローカルリポジトリを最適化",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitの基本コマンド",
-      "lv3": "20.git gc:不要なファイルを整理してローカルリポジトリを最適化"
-    }
-  },
-  {
-    "title": "Gitを活用するためのヒント",
-    "type": "fragment",
-    "slug": "/git/git-basic#gitを活用するためのヒント",
-    "hierarchy": {
-      "lv1": "猫でもわかるGitCommand",
-      "lv2": "Gitを活用するためのヒント"
-    }
-  },
-  {
-    "title": "結論",
-    "type": "fragment",
-    "slug": "/git/git-basic#結論",
-    "hierarchy": { "lv1": "猫でもわかるGitCommand", "lv2": "結論" }
-  },
-  {
     "title": "サーバーレスアーキテクチャの基本",
     "type": "page",
     "description": "サーバーレスアーキテクチャの基本概念とその利点、代表的なサービスについて解説します。スケーラビリティ、コスト効率、開発スピードの向上など、サーバーレスが提供するメリットを紹介します。",
@@ -911,6 +677,240 @@
       "lv2": "インフラにおけるログ監視の重要性",
       "lv3": "まとめ"
     }
+  },
+  {
+    "title": "猫でもわかるGitCommand",
+    "type": "page",
+    "description": "猫でもGitHubのコマンドです",
+    "slug": "/git/git-basic",
+    "hierarchy": { "lv1": "猫でもわかるGitCommand" }
+  },
+  {
+    "title": "Gitの概要",
+    "type": "fragment",
+    "slug": "/git/git-basic#gitの概要",
+    "hierarchy": { "lv1": "猫でもわかるGitCommand", "lv2": "Gitの概要" }
+  },
+  {
+    "title": "Gitの基本コマンド",
+    "type": "fragment",
+    "slug": "/git/git-basic#gitの基本コマンド",
+    "hierarchy": { "lv1": "猫でもわかるGitCommand", "lv2": "Gitの基本コマンド" }
+  },
+  {
+    "title": "1. git init ：ローカルリポジトリを新規作成",
+    "type": "fragment",
+    "slug": "/git/git-basic#1-git-init-ローカルリポジトリを新規作成",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "1. git init ：ローカルリポジトリを新規作成"
+    }
+  },
+  {
+    "title": "2. git clone :リモートリポジトリをローカルリポジトリにコピー",
+    "type": "fragment",
+    "slug": "/git/git-basic#2-git-clone-リモートリポジトリをローカルリポジトリにコピー",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "2. git clone :リモートリポジトリをローカルリポジトリにコピー"
+    }
+  },
+  {
+    "title": "3. git pull : リモートリポジトリの変更点をローカルリポジトリに取得",
+    "type": "fragment",
+    "slug": "/git/git-basic#3-git-pull--リモートリポジトリの変更点をローカルリポジトリに取得",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "3. git pull : リモートリポジトリの変更点をローカルリポジトリに取得"
+    }
+  },
+  {
+    "title": "4. git push：ローカルリポジトリの変更点をリモートリポジトリに反映",
+    "type": "fragment",
+    "slug": "/git/git-basic#4-git-pushローカルリポジトリの変更点をリモートリポジトリに反映",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "4. git push：ローカルリポジトリの変更点をリモートリポジトリに反映"
+    }
+  },
+  {
+    "title": "5. git add：コミット対象のファイルをステージングエリアへ登録",
+    "type": "fragment",
+    "slug": "/git/git-basic#5-git-addコミット対象のファイルをステージングエリアへ登録",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "5. git add：コミット対象のファイルをステージングエリアへ登録"
+    }
+  },
+  {
+    "title": "6. git commit :追加・変更したファイルをリポジトリに保存",
+    "type": "fragment",
+    "slug": "/git/git-basic#6-git-commit-追加・変更したファイルをリポジトリに保存",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "6. git commit :追加・変更したファイルをリポジトリに保存"
+    }
+  },
+  {
+    "title": "7. git log：コミット履歴を表示",
+    "type": "fragment",
+    "slug": "/git/git-basic#7-git-logコミット履歴を表示",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "7. git log：コミット履歴を表示"
+    }
+  },
+  {
+    "title": "8.git reset:直前のコミットを取消",
+    "type": "fragment",
+    "slug": "/git/git-basic#8git-reset直前のコミットを取消",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "8.git reset:直前のコミットを取消"
+    }
+  },
+  {
+    "title": "9.git revert:特定のコミットを取り消し",
+    "type": "fragment",
+    "slug": "/git/git-basic#9git-revert特定のコミットを取り消し",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "9.git revert:特定のコミットを取り消し"
+    }
+  },
+  {
+    "title": "10.git tag:コミットにタグを付ける",
+    "type": "fragment",
+    "slug": "/git/git-basic#10git-tagコミットにタグを付ける",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "10.git tag:コミットにタグを付ける"
+    }
+  },
+  {
+    "title": "11.git status :ローカルリポジトリの状態を確認",
+    "type": "fragment",
+    "slug": "/git/git-basic#11git-status-ローカルリポジトリの状態を確認",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "11.git status :ローカルリポジトリの状態を確認"
+    }
+  },
+  {
+    "title": "12.git diff:ファイル内の差分箇所を表示",
+    "type": "fragment",
+    "slug": "/git/git-basic#12git-diffファイル内の差分箇所を表示",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "12.git diff:ファイル内の差分箇所を表示"
+    }
+  },
+  {
+    "title": "13. gitmv: ファイル内の差分箇所を表示",
+    "type": "fragment",
+    "slug": "/git/git-basic#13-gitmv-ファイル内の差分箇所を表示",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "13. gitmv: ファイル内の差分箇所を表示"
+    }
+  },
+  {
+    "title": "14. git stash:作業ツリーの状態を一時保存",
+    "type": "fragment",
+    "slug": "/git/git-basic#14-git-stash作業ツリーの状態を一時保存",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "14. git stash:作業ツリーの状態を一時保存"
+    }
+  },
+  {
+    "title": "15. git branch:ブランチの作成/一覧表示/名前の変更/削除 等",
+    "type": "fragment",
+    "slug": "/git/git-basic#15-git-branchブランチの作成一覧表示名前の変更削除-等",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "15. git branch:ブランチの作成/一覧表示/名前の変更/削除 等"
+    }
+  },
+  {
+    "title": "16. git check out:操作対象となるブランチの指定",
+    "type": "fragment",
+    "slug": "/git/git-basic#16-git-check-out操作対象となるブランチの指定",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "16. git check out:操作対象となるブランチの指定"
+    }
+  },
+  {
+    "title": "17. git merge:枝分かれさせたブランチを統合",
+    "type": "fragment",
+    "slug": "/git/git-basic#17-git-merge枝分かれさせたブランチを統合",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "17. git merge:枝分かれさせたブランチを統合"
+    }
+  },
+  {
+    "title": "18. git fetch:リモートリポジトリの変更点をローカルリポジトリへ取得",
+    "type": "fragment",
+    "slug": "/git/git-basic#18-git-fetchリモートリポジトリの変更点をローカルリポジトリへ取得",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "18. git fetch:リモートリポジトリの変更点をローカルリポジトリへ取得"
+    }
+  },
+  {
+    "title": "19.git rebase:分岐元ブランチに変更点をマージ",
+    "type": "fragment",
+    "slug": "/git/git-basic#19git-rebase分岐元ブランチに変更点をマージ",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "19.git rebase:分岐元ブランチに変更点をマージ"
+    }
+  },
+  {
+    "title": "20.git gc:不要なファイルを整理してローカルリポジトリを最適化",
+    "type": "fragment",
+    "slug": "/git/git-basic#20git-gc不要なファイルを整理してローカルリポジトリを最適化",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitの基本コマンド",
+      "lv3": "20.git gc:不要なファイルを整理してローカルリポジトリを最適化"
+    }
+  },
+  {
+    "title": "Gitを活用するためのヒント",
+    "type": "fragment",
+    "slug": "/git/git-basic#gitを活用するためのヒント",
+    "hierarchy": {
+      "lv1": "猫でもわかるGitCommand",
+      "lv2": "Gitを活用するためのヒント"
+    }
+  },
+  {
+    "title": "結論",
+    "type": "fragment",
+    "slug": "/git/git-basic#結論",
+    "hierarchy": { "lv1": "猫でもわかるGitCommand", "lv2": "結論" }
   },
   {
     "title": "Spring Bootの基本的な使い方",

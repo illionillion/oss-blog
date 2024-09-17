@@ -20,7 +20,8 @@ contributors:
     login: taku10101
     avatar_url: "https://avatars.githubusercontent.com/u/109452865?v=4"
     html_url: "https://github.com/taku10101"
-latest_date: "2024-09-15"
+latest_date: "2024-09-16"
+slug: mobile/ios/ios-push-notification
 ---
 
 # iOS開発でプッシュ通知を実装する方法について
