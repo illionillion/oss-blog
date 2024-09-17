@@ -10,7 +10,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  const id: number = Number(params.id)
+  const id: string = params.id
 
   const articleList: Array<{ article: { url: string } }> =
     await prisma.like.findMany({
