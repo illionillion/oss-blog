@@ -34,7 +34,7 @@ model Follow {
 
 model Like {
   id                Int                @id @default(autoincrement())
-  userId            Int                @map(name: "user_id")
+  userId            String             @map(name: "user_id")
   article           Article            @relation(fields: [articleId], references: [id])
   articleId         Int                @map(name: "article_id")
   createdAt         DateTime           @default(now()) @map(name: "created_at")
@@ -81,7 +81,7 @@ model Tag {
 
 model RelationUserTag {
   id                Int                @id @default(autoincrement())
-  userId            String                @map(name: "user_id")
+  userId            String             @map(name: "user_id")
   tag               Tag                @relation(fields: [tagId], references: [id])
   tagId             Int                @map(name: "tag_id")
   createdAt         DateTime           @default(now()) @map(name: "created_at")
@@ -98,7 +98,7 @@ model Role {
 
 model Notice {
   id                Int                @id @default(autoincrement())
-  userId            String                @map(name: "user_id")
+  userId            String             @map(name: "user_id")
   message           String
   readFlag          Boolean            @map(name: "read_flag")
   createdAt         DateTime           @default(now()) @map(name: "created_at")
