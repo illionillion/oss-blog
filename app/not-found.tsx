@@ -10,7 +10,7 @@ export default function Component() {
     <Layout>
       <Box
         display="flex"
-        w="100vw"
+        w="full"
         h="100dvh"
         flexDirection="column"
         alignItems="center"
