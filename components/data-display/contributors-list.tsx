@@ -6,9 +6,9 @@ import {
   Box,
   Button,
   Card,
+  CardBody,
   Heading,
   HStack,
-  Spacer,
   Tag,
   Text,
   VStack,
@@ -27,8 +27,13 @@ export const ContributorList: FC = () => {
       </Heading>
       <VStack flexWrap="wrap" gap="md">
         {contributorsList?.map((contributor) => (
-          <Card p="md" px="lg" key={contributor.login}>
-            <HStack justifyContent="space-between">
+          <Card key={contributor.login}>
+            <HStack
+              as={CardBody}
+              justifyContent="space-between"
+              alignItems={{ base: "center", sm: "start" }}
+              flexDir={{ base: "row", sm: "column" }}
+            >
               <HStack key={contributor.login}>
                 <Avatar src={contributor.avatar_url} />
                 <VStack>
@@ -36,8 +41,7 @@ export const ContributorList: FC = () => {
                   <Tag rounded="full">コントリビュータ</Tag>
                 </VStack>
               </HStack>
-              <Spacer />
-              <VStack w="30%">
+              <VStack>
                 <HStack justifyContent="end">
                   <HStack>
                     <GitPullRequestIcon />
