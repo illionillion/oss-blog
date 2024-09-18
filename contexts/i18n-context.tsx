@@ -38,8 +38,6 @@ export const I18nProvider: FC<I18nProviderProps> = ({ children }) => {
   const contents = CONTENT
   const contributors = CONTRIBUTORS
 
-  console.log(contributors)
-
   // Memoize the context value to avoid unnecessary re-renders
   const value = useMemo(
     () => ({ contents, contributors }),
