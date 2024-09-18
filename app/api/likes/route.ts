@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const article: Pick<Article, "id"> | null = await prisma.article.findFirst({
+  let article: Pick<Article, "id"> | null = await prisma.article.findFirst({
     where: {
       url: body.articleUrl,
     },
@@ -48,7 +48,14 @@ export async function POST(request: NextRequest) {
 
   // 記事が存在しない場合
   if (!article) {
-    return console.log("not found")
+    article = await prisma.article.create({
+      data: {
+        url: body.articleUrl,
+      },
+      select: {
+        id: true,
+      },
+    })
   }
 
   const like: Pick<Like, "userId" | "articleId"> = {
