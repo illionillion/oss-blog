@@ -24,6 +24,7 @@
     "@prisma/client": "5.19.0",
     "@types/newrelic": "^9.14.4",
     "@types/next": "^9.0.0",
+    "@yamada-ui/react": "^1.5.1",
     "axios": "^1.7.7",
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.13",
