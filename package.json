@@ -23,6 +23,7 @@
     "@newrelic/next": "^0.10.0",
     "@prisma/client": "5.19.0",
     "@types/newrelic": "^9.14.4",
+    "@types/next": "^9.0.0",
     "axios": "^1.7.7",
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.13",

@@ -17,6 +17,9 @@ importers:
       '@types/newrelic':
         specifier: ^9.14.4
         version: 9.14.4
+      '@types/next':
+        specifier: ^9.0.0
+        version: 9.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       axios:
         specifier: ^1.7.7
         version: 1.7.7
@@ -1141,6 +1144,10 @@ packages:
 
   '@types/newrelic@9.14.4':
     resolution: {integrity: sha512-/Wtr8evFvbOo0P3BNL8gKJiVUDDuAJ9wjwAb7UdmN+amxP5nrR7L8dvyJ5jZmLUmKSiFzMBX7xbMydnRgRoSyQ==}
+
+  '@types/next@9.0.0':
+    resolution: {integrity: sha512-gnBXM8rP1mnCgT1uE2z8SnpFTKRWReJlhbZLZkOLq/CH1ifvTNwjIVtXvsywTy1dwVklf+y/MB0Eh6FOa94yrg==}
+    deprecated: This is a stub types definition. next provides its own type definitions, so you do not need this installed.
 
   '@types/node@10.17.60':
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
@@ -6395,6 +6402,17 @@ snapshots:
   '@types/ms@0.7.34': {}
 
   '@types/newrelic@9.14.4': {}
+
+  '@types/next@9.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      next: 14.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@opentelemetry/api'
+      - babel-plugin-macros
+      - react
+      - react-dom
+      - sass
 
   '@types/node@10.17.60': {}
 
