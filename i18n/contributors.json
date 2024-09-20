@@ -1,76 +1,62 @@
 {
-  "date": "2024-09-17T14:18:40.757Z",
+  "date": "2024-09-20T08:18:30.993Z",
   "contributors": [
-    {
-      "id": 60034520,
-      "login": "illionillion",
-      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
-      "html_url": "https://github.com/illionillion",
-      "commitCount": 21
-    },
     {
       "id": 109452865,
       "login": "taku10101",
       "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
       "html_url": "https://github.com/taku10101",
-      "commitCount": 5
+      "commitCount": 14
     },
     {
-      "id": 56211510,
-      "login": "SEKI-YUTA",
-      "avatar_url": "https://avatars.githubusercontent.com/u/56211510?v=4",
-      "html_url": "https://github.com/SEKI-YUTA",
-      "commitCount": 2
+      "id": 60034520,
+      "login": "illionillion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
+      "html_url": "https://github.com/illionillion",
+      "commitCount": 12
     },
     {
-      "id": 62323683,
-      "login": "naruse666",
-      "avatar_url": "https://avatars.githubusercontent.com/u/62323683?v=4",
-      "html_url": "https://github.com/naruse666",
-      "commitCount": 1
+      "id": 83853559,
+      "login": "minusno0708",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83853559?v=4",
+      "html_url": "https://github.com/minusno0708",
+      "commitCount": 3
     },
     {
-      "id": 126809856,
-      "login": "hatimaruuuu",
-      "avatar_url": "https://avatars.githubusercontent.com/u/126809856?v=4",
-      "html_url": "https://github.com/hatimaruuuu",
+      "id": 78892525,
+      "login": "ageha734",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78892525?v=4",
+      "html_url": "https://github.com/ageha734",
       "commitCount": 1
     }
   ],
   "top_contributors": [
     {
-      "id": 60034520,
-      "login": "illionillion",
-      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
-      "html_url": "https://github.com/illionillion",
-      "commitCount": 21
-    },
-    {
       "id": 109452865,
       "login": "taku10101",
       "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
       "html_url": "https://github.com/taku10101",
-      "commitCount": 5
+      "commitCount": 14
     },
     {
-      "id": 56211510,
-      "login": "SEKI-YUTA",
-      "avatar_url": "https://avatars.githubusercontent.com/u/56211510?v=4",
-      "html_url": "https://github.com/SEKI-YUTA",
-      "commitCount": 2
+      "id": 60034520,
+      "login": "illionillion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
+      "html_url": "https://github.com/illionillion",
+      "commitCount": 12
     },
     {
-      "id": 62323683,
-      "login": "naruse666",
-      "avatar_url": "https://avatars.githubusercontent.com/u/62323683?v=4",
-      "html_url": "https://github.com/naruse666",
-      "commitCount": 1
+      "id": 83853559,
+      "login": "minusno0708",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83853559?v=4",
+      "html_url": "https://github.com/minusno0708",
+      "commitCount": 3
     },
     {
-      "id": 126809856,
-      "login": "hatimaruuuu",
-      "avatar_url": "https://avatars.githubusercontent.com/u/126809856?v=4",
-      "html_url": "https://github.com/hatimaruuuu",
+      "id": 78892525,
+      "login": "ageha734",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78892525?v=4",
+      "html_url": "https://github.com/ageha734",
       "commitCount": 1
     }
   ]
