@@ -10,10 +10,10 @@ export type LayoutProps = StackProps
 
 export const Layout: FC<LayoutProps> = ({ ...rest }) => {
   return (
-    <>
+    <VStack w="full" minH="100dvh" gap={0}>
       <Header />
 
-      <Center as="main" w="full">
+      <Center as="main" w="full" flexGrow={1}>
         <VStack
           alignItems="flex-start"
           w="full"
@@ -25,6 +25,6 @@ export const Layout: FC<LayoutProps> = ({ ...rest }) => {
         />
       </Center>
       <Footer />
-    </>
+    </VStack>
   )
 }

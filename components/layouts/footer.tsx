@@ -21,7 +21,14 @@ export const Footer = () => {
   ]
 
   return (
-    <Box as="footer" w="full" px="lg" backgroundColor="primary.300">
+    <Box
+      as="footer"
+      w="full"
+      px="lg"
+      backgroundColor="primary.300"
+      position="sticky"
+      top="100vh"
+    >
       <Box m="0 auto">
         <Flex w="full" gap="md" flexDir={{ base: "row", md: "column" }}>
           <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
