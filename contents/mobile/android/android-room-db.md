@@ -23,7 +23,8 @@ contributors:
     login: taku10101
     avatar_url: "https://avatars.githubusercontent.com/u/109452865?v=4"
     html_url: "https://github.com/taku10101"
-latest_date: "2024-09-15"
+latest_date: "2024-09-19"
+slug: mobile/android/android-room-db
 ---
 
 # Android開発のRoom Databaseの基本

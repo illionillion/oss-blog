@@ -14,7 +14,8 @@ contributors:
     login: SEKI-YUTA
     avatar_url: "https://avatars.githubusercontent.com/u/56211510?v=4"
     html_url: "https://github.com/SEKI-YUTA"
-latest_date: "2024-09-15"
+latest_date: "2024-09-19"
+slug: oss-blog/what-is-oss-blog
 ---
 
 # 技術記事サイトのOSS Blogとは
