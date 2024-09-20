@@ -17,7 +17,7 @@
     "gen:contributors": "tsx scripts/contributors",
     "gen:search": "tsx scripts/search",
     "gen:insights": "tsx scripts/report-insights.ts",
-    "vercel-build": "prisma generate && next build && prisma migrate deploy"
+    "vercel-build": "prisma generate  && npx prisma db push && prisma migrate deploy pnpm run build"
   },
   "dependencies": {
     "@newrelic/next": "^0.10.0",

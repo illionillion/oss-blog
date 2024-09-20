@@ -135,5 +135,8 @@ jobs:
       - name: Set up DATABASE_URL
         run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
 
+      - name: Run Prisma Migrate
+        run: pnpm prisma migrate deploy
+
       - name: Run Build
         run: pnpm run vercel-build
