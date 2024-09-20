@@ -136,4 +136,4 @@ jobs:
         run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
 
       - name: Run Build
-        run: pnpm run vercel-build
+        run: pnpm run build
