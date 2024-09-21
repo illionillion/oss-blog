@@ -1,4 +1,4 @@
-import { Box, Text, Button } from "@yamada-ui/react"
+import { Box, Text, Button, Center } from "@yamada-ui/react"
 
 import Link from "next/link"
 
@@ -7,60 +7,41 @@ import { Layout } from "@/components/layouts"
 
 export default function Component() {
   return (
-    <Layout>
-      <Box
-        display="flex"
-        w="full"
-        h="100dvh"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        margin="0 auto"
-        px="4"
-        py="12"
-      >
-        <Box mx="auto" maxW="md" textAlign="center">
-          <FrownIcon />
-          <Text
-            as="h1"
-            mt="4"
-            fontSize="3xl"
-            fontWeight="bold"
-            color="foreground"
+    <Layout h="full">
+      <Center flexDir="column" mx="auto" maxW="md" gap="md">
+        <FrownIcon />
+        <Text as="h1" fontSize="3xl" fontWeight="bold" color="foreground">
+          404 Not Found
+        </Text>
+        <Text color="muted-foreground">
+          お探しのページは見つかりませんでした。
+        </Text>
+        <Box>
+          <Button
+            as={Link}
+            href="/"
+            display="inline-flex"
+            alignItems="center"
+            borderRadius="md"
+            bg="primary"
+            px="4"
+            py="2"
+            fontSize="sm"
+            fontWeight="medium"
+            color="primary-foreground"
+            shadow="sm"
+            _hover={{ bg: "primary/90" }}
+            _focus={{
+              outline: "none",
+              ring: 2,
+              ringColor: "primary",
+              ringOffset: 2,
+            }}
           >
-            404 Not Found
-          </Text>
-          <Text mt="4" color="muted-foreground">
-            お探しのページは見つかりませんでした。
-          </Text>
-          <Box mt="6">
-            <Link href="/">
-              <Button
-                as="a"
-                display="inline-flex"
-                alignItems="center"
-                borderRadius="md"
-                bg="primary"
-                px="4"
-                py="2"
-                fontSize="sm"
-                fontWeight="medium"
-                color="primary-foreground"
-                shadow="sm"
-                _hover={{ bg: "primary/90" }}
-                _focus={{
-                  outline: "none",
-                  ring: 2,
-                  ringColor: "primary",
-                  ringOffset: 2,
-                }}
-              >
-                トップページに戻る
-              </Button>
-            </Link>
-          </Box>
+            トップページに戻る
+          </Button>
         </Box>
-      </Box>
+      </Center>
     </Layout>
   )
 }
