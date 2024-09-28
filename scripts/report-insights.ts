@@ -1,6 +1,5 @@
-import fs from "fs"
+import { writeFileSync } from "fs"
 import { Octokit } from "@octokit/rest"
-import { endOfDay, subDays } from "date-fns"
 import { config } from "dotenv"
 
 // .envファイルの環境変数を読み込み
@@ -15,7 +14,6 @@ if (!GITHUB_TOKEN) {
 const REPO_OWNER = "illionillion"
 const REPO_NAME = "oss-blog"
 const TOP_N_CONTRIBUTORS = 5
-const DAYS_BACK = 7
 const OUTPUT_FILE_PATH = "i18n/contributors.json"
 
 const octokit = new Octokit({
@@ -23,15 +21,12 @@ const octokit = new Octokit({
 })
 
 const getContributorsData = async () => {
-  const sinceDate = subDays(new Date(), DAYS_BACK).toISOString()
-  const untilDate = endOfDay(new Date()).toISOString()
-
   try {
     const commits = await octokit.repos.listCommits({
       owner: REPO_OWNER,
       repo: REPO_NAME,
-      since: sinceDate,
-      until: untilDate,
+      path: "contents/",
+      per_page: 100,
     })
 
     const contributors: Record<string, any> = {}
@@ -67,7 +62,7 @@ const getContributorsData = async () => {
       top_contributors: topContributors,
     }
 
-    fs.writeFileSync(OUTPUT_FILE_PATH, JSON.stringify(outputData, null, 2))
+    writeFileSync(OUTPUT_FILE_PATH, JSON.stringify(outputData, null, 2))
 
     console.log(`Contributor data has been written to ${OUTPUT_FILE_PATH}`)
   } catch (error) {
