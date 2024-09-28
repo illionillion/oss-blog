@@ -1,25 +1,32 @@
 {
-  "date": "2024-09-20T08:18:30.993Z",
+  "date": "2024-09-28T12:48:43.433Z",
   "contributors": [
-    {
-      "id": 109452865,
-      "login": "taku10101",
-      "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
-      "html_url": "https://github.com/taku10101",
-      "commitCount": 14
-    },
     {
       "id": 60034520,
       "login": "illionillion",
       "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
       "html_url": "https://github.com/illionillion",
-      "commitCount": 12
+      "commitCount": 42
     },
     {
-      "id": 83853559,
-      "login": "minusno0708",
-      "avatar_url": "https://avatars.githubusercontent.com/u/83853559?v=4",
-      "html_url": "https://github.com/minusno0708",
+      "id": 126809856,
+      "login": "hatimaruuuu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/126809856?v=4",
+      "html_url": "https://github.com/hatimaruuuu",
+      "commitCount": 4
+    },
+    {
+      "id": 56211510,
+      "login": "SEKI-YUTA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56211510?v=4",
+      "html_url": "https://github.com/SEKI-YUTA",
+      "commitCount": 3
+    },
+    {
+      "id": 109452865,
+      "login": "taku10101",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
+      "html_url": "https://github.com/taku10101",
       "commitCount": 3
     },
     {
@@ -32,24 +39,31 @@
   ],
   "top_contributors": [
     {
-      "id": 109452865,
-      "login": "taku10101",
-      "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
-      "html_url": "https://github.com/taku10101",
-      "commitCount": 14
-    },
-    {
       "id": 60034520,
       "login": "illionillion",
       "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
       "html_url": "https://github.com/illionillion",
-      "commitCount": 12
+      "commitCount": 42
     },
     {
-      "id": 83853559,
-      "login": "minusno0708",
-      "avatar_url": "https://avatars.githubusercontent.com/u/83853559?v=4",
-      "html_url": "https://github.com/minusno0708",
+      "id": 126809856,
+      "login": "hatimaruuuu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/126809856?v=4",
+      "html_url": "https://github.com/hatimaruuuu",
+      "commitCount": 4
+    },
+    {
+      "id": 56211510,
+      "login": "SEKI-YUTA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56211510?v=4",
+      "html_url": "https://github.com/SEKI-YUTA",
+      "commitCount": 3
+    },
+    {
+      "id": 109452865,
+      "login": "taku10101",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
+      "html_url": "https://github.com/taku10101",
       "commitCount": 3
     },
     {
