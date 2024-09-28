@@ -1,7 +1,4 @@
 "use client"
-import React, { FC } from "react"
-import { IconButton, VStack } from "@yamada-ui/react"
-import Link from "next/link"
 import {
   ThumbsUpIcon,
   InfoIcon,
@@ -9,8 +6,12 @@ import {
   XIcon,
   BookMarkedIcon,
 } from "@yamada-ui/lucide"
-import { ArticleMetadata } from "article"
+import { IconButton, VStack } from "@yamada-ui/react"
+import type { ArticleMetadata } from "article"
+import Link from "next/link"
 import { useSession } from "next-auth/react"
+import React from "react"
+import type { FC } from "react";
 
 interface ArticleButtonsProps {
   metadata: ArticleMetadata | undefined
@@ -77,7 +78,7 @@ export const ArticleButtons: FC<ArticleButtonsProps> = ({ metadata }) => {
         boxSize="10"
         as={Link}
         target="_blank"
-        href={`https://github.com/illionillion/oss-blog/tree/main/contents/${metadata?.slug}`}
+        href={`https://github.com/illionillion/oss-blog/tree/main/contents/${metadata?.slug}.md`}
         icon={<CodeIcon />}
       />
       <IconButton
