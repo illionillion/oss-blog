@@ -29,7 +29,10 @@ export default function Home() {
         textAlign="center"
         w="full"
         m="auto"
-        bgGradient="linear(to-r, #59a9e1, #f37bdf)"
+        bgGradient={[
+          "linear(-60deg, primary.500, secondary.500)",
+          "linear(-60deg, primary.600, secondary.600)",
+        ]}
       >
         <Heading color="white" as="h1" fontSize={{ base: "6xl", md: "xl" }}>
           OSSBlogへようこそ

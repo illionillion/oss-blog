@@ -46,7 +46,10 @@ const Banner: FC = () => {
       textAlign="center"
       p="lg"
       borderRadius="md"
-      bgGradient="linear(to-r, purple.500, blue.400)"
+      bgGradient={[
+        "linear(-60deg, primary.500, secondary.500)",
+        "linear(-60deg, primary.600, secondary.600)",
+      ]}
     >
       <VStack gap="md">
         <Heading color="white" as="h2">
