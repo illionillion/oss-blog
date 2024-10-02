@@ -29,47 +29,51 @@ export const Footer = () => {
       position="sticky"
       top="100vh"
     >
-      <Box m="0 auto">
-        <Flex w="full" gap="md" flexDir={{ base: "row", md: "column" }}>
-          <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
-            <Heading size="md" py="md">
-              OSSBlog
-            </Heading>
-            <Text>オープンソースの力で、より良い技術ブログを</Text>
-          </Box>
-          <Spacer />
-          <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
-            <Heading size="md" py="md">
-              リンク
-            </Heading>
-            {links.map((link) =>
-              link.isBlank ? (
-                <Link href={link.href} target="_blank" key={link.href}>
-                  <Text>{link.label}</Text>
-                </Link>
-              ) : (
-                <Link href={link.href} key={link.href}>
-                  <Text>{link.label}</Text>
-                </Link>
-              ),
-            )}
-          </Box>
-          <Spacer />
-          <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
-            <Heading size="md" py="md">
-              コミュニティ
-            </Heading>
-            {community.map((link) => (
+      <Flex
+        w="full"
+        m="auto"
+        maxW="9xl"
+        gap="md"
+        flexDir={{ base: "row", md: "column" }}
+      >
+        <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
+          <Heading size="md" py="md">
+            OSSBlog
+          </Heading>
+          <Text>オープンソースの力で、より良い技術ブログを</Text>
+        </Box>
+        <Spacer />
+        <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
+          <Heading size="md" py="md">
+            リンク
+          </Heading>
+          {links.map((link) =>
+            link.isBlank ? (
+              <Link href={link.href} target="_blank" key={link.href}>
+                <Text>{link.label}</Text>
+              </Link>
+            ) : (
               <Link href={link.href} key={link.href}>
                 <Text>{link.label}</Text>
               </Link>
-            ))}
-          </Box>
-        </Flex>
-        <Text m="0 auto" py="md" textAlign="center">
-          © 2024 OSSBlog. All rights reserved.
-        </Text>
-      </Box>
+            ),
+          )}
+        </Box>
+        <Spacer />
+        <Box m={{ md: "0 auto" }} textAlign={{ base: "left", md: "center" }}>
+          <Heading size="md" py="md">
+            コミュニティ
+          </Heading>
+          {community.map((link) => (
+            <Link href={link.href} key={link.href}>
+              <Text>{link.label}</Text>
+            </Link>
+          ))}
+        </Box>
+      </Flex>
+      <Text m="0 auto" py="md" textAlign="center">
+        © 2024 OSSBlog. All rights reserved.
+      </Text>
     </Box>
   )
 }
