@@ -1,40 +1,45 @@
 {
-  "date": "2024-09-28T12:48:43.433Z",
+  "date": "2024-10-05T07:43:33.622Z",
   "contributors": [
     {
       "id": 60034520,
       "login": "illionillion",
       "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
       "html_url": "https://github.com/illionillion",
-      "commitCount": 42
+      "commitCount": 42,
+      "bio": "情報系大学生\r\n25卒\r\n大阪在住"
     },
     {
       "id": 126809856,
       "login": "hatimaruuuu",
       "avatar_url": "https://avatars.githubusercontent.com/u/126809856?v=4",
       "html_url": "https://github.com/hatimaruuuu",
-      "commitCount": 4
+      "commitCount": 4,
+      "bio": "Major in Econometrics　\r\nB1, Faculty of Economics, Hosei University\r\n"
     },
     {
       "id": 56211510,
       "login": "SEKI-YUTA",
       "avatar_url": "https://avatars.githubusercontent.com/u/56211510?v=4",
       "html_url": "https://github.com/SEKI-YUTA",
-      "commitCount": 3
+      "commitCount": 3,
+      "bio": "Mobile App Developer"
     },
     {
       "id": 109452865,
       "login": "taku10101",
       "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
       "html_url": "https://github.com/taku10101",
-      "commitCount": 3
+      "commitCount": 3,
+      "bio": ""
     },
     {
       "id": 78892525,
       "login": "ageha734",
       "avatar_url": "https://avatars.githubusercontent.com/u/78892525?v=4",
       "html_url": "https://github.com/ageha734",
-      "commitCount": 1
+      "commitCount": 1,
+      "bio": "It will bring a new wind to the present world with diversity and family as its main focus."
     }
   ],
   "top_contributors": [
@@ -43,35 +48,40 @@
       "login": "illionillion",
       "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
       "html_url": "https://github.com/illionillion",
-      "commitCount": 42
+      "commitCount": 42,
+      "bio": "情報系大学生\r\n25卒\r\n大阪在住"
     },
     {
       "id": 126809856,
       "login": "hatimaruuuu",
       "avatar_url": "https://avatars.githubusercontent.com/u/126809856?v=4",
       "html_url": "https://github.com/hatimaruuuu",
-      "commitCount": 4
+      "commitCount": 4,
+      "bio": "Major in Econometrics　\r\nB1, Faculty of Economics, Hosei University\r\n"
     },
     {
       "id": 56211510,
       "login": "SEKI-YUTA",
       "avatar_url": "https://avatars.githubusercontent.com/u/56211510?v=4",
       "html_url": "https://github.com/SEKI-YUTA",
-      "commitCount": 3
+      "commitCount": 3,
+      "bio": "Mobile App Developer"
     },
     {
       "id": 109452865,
       "login": "taku10101",
       "avatar_url": "https://avatars.githubusercontent.com/u/109452865?v=4",
       "html_url": "https://github.com/taku10101",
-      "commitCount": 3
+      "commitCount": 3,
+      "bio": ""
     },
     {
       "id": 78892525,
       "login": "ageha734",
       "avatar_url": "https://avatars.githubusercontent.com/u/78892525?v=4",
       "html_url": "https://github.com/ageha734",
-      "commitCount": 1
+      "commitCount": 1,
+      "bio": "It will bring a new wind to the present world with diversity and family as its main focus."
     }
   ]
 }

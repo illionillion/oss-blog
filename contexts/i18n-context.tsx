@@ -11,6 +11,7 @@ type ContributorType = {
   avatar_url: string
   html_url: string
   commitCount: number
+  bio: string
 }
 
 // Define the I18nContext type
