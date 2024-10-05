@@ -30,7 +30,8 @@ const getContributorsData = async () => {
     })
 
     const contributors: Record<string, any> = {}
-    commits.data.forEach((commit) => {
+
+    for (const commit of commits.data) {
       const author = commit.author
       if (author) {
         const { id, login, avatar_url, html_url } = author
@@ -42,10 +43,16 @@ const getContributorsData = async () => {
             html_url,
             commitCount: 0,
           }
+
+          const userData = await octokit.users.getByUsername({
+            username: login,
+          })
+          contributors[login].bio = userData.data.bio || ""
         }
+
         contributors[login].commitCount += 1
       }
-    })
+    }
 
     // 全contributors
     const allContributors = Object.values(contributors)

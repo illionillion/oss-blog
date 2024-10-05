@@ -2,6 +2,7 @@ import path from "path"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getArticleContent, getArticlePaths } from "./articles"
+import contributorData from "@/i18n/contributors.json"
 
 interface Props {
   params: { slug?: string[] }
@@ -53,3 +54,7 @@ export const getStaticArticleContent =
       metadata: metadata,
     }
   }
+
+export const getContributors = () => {
+  return contributorData
+}

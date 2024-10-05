@@ -16,6 +16,7 @@ import {
 import { getArticleList } from "../../../utils/articles"
 import { ProfileTabs } from "@/components/disclosure/profile-tabs"
 import { Layout } from "@/components/layouts"
+import { getContributors } from "@/utils/next"
 
 interface Props {
   params: { username?: string }
@@ -44,25 +45,17 @@ export const generateMetadata = async ({ params }: Props) => {
 
 // Static Params の生成
 export const generateStaticParams = async () => {
-  // 記事リストを取得して、contributors の配列をマッピング
-  const articleList = await getArticleList()
-  const allContributors = articleList.flatMap((item) => item.contributors || [])
+  const contributors = getContributors().contributors
 
-  // ユーザー名（login）のみを集め、重複を排除
-  const uniqueUsernames = Array.from(
-    new Set(allContributors.map((contributor) => contributor.login)),
-  )
-
-  return uniqueUsernames.map((username) => ({ username }))
+  return contributors.map((contributor) => ({ username: contributor.login }))
 }
 
 const Page = async ({ params }: Props) => {
   const { username } = params
-
-  // 全記事を取得
+  const userData = getContributors().contributors.find(
+    (user) => user.login === username,
+  )
   const articles = await getArticleList()
-
-  // 指定されたusernameに関連する記事のみをフィルタリング
   const userArticles = articles.filter((article) =>
     article.contributors?.some((contributor) => contributor.login === username),
   )
@@ -74,7 +67,7 @@ const Page = async ({ params }: Props) => {
           <CardBody>
             <HStack w="full" flexDir={{ base: "row", lg: "column" }}>
               <Box>
-                <Avatar boxSize="16" />
+                <Avatar boxSize="3xs" src={userData?.avatar_url} />
               </Box>
               <VStack
                 flexGrow={1}
@@ -82,7 +75,7 @@ const Page = async ({ params }: Props) => {
               >
                 <Text fontSize="md">{username}</Text>
                 <Text fontSize="sm" color={["gray.500", "gray.100"]}>
-                  説明
+                  {userData?.bio}
                 </Text>
                 <HStack flexDir={{ base: "row", md: "column" }}>
                   <Center w={{ md: "full" }} gap="sm">
@@ -113,7 +106,7 @@ const Page = async ({ params }: Props) => {
                       icon={<GithubIcon />}
                       as="a"
                       target="_blank"
-                      href={`https://github.com/${username}`}
+                      href={userData?.html_url}
                     />
                   </Center>
                 </HStack>
