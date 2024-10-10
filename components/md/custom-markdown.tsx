@@ -10,13 +10,13 @@ export const CustomMarkdown: FC<{ content: string }> = ({ content }) => {
   return (
     <Markdown
       components={{
-        h1: (props) => <LinkedHeading as="h1" {...props} />,
-        h2: (props) => <LinkedHeading as="h2" {...props} />,
-        h3: (props) => <LinkedHeading as="h3" {...props} />,
-        h4: (props) => <LinkedHeading as="h4" {...props} />,
-        h5: (props) => <LinkedHeading as="h5" {...props} />,
-        h6: (props) => <LinkedHeading as="h6" {...props} />,
-        pre: (props) => <Pre {...props} />,
+        h1: ({ children }) => <LinkedHeading as="h1" {...{ children }} />,
+        h2: ({ children }) => <LinkedHeading as="h2" {...{ children }} />,
+        h3: ({ children }) => <LinkedHeading as="h3" {...{ children }} />,
+        h4: ({ children }) => <LinkedHeading as="h4" {...{ children }} />,
+        h5: ({ children }) => <LinkedHeading as="h5" {...{ children }} />,
+        h6: ({ children }) => <LinkedHeading as="h6" {...{ children }} />,
+        pre: ({ children }) => <Pre {...{ children }} />,
       }}
     >
       {content}
